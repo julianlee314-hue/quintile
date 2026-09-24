@@ -9,6 +9,7 @@ Pages fork only (`julianlee314-hue/quintile`). Does **not** touch grok.me.
 | Atlas | `/` |
 | **Tree** | `/tree/` |
 | **Practice / Exam runner** | `/practice/?skill=<id>&mode=practice\|exam` |
+| **Just practice (smart)** | `/practice/` or `/practice/?mode=practice&auto=1` |
 | **Games** | `/games/` |
 | **Dojos** | `/dojo/`, `/dojo/algebra/`, `/dojo/integrals/` |
 | Account UI | chip on every shell (Create / Switch / PIN / Export / Import) |
@@ -28,7 +29,11 @@ Pages fork only (`julianlee314-hue/quintile`). Does **not** touch grok.me.
 - Drill patched: every skill-item check + paper part check logs
 - History[0] changes also log run-level events (deduped)
 
-## Mastery / SRS (`js/mastery.js`)
+## Quintiles (see `QUINTILES.md`)
+
+Five living levels per skill (Bare→Bloom). Triple-play advances; due-review fail wilts one level. Smart Practice: `/practice/?mode=practice&auto=1`.
+
+## Mastery / SRS (`js/mastery.js`) — superseded by quintiles
 
 **Earn:** three correct **in a row** (triple play). Not 4/5, not one-shot.
 

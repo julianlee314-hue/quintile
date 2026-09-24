@@ -34,11 +34,19 @@
 .pr-choice:hover{border-color:var(--color-ink)}
 .pr-choice input{margin-top:.2rem}
 .pr-choice .ltr{font-weight:700;min-width:1.25rem}
+.pr-why{display:inline-flex;align-items:center;gap:.4rem;border-radius:999px;padding:.35rem .85rem;font-size:.75rem;font-weight:600;background:#e8f0e9;color:#2f5e3a;border:1px solid #b7d0bc;margin:0 0 1rem}
+.pr-why.overdue,.pr-why.due{background:#f6e2a8;color:#7a5a0a;border-color:#e0c46a}
+.pr-why.frontier{background:#e8eef5;color:#2a4a6f;border-color:#b8c9dc}
+.pr-why.growth{background:#f5e6d4;color:#7a4a1a;border-color:#e0c4a0}
+.pr-landing{text-align:center;padding:2rem 0 1rem}
+.pr-landing .big{font-family:Fraunces,Georgia,serif;font-size:clamp(1.75rem,4vw,2.5rem);margin:.35rem 0 1rem;letter-spacing:-.025em}
+.pr-qchip{display:inline-flex;gap:.35rem;align-items:center;font-size:.75rem;color:var(--color-muted)}
+.pr-qchip b{color:var(--color-ink)}
 </style>
 </head>
 <body style="margin:0;background:var(--color-paper);color:var(--color-ink);font-family:Figtree,system-ui,sans-serif;min-height:100dvh">
 <header style="border-bottom:1px solid var(--color-line);padding:1rem">
-  <div style="max-width:90rem;margin:0 auto;display:flex;align-items:center;gap:1rem">
+  <div style="max-width:90rem;margin:0 auto;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
     <a href="./" style="text-decoration:none;color:inherit;font-family:Fraunces,Georgia,serif;font-size:1.5rem">Quintile</a>
     <nav style="display:flex;gap:.35rem;flex-wrap:wrap;font-size:.8rem">
       <a href="tree/" style="color:var(--color-muted);text-decoration:none">Tree</a>
@@ -46,6 +54,7 @@
       <a href="banks/" style="color:var(--color-muted);text-decoration:none">Banks</a>
       <a href="diploma/exams/" style="color:var(--color-muted);text-decoration:none">Diploma exams</a>
       <a href="foundations" style="color:var(--color-muted);text-decoration:none">Skills</a>
+      <a href="practice/?mode=practice&amp;auto=1" style="color:var(--color-oxide);text-decoration:none;font-weight:600">Just practice</a>
     </nav>
   </div>
 </header>
@@ -53,6 +62,7 @@
   <p class="k">Question modes</p>
   <h1 id="title">Loading…</h1>
   <p class="lead" id="blurb">Practice raises and lowers difficulty. Exam locks a level and scores the run.</p>
+  <div id="why-slot"></div>
   <div class="pr-bar" id="mode-bar"></div>
   <div class="pr-bar" id="level-bar"></div>
   <div id="stage"></div>
@@ -66,39 +76,72 @@
 <script>
 (function(){
   var params=new URLSearchParams(location.search);
-  var skillId=params.get('skill')||'indices';
+  var skillParam=params.get('skill');
+  var auto=params.get('auto')==='1' || !skillParam;
+  var skillId=skillParam||null;
   var mode=(params.get('mode')|| (window.QuintileModes&&QuintileModes.getMode()) || 'practice');
   if(mode!=='exam') mode='practice';
+  // Auto mode always practice
+  if(auto && !skillParam) mode='practice';
   var examPick=params.get('level')||null;
   var run=null, idx=0, earned=0, total=0, status='idle', draft='';
+  var pickInfo=null;
   var M=window.QuintileModes;
+  var QM=window.QuintileMastery;
+
+  function paintWhy(){
+    var slot=document.getElementById('why-slot');
+    slot.innerHTML='';
+    if(!pickInfo) return;
+    var el=document.createElement('div');
+    el.className='pr-why '+(pickInfo.reasonKind||'');
+    el.textContent=pickInfo.reason||('Smart practice · '+skillId);
+    slot.appendChild(el);
+  }
 
   function paintModeBar(){
     var bar=document.getElementById('mode-bar');
     bar.innerHTML='';
+    if(auto && !skillParam){
+      var jp=document.createElement('button');
+      jp.textContent='Just practice';
+      jp.className='on';
+      jp.onclick=function(){ autoPickAndStart(true); };
+      bar.appendChild(jp);
+    }
     [['practice','Practice'],['exam','Exam']].forEach(function(pair){
+      if(auto && !skillParam && pair[0]==='exam') return; // hide exam in pure auto landing mid-run; still allow after skill chosen
       var b=document.createElement('button');
       b.textContent=pair[1];
-      if(pair[0]===mode) b.className='on';
+      if(pair[0]===mode && !(auto && !skillParam)) b.className='on';
       b.onclick=function(){
         mode=pair[0];
         M.setMode(mode);
         var u=new URL(location.href);
         u.searchParams.set('mode',mode);
+        if(skillId) u.searchParams.set('skill',skillId);
         history.replaceState(null,'',u);
-        start();
+        if(skillId) start();
       };
       bar.appendChild(b);
     });
-    var a=document.createElement('a');
-    a.className='btn'; a.href='drill?skill='+encodeURIComponent(skillId);
-    a.textContent='Classic drill';
-    bar.appendChild(a);
+    if(skillId){
+      var a=document.createElement('a');
+      a.className='btn'; a.href='drill?skill='+encodeURIComponent(skillId);
+      a.textContent='Classic drill';
+      bar.appendChild(a);
+    }
+    var again=document.createElement('a');
+    again.className='btn';
+    again.href='practice/?mode=practice&auto=1';
+    again.textContent=skillId?'Next smart pick':'';
+    if(skillId) bar.appendChild(again);
   }
 
   function paintLevelBar(){
     var bar=document.getElementById('level-bar');
     bar.innerHTML='';
+    if(!skillId) return;
     var cur=mode==='exam'?(examPick||M.getExamLevel(skillId)):M.getPracticeLevel(skillId);
     M.LEVELS.forEach(function(lv){
       var b=document.createElement('button');
@@ -117,6 +160,13 @@
     hint.style.cssText='font-size:.75rem;color:var(--color-muted)';
     hint.textContent=mode==='exam'?'Fixed for this exam':'Steps up on correct, down on mistake';
     bar.appendChild(hint);
+    if(QM && skillId){
+      var q=QM.get(skillId);
+      var chip=document.createElement('span');
+      chip.className='pr-qchip';
+      chip.innerHTML='Quintile <b>'+QM.levelName(q.q)+'</b> (Q'+q.q+'/5)'+(q.streak?' · streak '+q.streak+'/3':'');
+      bar.appendChild(chip);
+    }
   }
 
   function norm(s){return String(s||'').replace(/\s+/g,'').toLowerCase().replace(/\$/g,'');}
@@ -126,7 +176,6 @@
       var letter=(draft||'').trim().toUpperCase();
       if(item.correct && letter===String(item.correct).toUpperCase()) return true;
       if(typeof item.correctIndex==='number' && letter===String.fromCharCode(65+item.correctIndex)) return true;
-      // also allow matching choice text
       var idx='ABCDE'.indexOf(letter);
       if(idx>=0 && item.choices[idx]!=null && norm(item.choices[idx])===norm(item.answer||'')) return true;
       return false;
@@ -138,16 +187,66 @@
     return false;
   }
 
+  function showLanding(){
+    document.getElementById('title').textContent='Just practice';
+    document.getElementById('blurb').textContent='With a profile, the plant chooses overdue reviews, frontier skills, and growth work — no topic picker required.';
+    paintModeBar();
+    document.getElementById('level-bar').innerHTML='';
+    document.getElementById('why-slot').innerHTML='';
+    var stage=document.getElementById('stage');
+    stage.innerHTML='<div class="pr-landing"><p class="k">Smart practice</p><p class="big">Ready when you are.</p>'+
+      '<button class="pr-go" id="just-go" style="font-size:1.05rem;padding:.75rem 1.75rem">Just practice</button>'+
+      '<p class="lead" style="margin-top:1.25rem">Or open a skill from the <a href="tree/">tree</a> / <a href="banks/">banks</a>.</p></div>';
+    document.getElementById('just-go').onclick=function(){ autoPickAndStart(true); };
+  }
+
+  function autoPickAndStart(pushUrl){
+    var catalog=[];
+    if(M.listSkills) catalog=M.listSkills();
+    if((!catalog||!catalog.length) && window.__quintileBank){
+      catalog=Object.keys(__quintileBank).filter(function(id){return id.charAt(0)!=='_'&&__quintileBank[id]&&__quintileBank[id].items;})
+        .map(function(id){return {id:id,title:__quintileBank[id].title||id,era:__quintileBank[id].era};});
+    }
+    pickInfo=QM?QM.pickNextSkill(catalog):null;
+    if(!pickInfo||!pickInfo.skillId){
+      // Fallback to indices / first era topic
+      skillId=(catalog[0]&&catalog[0].id)||'indices';
+      pickInfo={skillId:skillId,reason:'Warm-up · '+skillId,reasonKind:'warmup',q:0,levelName:'Bare'};
+    } else {
+      skillId=pickInfo.skillId;
+    }
+    mode='practice';
+    auto=true;
+    if(pushUrl){
+      try{
+        var u=new URL(location.href);
+        u.searchParams.set('mode','practice');
+        u.searchParams.set('auto','1');
+        u.searchParams.set('skill',skillId);
+        history.replaceState(null,'',u);
+      }catch(e){}
+    }
+    start();
+  }
+
   function start(){
+    if(!skillId){ showLanding(); return; }
     window.__quintileRunMode=mode;
     var level=mode==='exam'?(examPick||M.getExamLevel(skillId)):M.getPracticeLevel(skillId);
     window.__quintileRunLevel=level;
-    run=M.extractRun(skillId,{mode:mode,level:level,count:5});
+    var count=mode==='practice'?(5+Math.floor(Math.random()*4)):5; // 5–8
+    run=M.extractRun(skillId,{mode:mode,level:level,count:count});
     idx=0; earned=0; total=run.items.length; status='idle'; draft='';
     document.getElementById('title').textContent=run.title;
+    var qLine='';
+    if(QM){
+      var q=QM.get(skillId);
+      qLine=' · '+QM.levelName(q.q)+' Q'+q.q;
+    }
     document.getElementById('blurb').textContent=mode==='exam'
       ?('Exam at '+run.level+' — fixed difficulty. Measurement, not the earn streak.')
-      :('Practice at '+run.level+' — adaptive. Triple-play earn + SRS live here.');
+      :('Practice at '+run.level+' — adaptive. Triple-play raises the quintile'+qLine+'.');
+    paintWhy();
     paintModeBar(); paintLevelBar();
     render();
   }
@@ -155,18 +254,25 @@
   function render(){
     var stage=document.getElementById('stage');
     if(!run||!run.items.length){
-      stage.innerHTML='<p class="lead">No items in this bank.</p>';
+      stage.innerHTML='<p class="lead">No items in this bank. <button class="pr-go" id="repick">Pick another</button></p>';
+      var rp=document.getElementById('repick');
+      if(rp) rp.onclick=function(){ autoPickAndStart(true); };
       return;
     }
     if(idx>=run.items.length){
       var all=earned===total;
       if(mode==='exam') M.maybeExamSrsPass(skillId, all);
+      var qAfter=QM?QM.get(skillId):null;
+      var qMsg=qAfter?('Now '+QM.levelName(qAfter.q)+' (Q'+qAfter.q+'/5)'+(qAfter.streak?' · streak '+qAfter.streak:'') ):'';
       stage.innerHTML='<div class="pr-end"><p class="k">'+(mode==='exam'?'Exam complete':'Practice run complete')+'</p>'+
         '<p class="score">'+earned+'/'+total+'</p>'+
-        '<p class="lead">'+(mode==='exam'?'Logged as exam. Earn streaks come from Practice.':'Level now: '+M.getPracticeLevel(skillId))+ '</p>'+
-        '<div class="pr-row" style="justify-content:center"><button class="pr-go" id="again">Run again</button>'+
+        '<p class="lead">'+(mode==='exam'?'Logged as exam. Quintiles grow in Practice.':qMsg)+ '</p>'+
+        '<div class="pr-row" style="justify-content:center">'+
+        '<button class="pr-go" id="just-next">Just practice</button>'+
+        '<button class="pr-ghost" id="again">Same skill</button>'+
         '<a class="pr-ghost" style="display:inline-flex;align-items:center;text-decoration:none" href="tree/">Tree</a></div></div>';
       document.getElementById('again').onclick=start;
+      document.getElementById('just-next').onclick=function(){ autoPickAndStart(true); };
       return;
     }
     var item=run.items[idx];
@@ -240,7 +346,6 @@
     var ok=checkAccept(item, draft);
     status=ok?'correct':'wrong';
     if(ok) earned++;
-    // Log attempt — wrapAttempts in modes will tag exam vs practice and step level
     if(window.__quintileAttempt){
       __quintileAttempt({
         kind: mode==='exam'?'exam':'skill-item',
@@ -249,19 +354,42 @@
         prompt: item.prompt,
         correct: ok,
         answerDraft: draft,
-        meta: { mode: mode, level: run.level, title: run.title }
+        meta: { mode: mode, level: run.level, title: run.title, auto: !!auto }
       });
     }
-    // Mastery streak only from Practice (mastery.js already gates on skill-item; ensure exam doesn't use skill-item for streak)
-    // For exam we used kind:'exam' so mastery wrap on skill-item won't fire — good.
-    // For practice, mastery.js hooks skill-item — good.
+    paintLevelBar();
     render();
   }
 
   M.setMode(mode);
   M.loadBank().then(function(){
-    if(examPick) M.setExamLevel(skillId, examPick);
-    start();
+    if(skillParam){
+      skillId=skillParam;
+      auto=params.get('auto')==='1';
+      if(auto && QM){
+        var catalog=M.listSkills?M.listSkills():[];
+        // Keep chosen skill but annotate why if possible
+        var rec=QM.get(skillId);
+        var kind=QM.isDue(skillId)?'due':(rec.q===0?'frontier':(rec.q<=2?'growth':'maintain'));
+        pickInfo={
+          skillId:skillId,
+          reason:(kind==='due'?'Due review · Q'+rec.q:(kind==='frontier'?'New frontier':kind==='growth'?'Grow · Q'+rec.q:'Maintain · Q'+rec.q))+' · '+(skillId),
+          reasonKind:kind,
+          q:rec.q,
+          levelName:QM.levelName(rec.q)
+        };
+      }
+      if(examPick) M.setExamLevel(skillId, examPick);
+      start();
+    } else if(auto){
+      // Landing with big button — don't auto-start until click (friendlier)
+      // But if auto=1 explicitly, start immediately
+      if(params.get('auto')==='1') autoPickAndStart(true);
+      else showLanding();
+    } else {
+      skillId='indices';
+      start();
+    }
   });
 })();
 </script>

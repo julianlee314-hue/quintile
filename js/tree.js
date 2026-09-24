@@ -99,28 +99,54 @@
     }
 
     data.nodes.forEach(function (n) {
-      if ((n.kind === "skill-topic" || n.kind === "dojo") && n.skillId && window.QuintileMastery) {
-        var ms = QuintileMastery.getTreeState(n.skillId);
+      function markFromSkill(sid, nodeId) {
+        if (!sid || !window.QuintileMastery) return false;
+        var tq = QuintileMastery.getTreeQuintile
+          ? QuintileMastery.getTreeQuintile(sid)
+          : null;
+        if (tq) {
+          var level = "q" + (tq.q || 0);
+          if (tq.wilted) level = "wilt";
+          else if (tq.due || tq.overdue) level = "due";
+          var score = (tq.q || 0) / 5;
+          if (tq.wilted) score = Math.max(0.05, score * 0.4);
+          markProgress(nodeId, level, score);
+          return true;
+        }
+        var ms = QuintileMastery.getTreeState(sid);
         var map = { learning: ["learning", 0.3], earned: ["earned", 0.85], due: ["due", 0.7], lapsed: ["lapsed", 0.1], secure: ["secure", 1] };
         var mm = map[ms] || (ms === "red-lapsed" ? ["lapsed", 0.1] : null);
-        if (mm) markProgress(n.id, mm[0], mm[1]);
-        else if (attemptHits[n.skillId]) markProgress(n.id, "learning", 0.2);
+        if (mm) {
+          markProgress(nodeId, mm[0], mm[1]);
+          return true;
+        }
+        return false;
+      }
+      if ((n.kind === "skill-topic" || n.kind === "dojo") && n.skillId) {
+        if (!markFromSkill(n.skillId, n.id)) {
+          if (skills[n.skillId]) {
+            var s = skills[n.skillId];
+            if (s.mastered) markProgress(n.id, "q5", 1);
+            else if ((s.runs || 0) > 0 || attemptHits[n.skillId]) markProgress(n.id, "q1", 0.2);
+          } else if (attemptHits[n.skillId]) markProgress(n.id, "q0", 0.1);
+        }
       } else if (n.kind === "skill-topic" && n.skillId && skills[n.skillId]) {
-        var s = skills[n.skillId];
-        if (s.mastered) markProgress(n.id, "earned", 1);
-        else if ((s.runs || 0) > 0 || attemptHits[n.skillId]) markProgress(n.id, "learning", 0.3);
+        var s2 = skills[n.skillId];
+        if (s2.mastered) markProgress(n.id, "q5", 1);
+        else if ((s2.runs || 0) > 0 || attemptHits[n.skillId]) markProgress(n.id, "q1", 0.2);
       }
       if (n.kind === "skill-item" && n.itemId) {
         var hit = attemptHits[n.itemId] || attemptHits[(n.skillId || "") + ":" + n.itemId];
-        if (n.skillId && window.QuintileMastery) {
-          var msi = QuintileMastery.getSkill(n.skillId);
-          if (msi && msi.status === "secure") markProgress(n.id, "secure", 1);
-          else if (msi && msi.status === "earned") markProgress(n.id, "earned", 0.85);
-          else if (msi && msi.status === "due") markProgress(n.id, "due", 0.7);
-          else if (msi && msi.status === "lapsed") markProgress(n.id, "lapsed", 0.1);
-          else if (msi && (msi.streak || 0) > 0) markProgress(n.id, "learning", 0.3);
-        } else if (hit) {
-          markProgress(n.id, hit.correct > 0 ? "learning" : "available", 0.2);
+        if (n.skillId && !markFromSkill(n.skillId, n.id)) {
+          if (hit) markProgress(n.id, hit.correct > 0 ? "q1" : "available", 0.2);
+        }
+      }
+      if ((n.kind === "foundation-leaf" || n.kind === "track-leaf" || n.kind === "syllabus-leaf") && (n.topicId || n.skillId) && window.QuintileMastery && QuintileMastery.getTreeQuintile) {
+        var tid = n.skillId || n.topicId;
+        var tqq = QuintileMastery.getTreeQuintile(tid);
+        if (tqq && (tqq.q > 0 || tqq.streak > 0 || tqq.wilted || tqq.due)) {
+          var lv2 = tqq.wilted ? "wilt" : (tqq.due || tqq.overdue) ? "due" : ("q" + tqq.q);
+          markProgress(n.id, lv2, (tqq.q || 0) / 5);
         }
       }
       if ((n.kind === "track-leaf" || n.kind === "foundation-leaf" || n.kind === "syllabus-leaf") && n.topicId) {
@@ -159,7 +185,11 @@
     var result = Object.create(null);
     function isSecure(id) {
       var p = nodeProg[id];
-      return p && (p.level === "earned" || p.level === "secure" || p.level === "due" || p.level === "mastered" || p.level === "mastering");
+      if (!p) return false;
+      var lv = p.level || "";
+      if (lv === "earned" || lv === "secure" || lv === "due" || lv === "mastered" || lv === "mastering") return true;
+      if (/^q[1-5]$/.test(lv)) return true;
+      return false;
     }
     function isTouched(id) {
       return !!nodeProg[id];
@@ -192,8 +222,12 @@
 
       if (nodeProg[n.id]) {
         var lv = nodeProg[n.id].level;
-        if (lv === "mastered") lv = "earned";
-        if (lv === "mastering" || lv === "attempted") lv = "learning";
+        if (lv === "mastered") lv = "q5";
+        if (lv === "mastering" || lv === "attempted") lv = "q1";
+        if (lv === "earned") lv = "q3";
+        if (lv === "secure") lv = "q5";
+        if (lv === "learning") lv = "q1";
+        if (lv === "lapsed" || lv === "red-lapsed") lv = "wilt";
         result[n.id] = lv;
       } else if (locked && n.kind !== "era" && n.kind !== "course") {
         result[n.id] = "locked";
@@ -882,11 +916,13 @@
       if (!a || !b) return;
       var mx = (a.x + b.x) / 2;
       var my = (a.y + b.y) / 2 - 30;
+      var stFrom = state.nodeState[e.from] || "";
       var lit =
-        state.nodeState[e.from] === "earned" ||
-        state.nodeState[e.from] === "secure" ||
-        state.nodeState[e.from] === "due" ||
-        state.nodeState[e.from] === "learning";
+        stFrom === "earned" ||
+        stFrom === "secure" ||
+        stFrom === "due" ||
+        stFrom === "learning" ||
+        /^q[1-5]$/.test(stFrom);
       edges.push({
         d: "M" + a.x + "," + a.y + " Q" + mx + "," + my + " " + b.x + "," + b.y,
         lit: lit,
@@ -904,6 +940,15 @@
     else if (n.kind === "course" || role === "hub") cls += " hub";
     else if (leafCount > 60) cls += " leaf-sm";
     else cls += " leaf";
+    // Overdue pulse / wilt flags from quintile engine
+    if (window.QuintileMastery && QuintileMastery.getTreeQuintile) {
+      var sid = n.skillId || n.topicId;
+      if (sid) {
+        var tq = QuintileMastery.getTreeQuintile(sid);
+        if (tq.overdue || tq.due) cls += " is-overdue";
+        if (tq.wilted) cls += " is-wilted";
+      }
+    }
     return cls;
   }
 
@@ -921,6 +966,13 @@
     var meta = layout.meta;
     var leafCount = layout.group.all.length;
 
+    var growthInfo = { growth: 0, percent: 0, masteryCount: 0, total: 0, healthPercent: 100, masteryPercent: 0 };
+    if (window.QuintileMastery && QuintileMastery.skillIdsForEra && QuintileMastery.eraGrowth) {
+      var eraSkillIds = QuintileMastery.skillIdsForEra(state.eraId, state.data);
+      growthInfo = QuintileMastery.eraGrowth(eraSkillIds);
+    }
+    var gFrac = Math.max(0, Math.min(1, growthInfo.growth || 0));
+
     var edges = buildEdgePaths(layout);
 
     root.innerHTML = "";
@@ -936,8 +988,24 @@
       escapeHtml(meta.blurb) +
       " · " +
       leafCount +
-      " nodes</p>";
+      " nodes · growth " +
+      (growthInfo.percent || 0) +
+      "%</p>";
     root.appendChild(label);
+
+    var banner = document.createElement("div");
+    banner.className = "tree-growth-banner";
+    banner.textContent = "Growth " + (growthInfo.percent || 0) + "% · Bloom " + (growthInfo.masteryCount || 0) + "/" + (growthInfo.total || 0);
+    root.appendChild(banner);
+
+    try {
+      var vm = document.getElementById("vital-mastery");
+      var vg = document.getElementById("vital-growth");
+      var vh = document.getElementById("vital-health");
+      if (vm) vm.textContent = (growthInfo.masteryCount || 0) + " / " + (growthInfo.total || 0) + " Bloom";
+      if (vg) vg.textContent = (growthInfo.percent || 0) + "%";
+      if (vh) vh.textContent = (growthInfo.healthPercent != null ? growthInfo.healthPercent : 100) + "%";
+    } catch (eVital) {}
 
     var toolbar = document.createElement("div");
     toolbar.className = "tree-toolbar";
@@ -980,6 +1048,22 @@
       '<linearGradient id="barkGrad" x1="0" y1="0" x2="0" y2="1">' +
       '<stop offset="0%" stop-color="#8b6b5a"/><stop offset="100%" stop-color="#5a4336"/></linearGradient>';
     svg.appendChild(defs);
+
+    svg.style.setProperty("--growth", String(gFrac));
+    // Blossoms scale with growth
+    var blossomGroup = document.createElementNS(ns, "g");
+    blossomGroup.setAttribute("class", "tree-blossoms");
+    var blossomCount = Math.round(gFrac * 12);
+    for (var bi = 0; bi < blossomCount; bi++) {
+      var cx = layout.w * (0.35 + (bi % 6) * 0.08 + (hash01("b" + bi + state.eraId) - 0.5) * 0.06);
+      var cy = layout.h * (0.18 + Math.floor(bi / 6) * 0.12 + hash01("by" + bi) * 0.08);
+      var c = document.createElementNS(ns, "circle");
+      c.setAttribute("cx", String(cx));
+      c.setAttribute("cy", String(cy));
+      c.setAttribute("r", String(4 + gFrac * 6));
+      blossomGroup.appendChild(c);
+    }
+    svg.appendChild(blossomGroup);
 
     (layout.fills || []).forEach(function (f) {
       var p = document.createElementNS(ns, "path");
@@ -1041,6 +1125,14 @@
       btn.style.left = p.x + "px";
       btn.style.top = p.y + "px";
       var st = state.nodeState[n.id] || "available";
+      var qPip = "";
+      if (/^q[0-5]$/.test(st)) {
+        qPip = '<span class="q-pip" aria-hidden="true">Q' + st.charAt(1) + "</span>";
+      } else if (st === "due") {
+        qPip = '<span class="q-pip" aria-hidden="true">due</span>';
+      } else if (st === "wilt") {
+        qPip = '<span class="q-pip" aria-hidden="true">wilt</span>';
+      }
       btn.innerHTML =
         '<span class="bloom-ring" aria-hidden="true"></span>' +
         '<span class="motif"><img alt="" src="' +
@@ -1049,6 +1141,7 @@
         '<span class="title">' +
         escapeHtml(n.title) +
         "</span>" +
+        qPip +
         (st === "locked" ? '<span class="lock-badge" aria-hidden="true">🔒</span>' : "");
       btn.title = n.title + " · " + kindLabel(n.kind);
       btn.addEventListener("click", function (ev) {
@@ -1116,7 +1209,16 @@
 
     var badge = document.createElement("span");
     badge.className = "tree-panel-state";
-    badge.textContent = st + " · " + kindLabel(n.kind);
+    var badgeText = st + " · " + kindLabel(n.kind);
+    if (window.QuintileMastery && QuintileMastery.getTreeQuintile && (n.skillId || n.topicId)) {
+      var tqp = QuintileMastery.getTreeQuintile(n.skillId || n.topicId);
+      badgeText = QuintileMastery.levelName(tqp.q) + " Q" + tqp.q + "/5";
+      if (tqp.due) badgeText += " · due";
+      if (tqp.wilted) badgeText += " · wilt";
+      if (tqp.streak) badgeText += " · streak " + tqp.streak + "/3";
+      badgeText += " · " + kindLabel(n.kind);
+    }
+    badge.textContent = badgeText;
     panel.appendChild(badge);
 
     if (n.blurb) {
@@ -1186,10 +1288,22 @@
     }
     panel.appendChild(au);
 
+    var just = document.createElement("a");
+    just.className = "cta";
+    just.href = url("/practice/?mode=practice&auto=1");
+    just.textContent = "Just practice";
+    just.style.marginBottom = "0.5rem";
+    panel.appendChild(just);
+
     var cta = document.createElement("a");
     cta.className = "cta";
-    cta.href = url(n.href || "/");
-    cta.textContent = st === "locked" ? "Preview practice" : "Practice";
+    cta.href = n.skillId
+      ? url("/practice/?skill=" + encodeURIComponent(n.skillId) + "&mode=practice")
+      : url(n.href || "/");
+    cta.textContent = st === "locked" ? "Preview practice" : "Practice this";
+    cta.style.background = "transparent";
+    cta.style.color = "var(--color-ink)";
+    cta.style.border = "1px solid var(--color-ink)";
     panel.appendChild(cta);
     if (n.skillId && (n.kind === "skill-topic" || n.kind === "skill-item" || n.kind === "dojo")) {
       var exam = document.createElement("a");
@@ -1256,6 +1370,9 @@
       if (state.eraId) renderGrove();
     });
     window.addEventListener("quintile-attempt", function () {
+      if (state.eraId) renderGrove();
+    });
+    window.addEventListener("quintile-mastery", function () {
       if (state.eraId) renderGrove();
     });
     window.addEventListener("resize", function () {

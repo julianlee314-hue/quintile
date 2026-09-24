@@ -128,13 +128,49 @@ html, body {
   border-radius: 999px;
   display: inline-block;
 }
+.tree-legend .s-q0 { background: transparent; box-shadow: inset 0 0 0 1.5px var(--color-ink); }
+.tree-legend .s-q1 { background: #c8e6c0; }
+.tree-legend .s-q2 { background: #8fbf7a; }
+.tree-legend .s-q3 { background: #3d7a4a; }
+.tree-legend .s-q4 { background: #2a5c38; }
+.tree-legend .s-q5 { background: #1f4d2e; box-shadow: 0 0 0 2px #f0c0d0; }
+.tree-legend .s-due { background: #d4a017; }
+.tree-legend .s-wilt { background: #b8432f; }
 .tree-legend .s-locked { background: #cfc8bf; }
 .tree-legend .s-available { background: transparent; box-shadow: inset 0 0 0 1.5px var(--color-ink); }
 .tree-legend .s-learning { background: #e8b07a; }
 .tree-legend .s-earned { background: #3d7a4a; }
-.tree-legend .s-due { background: #d4a017; }
 .tree-legend .s-lapsed { background: #b8432f; }
 .tree-legend .s-secure { background: #1f4d2e; }
+
+.tree-vital {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+.tree-vital .vital {
+  min-width: 7.5rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-sheet);
+}
+.tree-vital .vl {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-oxide);
+  margin-bottom: 0.15rem;
+}
+.tree-vital strong {
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
 
 /* Era picker chips */
 .tree-era-bar {
@@ -551,7 +587,98 @@ html, body {
   margin: 0;
 }
 
+
+/* Quintile gradient states */
+.tree-badge.state-q0 {
+  background: var(--color-sheet);
+  border-color: var(--color-ink);
+  border-style: dashed;
+}
+.tree-badge.state-q1 {
+  background: linear-gradient(160deg, #fbf8f3 20%, #d5efd0 100%);
+  border-color: #8fbf7a;
+}
+.tree-badge.state-q2 {
+  background: #c8e6c0;
+  border-color: #5a9a4a;
+}
+.tree-badge.state-q3 {
+  background: #a8d4b0;
+  border-color: #3d7a4a;
+}
+.tree-badge.state-q4 {
+  background: #6fa87a;
+  border-color: #2a5c38;
+  color: #fbf8f3;
+}
+.tree-badge.state-q4 .title { color: #fbf8f3; }
+.tree-badge.state-q5 {
+  background: #1f4d2e;
+  border-color: #1f4d2e;
+  color: #fbf8f3;
+  box-shadow: 0 0 0 3px rgba(240, 160, 180, 0.45);
+}
+.tree-badge.state-q5 .title { color: #fbf8f3; }
+.tree-badge.state-q5 .bloom-ring { opacity: 1; border-color: rgba(240,160,180,0.7); }
+
+.tree-badge.is-overdue {
+  animation: qDuePulse 1.8s ease-in-out infinite;
+}
+.tree-badge.is-wilted,
+.tree-badge.state-wilt {
+  background: #f5d0c8 !important;
+  border-color: #b8432f !important;
+  color: var(--color-ink) !important;
+  box-shadow: inset 0 0 0 1px rgba(184,67,47,0.35);
+  filter: saturate(0.85);
+}
+.tree-badge.is-wilted .title,
+.tree-badge.state-wilt .title { color: var(--color-ink) !important; }
+
+.tree-badge .q-pip {
+  position: absolute;
+  bottom: 0.15rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+  line-height: 1;
+}
+
+/* Plant growth driven by --growth 0–1 on .tree-skel */
+.tree-skel {
+  --growth: 0;
+  --trunk-w: calc(4px + var(--growth) * 14px);
+  --plant-opacity: calc(0.28 + var(--growth) * 0.72);
+  transition: opacity 0.4s ease;
+  opacity: var(--plant-opacity);
+}
+.tree-skel .skel-trunk { stroke-width: var(--trunk-w); }
+.tree-skel .skel-branch { stroke-width: calc(2px + var(--growth) * 4px); }
+.tree-skel .skel-fill { opacity: calc(0.06 + var(--growth) * 0.22); }
+.tree-blossoms circle {
+  fill: #e8a0b0;
+  opacity: calc(var(--growth) * 0.85);
+  pointer-events: none;
+}
+.tree-growth-banner {
+  position: absolute;
+  z-index: 7;
+  right: 1rem;
+  top: 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(251,248,243,0.92);
+  border: 1px solid var(--color-line);
+  color: var(--color-ink);
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .tree-badge, .tree-panel, .tree-era-chip { transition: none !important; animation: none !important; }
-  .tree-badge.state-due { animation: none; }
+  .tree-badge.state-due, .tree-badge.is-overdue { animation: none; }
 }

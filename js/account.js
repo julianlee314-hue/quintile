@@ -663,7 +663,7 @@
       bar.id = "q-extra-links";
       bar.style.cssText = "display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem";
       var base = window.__QUINTILE_BASE__ || "";
-      [["Tree","/tree/"],["Games","/games/"],["Practice","/practice/?skill=indices"],["Algebra dojo","/dojo/algebra/"],["Integrals dojo","/dojo/integrals/"]].forEach(function (pair) {
+      [["Tree","/tree/"],["Games","/games/"],["Just practice","/practice/?mode=practice&auto=1"],["Practice","/practice/?skill=indices"],["Algebra dojo","/dojo/algebra/"],["Integrals dojo","/dojo/integrals/"]].forEach(function (pair) {
         var a = document.createElement("a");
         a.href = base + pair[1];
         a.textContent = pair[0];
@@ -694,6 +694,16 @@
     setTimeout(renderChip, 1500);
   }
 
+  function patchActiveMeta(mutator) {
+    var reg = readReg();
+    if (!reg.activeId) return null;
+    var profile = readProfile(reg.activeId);
+    if (!profile.meta || typeof profile.meta !== "object") profile.meta = {};
+    if (typeof mutator === "function") mutator(profile.meta);
+    writeProfile(reg.activeId, profile);
+    return profile.meta;
+  }
+
   var api = {
     ensureTraveler: ensureTraveler,
     getActive: getActive,
@@ -705,6 +715,7 @@
     downloadExport: downloadExport,
     importProfile: importProfile,
     getActiveProfileData: getActiveProfileData,
+    patchActiveMeta: patchActiveMeta,
     mergeAttempts: mergeAttempts,
     syncProgressIntoActive: syncProgressIntoActive,
     readProgress: readProgress,

@@ -27,6 +27,7 @@
         <a href="diploma/exams/">Exams</a>
         <a href="foundations">Skills</a>
         <a class="active" href="tree/" aria-current="page">Tree</a>
+        <a href="practice/?mode=practice&amp;auto=1">Just practice</a>
         <a href="games/">Games</a>
         <a href="progress">Progress</a>
       </nav>
@@ -36,15 +37,21 @@
   <div class="tree-hero">
     <p class="tree-hero-kicker">Living skills grove</p>
     <h1>The trees</h1>
-    <p>Each era grows its own tree — pick an age of the road. Colour follows your active profile; tap a leaf to practice.</p>
+    <p>Each era grows its own tree — pick an age of the road. Colour follows quintile (Seed→Bloom). Tap a leaf to practice, or just practice and let the plant choose.</p>
     <div class="tree-legend" aria-label="Legend">
-      <span><i class="s-locked"></i> Locked</span>
-      <span><i class="s-available"></i> Available</span>
-      <span><i class="s-learning"></i> Learning</span>
-      <span><i class="s-earned"></i> Earned</span>
+      <span><i class="s-q0"></i> Bare</span>
+      <span><i class="s-q1"></i> Seed</span>
+      <span><i class="s-q2"></i> Sprout</span>
+      <span><i class="s-q3"></i> Stem</span>
+      <span><i class="s-q4"></i> Crown</span>
+      <span><i class="s-q5"></i> Bloom</span>
       <span><i class="s-due"></i> Due</span>
-      <span><i class="s-lapsed"></i> Lapsed</span>
-      <span><i class="s-secure"></i> Secure</span>
+      <span><i class="s-wilt"></i> Wilt</span>
+    </div>
+    <div class="tree-vital" id="tree-vital" aria-label="Plant vitals">
+      <div class="vital"><span class="vl">Mastery</span><strong id="vital-mastery">—</strong></div>
+      <div class="vital"><span class="vl">Growth</span><strong id="vital-growth">—</strong></div>
+      <div class="vital"><span class="vl">Plant health</span><strong id="vital-health">—</strong></div>
     </div>
     <p id="tree-stats" class="tree-hint" style="text-align:left;padding:0.5rem 0 0"></p>
   </div>
@@ -64,6 +71,7 @@
     <a href="diploma/exams/">Exams</a>
     <a href="foundations">Skills</a>
     <a class="active" href="tree/">Tree</a>
+    <a href="practice/?mode=practice&amp;auto=1">Practice</a>
     <a href="games/">Games</a>
     <a href="progress">Progress</a>
   </nav>

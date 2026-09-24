@@ -163,6 +163,7 @@
       .then(function (list) {
         BANK = {};
         ingestTopics(list);
+        global.__quintileBank = BANK;
         return fetch(url("/data/isomorphic_banks.json"))
           .then(function (r) {
             if (!r.ok) return null;
@@ -202,6 +203,7 @@
                     if (pack) ingestTopics(pack);
                   });
                   BANK.__eraIndex = idx;
+                  global.__quintileBank = BANK;
                   cb && cb(BANK);
                   return BANK;
                 });
@@ -243,6 +245,7 @@
               }),
             };
           });
+          global.__quintileBank = BANK;
           cb && cb(BANK);
           return BANK;
         });
@@ -305,6 +308,26 @@
     };
   }
 
+
+  function listSkills() {
+    if (!BANK) return [];
+    return Object.keys(BANK)
+      .filter(function (id) {
+        return id.charAt(0) !== "_" && BANK[id] && Array.isArray(BANK[id].items);
+      })
+      .map(function (id) {
+        var sk = BANK[id];
+        return {
+          id: id,
+          title: sk.title || id,
+          era: sk.era,
+          courseId: sk.courseId,
+          itemCount: (sk.items && sk.items.length) || sk.itemCount || 0,
+          requires: [],
+        };
+      });
+  }
+
   /** Wire attempt logger: Practice steps level; Exam logs kind exam and optional SRS. */
   function wrapAttempts() {
     var prev = global.__quintileAttempt;
@@ -335,34 +358,20 @@
     };
   }
 
-  /** Optional: all-correct exam while due → SRS pass */
+  /** Optional: all-correct exam while due → treat as one solid review (triple-play credit). */
   function maybeExamSrsPass(skillId, allCorrect) {
     if (!allCorrect || !skillId || !global.QuintileMastery) return;
-    var m = QuintileMastery.getSkill(skillId);
-    if (m && m.status === "due") {
-      // Simulate triple correct review via three recordItem calls would be wrong;
-      // directly advance like a passed review.
-      var mm = Object.assign({}, m);
-      var stage = mm.srsStage || 0;
-      if (stage < 2) {
-        mm.srsStage = stage + 1;
-        mm.nextReviewAt = new Date(Date.now() + QuintileMastery.INTERVALS_MS[mm.srsStage]).toISOString();
-        mm.status = "earned";
-      } else {
-        mm.srsStage = 3;
-        mm.nextReviewAt = null;
-        mm.status = "secure";
-      }
-      mm.reviewStreak = 0;
-      // save via record path: use internal by recording through celebrate-less save
-      try {
-        var p = readProgress();
-        if (!p.mastery) p.mastery = {};
-        p.mastery[skillId] = mm;
-        writeProgress(p);
-        if (global.QuintilePoints) QuintilePoints.award("srs_pass", { ref: skillId, stage: mm.srsStage });
-      } catch (e) {}
+    var due = QuintileMastery.isDue && QuintileMastery.isDue(skillId);
+    if (!due) {
+      var m = QuintileMastery.getSkill(skillId);
+      if (!(m && m.status === "due")) return;
     }
+    try {
+      // Three correct recordAttempts → level up once if streak was empty
+      QuintileMastery.recordAttempt(skillId, true, { mode: "exam-review" });
+      QuintileMastery.recordAttempt(skillId, true, { mode: "exam-review" });
+      QuintileMastery.recordAttempt(skillId, true, { mode: "exam-review" });
+    } catch (e) {}
   }
 
   /** Inject Practice | Exam toggle chrome into header area */
@@ -441,6 +450,7 @@
     stepLevel: stepLevel,
     loadBank: loadBank,
     extractRun: extractRun,
+    listSkills: listSkills,
     itemsAtLevel: itemsAtLevel,
     maybeExamSrsPass: maybeExamSrsPass,
     practiceHref: practiceHref,
