@@ -933,63 +933,63 @@
       "items": [
         {
           "id": "demo-01",
-          "prompt": "If 3x + 4 = 19, what is x?",
+          "prompt": "If $3x + 4 = 19$, what is x?",
           "choices": [
-            "3",
-            "4",
-            "5",
-            "6",
-            "7"
+            "$3$",
+            "$4$",
+            "$5$",
+            "$6$",
+            "$7$"
           ],
           "correct": "C",
-          "solution": "Subtract 4 and divide by 3: x = 5.",
+          "solution": "Subtract $4$ and divide by $3$: $x = 5$.",
           "stage": "algebra"
         },
         {
           "id": "demo-02",
-          "prompt": "What is the gradient of y = 2x − 7?",
+          "prompt": "What is the gradient of $y = 2x - 7$?",
           "choices": [
-            "−7",
-            "−2",
-            "0",
-            "2",
-            "7"
+            "−$7$",
+            "−$2$",
+            "$0$",
+            "$2$",
+            "$7$"
           ],
           "correct": "D",
-          "solution": "The coefficient of x is the gradient, so it is 2.",
+          "solution": "The coefficient of x is the gradient, so it is $2$.",
           "stage": "algebra"
         },
         {
           "id": "demo-03",
-          "prompt": "Which value equals 2³ × 2²?",
+          "prompt": "Which value equals 2³ × 2² ($n$ or yes/no)?",
           "choices": [
-            "16",
-            "24",
-            "32",
-            "64",
-            "128"
+            "$16$",
+            "$24$",
+            "$32$",
+            "$64$",
+            "$128$"
           ],
           "correct": "C",
-          "solution": "Add exponents: 2^(3+2) = 32.",
+          "solution": "Add exponents: $2$^($3$+$2$) = $32$.",
           "stage": "algebra"
         },
         {
           "id": "demo-04",
-          "prompt": "For f(x) = x² + 1, what is f(3)?",
+          "prompt": "For f(x) = $x^2 + 1$, what is f($3$)?",
           "choices": [
-            "4",
-            "7",
-            "9",
-            "10",
-            "12"
+            "$4$",
+            "$7$",
+            "$9$",
+            "$10$",
+            "$12$"
           ],
           "correct": "D",
-          "solution": "f(3) = 3² + 1 = 10.",
+          "solution": "f($3$) = 3² + $1$ = $10$.",
           "stage": "functions"
         },
         {
           "id": "demo-05",
-          "prompt": "What is the derivative of x³?",
+          "prompt": "What is the derivative of x³ ($n$ or yes/no)?",
           "choices": [
             "x²",
             "2x²",
@@ -1003,220 +1003,220 @@
         },
         {
           "id": "demo-06",
-          "prompt": "What is ∫ 4x dx?",
+          "prompt": "What is ∫ 4x dx ($n$ or yes/no)?",
           "choices": [
             "2x² + C",
             "4x² + C",
             "x⁴ + C",
-            "4 + C",
+            "$4$ + C",
             "2x + C"
           ],
           "correct": "A",
-          "solution": "Increase the power and divide: 4x²/2 = 2x².",
+          "solution": "Increase the power and divide: 4x²/$2$ = 2x².",
           "stage": "calculus"
         },
         {
           "id": "demo-07",
-          "prompt": "What is the exact value of sin(π/6)?",
+          "prompt": "What is the exact value of sin(π/$6$)?",
           "choices": [
-            "0",
-            "1/2",
-            "√2/2",
-            "√3/2",
-            "1"
+            "$0$",
+            "$\\dfrac{1}{2}$",
+            "√$2$/$2$",
+            "√$3$/$2$",
+            "$1$"
           ],
           "correct": "B",
-          "solution": "The standard-angle value is sin(π/6) = 1/2.",
+          "solution": "The standard-angle value is sin(π/$6$) = $1$/$2$.",
           "stage": "trigonometry"
         },
         {
           "id": "demo-08",
-          "prompt": "The roots of x² − 5x + 6 = 0 are:",
+          "prompt": "The roots of $x^2 - 5$x + $6$ = $0$ are:",
           "choices": [
-            "−2, −3",
-            "−1, −6",
-            "1, 6",
-            "2, 3",
-            "−2, 3"
+            "−$2$, −$3$",
+            "−$1$, −$6$",
+            "$1$, $6$",
+            "$2$, $3$",
+            "−$2$, $3$"
           ],
           "correct": "D",
-          "solution": "Factor as (x − 2)(x − 3).",
+          "solution": "Factor as (x − $2$)(x − $3$).",
           "stage": "algebra"
         },
         {
           "id": "demo-09",
-          "prompt": "A fair six-sided die is rolled once. What is P(even)?",
+          "prompt": "A fair $6$-sided die is rolled once. What is P(even)?",
           "choices": [
-            "1/6",
-            "1/3",
-            "1/2",
-            "2/3",
-            "5/6"
+            "$\\dfrac{1}{6}$",
+            "$\\dfrac{1}{3}$",
+            "$\\dfrac{1}{2}$",
+            "$\\dfrac{2}{3}$",
+            "$\\dfrac{5}{6}$"
           ],
           "correct": "C",
-          "solution": "There are three even outcomes out of six, giving 1/2.",
+          "solution": "There are three even outcomes out of six, giving $1$/$2$.",
           "stage": "statistics"
         },
         {
           "id": "demo-10",
-          "prompt": "What is the mean of 2, 4, 7 and 11?",
+          "prompt": "What is the mean of $2$, $4$, $7$ and $11$?",
           "choices": [
-            "5",
-            "6",
-            "6.5",
-            "7",
-            "8"
+            "$5$",
+            "$6$",
+            "$6.5$",
+            "$7$",
+            "$8$"
           ],
           "correct": "B",
-          "solution": "The sum is 24; 24 ÷ 4 = 6.",
+          "solution": "The sum is $24$; $24$ ÷ $4$ = $6$.",
           "stage": "statistics"
         },
         {
           "id": "demo-11",
-          "prompt": "The vector (3, 4) has magnitude:",
+          "prompt": "The vector $(3,4)$ has magnitude:",
           "choices": [
-            "1",
-            "4",
-            "5",
-            "7",
-            "12"
+            "$1$",
+            "$4$",
+            "$5$",
+            "$7$",
+            "$12$"
           ],
           "correct": "C",
-          "solution": "√(3² + 4²) = √25 = 5.",
+          "solution": "√(3² + 4²) = √$25$ = $5$.",
           "stage": "vectors"
         },
         {
           "id": "demo-12",
-          "prompt": "If z = 1 + i, what is |z|?",
+          "prompt": "If $z = 1$+ i, what is |z|?",
           "choices": [
-            "0",
-            "1",
-            "√2",
-            "2",
-            "1 + i"
+            "$0$",
+            "$1$",
+            "√$2$",
+            "$2$",
+            "$1$ + i"
           ],
           "correct": "C",
-          "solution": "|z| = √(1² + 1²) = √2.",
+          "solution": "|z| = √(1² + 1²) = √$2$.",
           "stage": "complex-numbers"
         },
         {
           "id": "demo-13",
-          "prompt": "What is the coefficient of x² in (x + 2)³?",
+          "prompt": "What is the coefficient of x² in (x + $2$)³?",
           "choices": [
-            "1",
-            "2",
-            "3",
-            "6",
-            "12"
+            "$1$",
+            "$2$",
+            "$3$",
+            "$6$",
+            "$12$"
           ],
           "correct": "D",
-          "solution": "The x² term is 3x²·2 = 6x².",
+          "solution": "The x² term is 3x²·$2$ = 6x².",
           "stage": "algebra"
         },
         {
           "id": "demo-14",
-          "prompt": "A sequence has first term 5 and common difference 3. What is its fifth term?",
+          "prompt": "A sequence has first term $5$ and common difference $3$. What is its fifth term?",
           "choices": [
-            "14",
-            "15",
-            "17",
-            "20",
-            "21"
+            "$14$",
+            "$15$",
+            "$17$",
+            "$20$",
+            "$21$"
           ],
           "correct": "C",
-          "solution": "a₅ = 5 + 4(3) = 17.",
+          "solution": "a₅ = $5$ + $4$($3$) = $17$.",
           "stage": "sequences"
         },
         {
           "id": "demo-15",
-          "prompt": "What is the sum of the first four terms of 2, 6, 18, …?",
+          "prompt": "What is the sum of the first four terms of $2$, $6$, $18$, …?",
           "choices": [
-            "24",
-            "26",
-            "38",
-            "54",
-            "80"
+            "$24$",
+            "$26$",
+            "$38$",
+            "$54$",
+            "$80$"
           ],
           "correct": "E",
-          "solution": "The first four terms are 2 + 6 + 18 + 54 = 80.",
+          "solution": "The first four terms are $2$ + $6$ + $18$ + $54$ = $80$.",
           "stage": "sequences"
         },
         {
           "id": "demo-16",
-          "prompt": "The line y = 3x + 1 crosses the y-axis at:",
+          "prompt": "The line $y = 3x + 1$ crosses the y-axis at:",
           "choices": [
-            "(0, 0)",
-            "(0, 1)",
-            "(1, 0)",
-            "(1, 3)",
-            "(3, 1)"
+            "$(0,0)$",
+            "$(0,1)$",
+            "$(1,0)$",
+            "$(1,3)$",
+            "$(3,1)$"
           ],
           "correct": "B",
-          "solution": "Set x = 0; y = 1.",
+          "solution": "Set $x = 0$; $y = 1$.",
           "stage": "geometry"
         },
         {
           "id": "demo-17",
-          "prompt": "What is the determinant of [[2, 1], [3, 4]]?",
+          "prompt": "What is the determinant of [$[2,1]$, $[3,4]$]?",
           "choices": [
-            "−5",
-            "−2",
-            "2",
-            "5",
-            "11"
+            "−$5$",
+            "−$2$",
+            "$2$",
+            "$5$",
+            "$11$"
           ],
           "correct": "D",
-          "solution": "det = 2·4 − 1·3 = 5.",
+          "solution": "det = $2$·$4$ − $1$·$3$ = $5$.",
           "stage": "vectors"
         },
         {
           "id": "demo-18",
-          "prompt": "If X ~ Bin(4, 0.5), what is P(X = 2)?",
+          "prompt": "If X ~ Bin($4$, $0.5$), what is P($X = 2$)?",
           "choices": [
-            "1/16",
-            "1/4",
-            "3/8",
-            "1/2",
-            "5/8"
+            "$\\dfrac{1}{16}$",
+            "$\\dfrac{1}{4}$",
+            "$\\dfrac{3}{8}$",
+            "$\\dfrac{1}{2}$",
+            "$\\dfrac{5}{8}$"
           ],
           "correct": "C",
-          "solution": "Choose 2 of 4: C(4,2)(0.5)^4 = 6/16 = 3/8.",
+          "solution": "Choose $2$ of $4$: C($4$,$2$)($0.5$)^$4$ = $6$/$16$ = $3$/$8$.",
           "stage": "statistics"
         },
         {
           "id": "demo-19",
-          "prompt": "What is the range of y = √(x − 1)?",
+          "prompt": "What is the range of y = √(x − $1$)?",
           "choices": [
-            "x ≥ 1",
-            "y ≥ 0",
-            "y > 1",
+            "x ≥ $1$",
+            "y ≥ $0$",
+            "y > $1$",
             "all real y",
-            "−1 ≤ y ≤ 1"
+            "−$1$ ≤ y ≤ $1$"
           ],
           "correct": "B",
-          "solution": "A square root is non-negative, so y ≥ 0.",
+          "solution": "A square root is non-negative, so y ≥ $0$.",
           "stage": "functions"
         },
         {
           "id": "demo-20",
-          "prompt": "For 0 < θ < π/2, tan θ = 1 implies θ =:",
+          "prompt": "For $0$ < θ < π/$2$, tan θ = $1$ implies θ =:",
           "choices": [
-            "π/6",
-            "π/4",
-            "π/3",
-            "π/2",
+            "π/$6$",
+            "π/$4$",
+            "π/$3$",
+            "π/$2$",
             "π"
           ],
           "correct": "B",
-          "solution": "The acute angle with tangent 1 is π/4.",
+          "solution": "The acute angle with tangent $1$ is π/$4$.",
           "stage": "trigonometry"
         },
         {
           "id": "demo-21",
-          "prompt": "What is the second derivative of eˣ?",
+          "prompt": "What is the second derivative of eˣ ($n$ or yes/no)?",
           "choices": [
-            "0",
-            "1",
+            "$0$",
+            "$1$",
             "x eˣ",
             "eˣ",
             "2eˣ"
@@ -1227,7 +1227,7 @@
         },
         {
           "id": "demo-22",
-          "prompt": "A normal distribution is centered at its:",
+          "prompt": "A normal distribution is centered at its: ($n$)",
           "choices": [
             "range",
             "variance",
@@ -1241,30 +1241,30 @@
         },
         {
           "id": "demo-23",
-          "prompt": "If vectors u and v are perpendicular, their dot product is:",
+          "prompt": "If vectors u and v are perpendicular, their dot product is: ($n$)",
           "choices": [
-            "−1",
-            "0",
-            "1",
+            "−$1$",
+            "$0$",
+            "$1$",
             "|u| + |v|",
             "|u||v|"
           ],
           "correct": "B",
-          "solution": "Perpendicular vectors have dot product 0.",
+          "solution": "Perpendicular vectors have dot product $0$.",
           "stage": "vectors"
         },
         {
           "id": "demo-24",
-          "prompt": "What is the limit of (x² − 1)/(x − 1) as x approaches 1?",
+          "prompt": "What is the limit of ($x^2 - 1$)/(x − $1$) as x approaches $1$?",
           "choices": [
-            "0",
-            "1",
-            "2",
-            "−1",
+            "$0$",
+            "$1$",
+            "$2$",
+            "−$1$",
             "does not exist"
           ],
           "correct": "C",
-          "solution": "Factor to x + 1, then substitute x = 1 to get 2.",
+          "solution": "Factor to x + $1$, then substitute $x = 1 t$o get $2$.",
           "stage": "calculus"
         }
       ]

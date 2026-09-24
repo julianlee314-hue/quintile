@@ -62,6 +62,7 @@
 <script src="js/points.js"></script>
 <script src="js/mastery.js"></script>
 <script src="js/practice-adaptive.js"></script>
+<script src="js/latex.js"></script>
 <script>
 (function(){
   var params=new URLSearchParams(location.search);
@@ -175,10 +176,10 @@
       (mode==='practice'?' · live level '+M.getPracticeLevel(skillId):'');
     stage.appendChild(meta);
     var card=document.createElement('div'); card.className='pr-card';
-    var prompt=document.createElement('div'); prompt.className='pr-prompt'; prompt.textContent=item.prompt.replace(/\$/g,'');
-    // keep raw for katex-less display
-    prompt.textContent=item.prompt.replace(/\$/g,'');
+    var prompt=document.createElement('div'); prompt.className='pr-prompt qlatex';
     card.appendChild(prompt);
+    if(window.QuintileLatex) QuintileLatex.set(prompt, item.prompt);
+    else prompt.textContent=item.prompt;
     var useMcq = (mode==='exam' && item.choices && item.choices.length>=5);
     var input=null;
     if(useMcq){
@@ -191,8 +192,10 @@
         if(draft===letters[ci]) rad.checked=true;
         rad.addEventListener('change',function(ev){ draft=ev.target.value; });
         var ltr=document.createElement('span'); ltr.className='ltr'; ltr.textContent=letters[ci]+'.';
-        var txt=document.createElement('span'); txt.textContent=String(item.choices[ci]).replace(/\$/g,'');
+        var txt=document.createElement('span'); txt.className='qlatex';
         lab.appendChild(rad); lab.appendChild(ltr); lab.appendChild(txt);
+        if(window.QuintileLatex) QuintileLatex.set(txt, String(item.choices[ci]));
+        else txt.textContent=String(item.choices[ci]);
         box.appendChild(lab);
       }
       card.appendChild(box);
@@ -214,10 +217,17 @@
     }
     card.appendChild(row);
     var st=document.createElement('p'); st.className='pr-status'+(status==='correct'?' ok':status==='wrong'?' bad':''); st.id='st';
-    if(status==='correct') st.textContent='Correct.'+(item.correct?' ('+item.correct+')':'')+(item.answer?' · '+item.answer.replace(/\$/g,''):'');
+    if(status==='correct'){
+      var okMsg='Correct.'+(item.correct?' ('+item.correct+')':'');
+      if(item.answer) okMsg+=' · '+item.answer;
+      if(window.QuintileLatex) QuintileLatex.set(st, okMsg);
+      else st.textContent=okMsg.replace(/\$/g,'');
+    }
     if(status==='wrong'){
       var reveal=item.correct?('Correct option '+item.correct+'. '):'';
-      st.textContent='Not quite. '+reveal+(item.answer?item.answer.replace(/\$/g,''):'')+(item.solution?' — '+item.solution.replace(/\$/g,''):'');
+      var badMsg='Not quite. '+reveal+(item.answer||'')+(item.solution?' — '+item.solution:'');
+      if(window.QuintileLatex) QuintileLatex.set(st, badMsg);
+      else st.textContent=badMsg.replace(/\$/g,'');
     }
     card.appendChild(st);
     stage.appendChild(card);

@@ -80,14 +80,17 @@
 
 </main>
 
+<script src="js/latex.js"></script>
 <script>
 (function(){
   var SKILL="algebra-dojo";
-  var BANK=[{"id": "ad1", "q": "Expand (x+3)(x+1)", "accept": ["x^2+4x+3", "x\u00b2+4x+3"], "note": "FOIL"}, {"id": "ad2", "q": "Factor x\u00b2\u22129", "accept": ["(x-3)(x+3)", "(x+3)(x-3)"], "note": "Difference of squares"}, {"id": "ad3", "q": "Solve 2x+4=10", "accept": ["3", "x=3"], "note": "Linear"}, {"id": "ad4", "q": "Simplify 3(x\u22122)+x", "accept": ["4x-6", "4x\u22126"], "note": "Distribute"}, {"id": "ad5", "q": "What is the gradient of y=5x\u22121?", "accept": ["5"], "note": "m in y=mx+c"}];
+  var BANK=[{"id": "ad1", "q": "Expand $(x+3)(x+1)$", "accept": ["x^2+4x+3", "x\u00b2+4x+3"], "note": "FOIL"}, {"id": "ad2", "q": "Factor $x^{2}-9$", "accept": ["(x-3)(x+3)", "(x+3)(x-3)"], "note": "Difference of squares"}, {"id": "ad3", "q": "Solve $2x+4=10$", "accept": ["3", "x=3"], "note": "Linear"}, {"id": "ad4", "q": "Simplify $3(x-2)+x$", "accept": ["4x-6", "4x\u22126"], "note": "Distribute"}, {"id": "ad5", "q": "What is the gradient of $y=5x-1$?", "accept": ["5"], "note": "m in y=mx+c"}];
   var i=0, item=null;
   function show(){
     item=BANK[i%BANK.length];
-    document.getElementById('prompt').textContent=item.q;
+    var promptEl=document.getElementById('prompt');
+    if(window.QuintileLatex) QuintileLatex.set(promptEl, item.q);
+    else promptEl.textContent=item.q;
     document.getElementById('answer').value='';
     document.getElementById('status').textContent='';
     document.getElementById('status').className='dojo-status';

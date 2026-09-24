@@ -10,6 +10,10 @@
   function esc(value) {
     return String(value == null ? "" : value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
+  function mathHtml(value) {
+    if (window.QuintileLatex) return QuintileLatex.renderHtml(value);
+    return esc(value);
+  }
   function readAttachments() {
     try { return JSON.parse(localStorage.getItem(attachmentKey) || "{}"); } catch (e) { return {}; }
   }
@@ -88,11 +92,19 @@
     var root = document.getElementById("sit-view");
     root.hidden = false;
     if (state.finished) { renderResult(); return; }
+    if (window.QuintileLatex && !window.katex) {
+      QuintileLatex.ensure().then(function () { paintSit(root); }).catch(function () { paintSit(root); });
+      return;
+    }
+    paintSit(root);
+  }
+  function paintSit(root) {
+    if (state.finished) { renderResult(); return; }
     var item = state.demoItems[state.position];
     var chosen = state.answers[state.position];
     root.innerHTML = '<div class="sit-head"><div><div class="exam-kicker">MCQ demo sit · original items</div><h2 id="sit-title">AA-style practice paper</h2></div><div class="sit-progress">Question ' + (state.position + 1) + ' of ' + state.demoItems.length + '</div></div>' +
-      '<p class="sit-prompt">' + esc(item.prompt) + '</p><div class="sit-choices" role="radiogroup" aria-label="Answer choices">' + item.choices.map(function (choice, i) {
-        return '<button type="button" class="sit-choice' + (chosen === letters[i] ? " selected" : "") + '" data-choice="' + letters[i] + '" role="radio" aria-checked="' + (chosen === letters[i] ? "true" : "false") + '"><span class="letter">' + letters[i] + '</span><span>' + esc(choice) + '</span></button>';
+      '<p class="sit-prompt qlatex">' + mathHtml(item.prompt) + '</p><div class="sit-choices" role="radiogroup" aria-label="Answer choices">' + item.choices.map(function (choice, i) {
+        return '<button type="button" class="sit-choice' + (chosen === letters[i] ? " selected" : "") + '" data-choice="' + letters[i] + '" role="radio" aria-checked="' + (chosen === letters[i] ? "true" : "false") + '"><span class="letter">' + letters[i] + '</span><span class="qlatex">' + mathHtml(choice) + '</span></button>';
       }).join("") + '</div><div class="sit-footer"><button type="button" class="exam-button ghost" id="sit-back"' + (state.position === 0 ? " disabled" : "") + '>Back</button><span class="sit-progress">Answers are marked at the end.</span><button type="button" class="exam-button" id="sit-next">' + (state.position === state.demoItems.length - 1 ? "Finish paper" : "Mark & next") + '</button></div>';
     root.querySelectorAll("[data-choice]").forEach(function (button) { button.addEventListener("click", function () { state.answers[state.position] = button.dataset.choice; renderSit(); }); });
     document.getElementById("sit-back").addEventListener("click", function () { if (state.position > 0) { state.position--; renderSit(); } });
@@ -100,11 +112,18 @@
     root.scrollIntoView({ behavior: "smooth", block: "start" });
   }
   function renderResult() {
+    if (window.QuintileLatex && !window.katex) {
+      QuintileLatex.ensure().then(paintResult).catch(paintResult);
+      return;
+    }
+    paintResult();
+  }
+  function paintResult() {
     var score = state.demoItems.reduce(function (total, item, i) { return total + (state.answers[i] === item.correct ? 1 : 0); }, 0);
     var pct = Math.round(score / state.demoItems.length * 100);
     var rows = state.demoItems.map(function (item, i) {
       var got = state.answers[i] || "—"; var ok = got === item.correct;
-      return '<li><strong>' + (i + 1) + '. ' + (ok ? "Correct" : "Review") + '</strong> · your answer ' + esc(got) + ', key ' + esc(item.correct) + '<br><span>' + esc(item.solution) + '</span></li>';
+      return '<li><strong>' + (i + 1) + '. ' + (ok ? "Correct" : "Review") + '</strong> · your answer ' + esc(got) + ', key ' + esc(item.correct) + '<br><span class="qlatex">' + mathHtml(item.solution) + '</span></li>';
     }).join("");
     document.getElementById("sit-view").innerHTML = '<div class="sit-head"><div><div class="exam-kicker">Paper marked</div><h2 id="sit-title">Demo result</h2></div><div class="sit-progress">' + state.demoItems.length + ' questions</div></div><div class="sit-result"><h3>' + score + ' / ' + state.demoItems.length + ' · ' + pct + '%</h3><p>Each item was marked against its original A–E key. This is a test paper, not an IB assessment.</p></div><ol class="review-list">' + rows + '</ol><div class="sit-footer"><button type="button" class="exam-button" id="retake-demo">Retake in a fresh order</button><button type="button" class="exam-button ghost" id="close-sit">Close sit</button></div>';
     document.getElementById("retake-demo").addEventListener("click", function () { startDemo(true); });

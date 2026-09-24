@@ -134,3 +134,14 @@ python3 tools/isomorphic/era_packs/generate_all_eras.py
 python3 tools/isomorphic/era_packs/add_mcq5.py
 ```
 
+## LaTeX coverage (2026-09-24)
+
+All bank prompts are LaTeX-dominant for KaTeX display (`js/latex.js`).
+
+| Metric | Before latexify | After |
+|--------|----------------:|------:|
+| Prompts scanned | 28424 | 28424 |
+| Plain (no `$` / `\(` / `\[`) | 2460 (~8.7%) | **0 (0%)** |
+| Math coverage | ~91.3% | **100%** |
+
+Tool: `tools/isomorphic/latexify_banks.py`. See [`LATEX.md`](../LATEX.md).

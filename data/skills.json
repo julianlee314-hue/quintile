@@ -423,7 +423,7 @@
     },
     {
       "id": "chance-2",
-      "prompt": "A fair six-sided die is rolled. Find the probability of an even number.",
+      "prompt": "A fair $6$-sided die is rolled. Find the probability of an even number.",
       "answer": "$\\dfrac{1}{2}$",
       "solution": "Three of the six faces are even.",
       "accept": [
@@ -444,7 +444,7 @@
     },
     {
       "id": "chance-4",
-      "prompt": "Two fair coins are flipped. Find the probability of two heads.",
+      "prompt": "Two fair coins are flipped. Find the probability of two heads. ($n$)",
       "answer": "$\\dfrac{1}{4}$",
       "solution": "The outcomes are HH, HT, TH, TT, all equally likely.",
       "accept": [
