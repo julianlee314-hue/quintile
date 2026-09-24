@@ -1,0 +1,107 @@
+{
+  "generated": "2026-09-24",
+  "eras": {
+    "counting": {
+      "era": "counting",
+      "target": 4000,
+      "actual": 4000,
+      "courses": {
+        "arithmetic": 2800,
+        "measures": 1200
+      },
+      "topics": 8,
+      "note": "era-pack-v1 parametric clones; not copyrighted worksheet text"
+    },
+    "workshop": {
+      "era": "workshop",
+      "target": 4000,
+      "actual": 3992,
+      "courses": {
+        "prealgebra": 2192,
+        "geometry": 1800
+      },
+      "topics": 7,
+      "note": "era-pack-v1 parametric clones; not copyrighted worksheet text",
+      "isoCredit": {
+        "prealgebra": 8
+      },
+      "withIso": 4000
+    },
+    "secondary": {
+      "era": "secondary",
+      "target": 4000,
+      "actual": 3141,
+      "courses": {
+        "algebra": 1374,
+        "trigonometry": 767,
+        "higher": 1000
+      },
+      "topics": 9,
+      "note": "era-pack-v1 parametric clones; not copyrighted worksheet text",
+      "isoCredit": {
+        "algebra": 826,
+        "trigonometry": 33
+      },
+      "withIso": 4000
+    },
+    "bridge": {
+      "era": "bridge",
+      "target": 4000,
+      "actual": 3982,
+      "courses": {
+        "functions": 1800,
+        "precalculus": 2182
+      },
+      "topics": 8,
+      "note": "era-pack-v1 parametric clones; not copyrighted worksheet text",
+      "isoCredit": {
+        "precalculus": 18
+      },
+      "withIso": 4000
+    },
+    "diploma": {
+      "era": "diploma",
+      "target": 4000,
+      "actual": 4000,
+      "courses": {
+        "aa-hl": 2000,
+        "aa-sl": 1200,
+        "applications": 800
+      },
+      "topics": 9,
+      "note": "era-pack-v1 parametric clones; not copyrighted worksheet text"
+    },
+    "university": {
+      "era": "university",
+      "target": 4000,
+      "actual": 4000,
+      "courses": {
+        "calculus": 1500,
+        "statistics": 1000,
+        "linear": 800,
+        "mechanics": 700
+      },
+      "topics": 7,
+      "note": "era-pack-v1 parametric clones; not copyrighted worksheet text"
+    },
+    "beyond": {
+      "era": "beyond",
+      "target": 4000,
+      "actual": 4000,
+      "courses": {
+        "infinite": 2200,
+        "topology": 1800
+      },
+      "topics": 6,
+      "note": "era-pack-v1 parametric clones; not copyrighted worksheet text"
+    }
+  },
+  "grandTotal": 0,
+  "targetGrand": 28000,
+  "note": "era-pack-v1; isomorphic_banks folded into Secondary/Bridge quotas as credits",
+  "grandTotalPacks": 27115,
+  "grandTotalWithIsoCredits": 28000,
+  "emhCore": 360,
+  "isomorphicBanks": 885,
+  "grandTotalAllFiles": 28360
+}

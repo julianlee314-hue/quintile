@@ -29,6 +29,11 @@
 .pr-meta{font-size:.75rem;color:var(--color-muted);margin-bottom:.75rem}
 .pr-end{text-align:center;padding:1.5rem 0}
 .pr-end .score{font-family:Fraunces,Georgia,serif;font-size:3rem}
+.pr-choices{display:flex;flex-direction:column;gap:.45rem;margin:0 0 1rem}
+.pr-choice{display:flex;align-items:flex-start;gap:.6rem;border:1px solid var(--color-line);border-radius:.65rem;padding:.55rem .75rem;cursor:pointer;background:var(--color-paper)}
+.pr-choice:hover{border-color:var(--color-ink)}
+.pr-choice input{margin-top:.2rem}
+.pr-choice .ltr{font-weight:700;min-width:1.25rem}
 </style>
 </head>
 <body style="margin:0;background:var(--color-paper);color:var(--color-ink);font-family:Figtree,system-ui,sans-serif;min-height:100dvh">
@@ -38,6 +43,8 @@
     <nav style="display:flex;gap:.35rem;flex-wrap:wrap;font-size:.8rem">
       <a href="tree/" style="color:var(--color-muted);text-decoration:none">Tree</a>
       <a href="games/" style="color:var(--color-muted);text-decoration:none">Games</a>
+      <a href="banks/" style="color:var(--color-muted);text-decoration:none">Banks</a>
+      <a href="diploma/exams/" style="color:var(--color-muted);text-decoration:none">Diploma exams</a>
       <a href="foundations" style="color:var(--color-muted);text-decoration:none">Skills</a>
     </nav>
   </div>
@@ -114,9 +121,20 @@
   function norm(s){return String(s||'').replace(/\s+/g,'').toLowerCase().replace(/\$/g,'');}
 
   function checkAccept(item, draft){
+    if(mode==='exam' && item.choices && item.choices.length){
+      var letter=(draft||'').trim().toUpperCase();
+      if(item.correct && letter===String(item.correct).toUpperCase()) return true;
+      if(typeof item.correctIndex==='number' && letter===String.fromCharCode(65+item.correctIndex)) return true;
+      // also allow matching choice text
+      var idx='ABCDE'.indexOf(letter);
+      if(idx>=0 && item.choices[idx]!=null && norm(item.choices[idx])===norm(item.answer||'')) return true;
+      return false;
+    }
     var acc=item.accept||[];
     var d=norm(draft);
-    return acc.some(function(a){return norm(a)===d;});
+    if(acc.some(function(a){return norm(a)===d;})) return true;
+    if(item.answer && norm(item.answer)===d) return true;
+    return false;
   }
 
   function start(){
@@ -161,11 +179,30 @@
     // keep raw for katex-less display
     prompt.textContent=item.prompt.replace(/\$/g,'');
     card.appendChild(prompt);
-    var input=document.createElement('input'); input.className='pr-input'; input.id='ans';
-    input.placeholder='Your answer'; input.value=draft; input.disabled=status!=='idle';
-    input.addEventListener('input',function(){draft=input.value;});
-    input.addEventListener('keydown',function(e){if(e.key==='Enter'&&status==='idle') doCheck();});
-    card.appendChild(input);
+    var useMcq = (mode==='exam' && item.choices && item.choices.length>=5);
+    var input=null;
+    if(useMcq){
+      var box=document.createElement('div'); box.className='pr-choices'; box.id='ans';
+      var letters='ABCDE';
+      for(var ci=0; ci<5; ci++){
+        var lab=document.createElement('label'); lab.className='pr-choice';
+        var rad=document.createElement('input'); rad.type='radio'; rad.name='mcq'; rad.value=letters[ci];
+        rad.disabled=status!=='idle';
+        if(draft===letters[ci]) rad.checked=true;
+        rad.addEventListener('change',function(ev){ draft=ev.target.value; });
+        var ltr=document.createElement('span'); ltr.className='ltr'; ltr.textContent=letters[ci]+'.';
+        var txt=document.createElement('span'); txt.textContent=String(item.choices[ci]).replace(/\$/g,'');
+        lab.appendChild(rad); lab.appendChild(ltr); lab.appendChild(txt);
+        box.appendChild(lab);
+      }
+      card.appendChild(box);
+    } else {
+      input=document.createElement('input'); input.className='pr-input'; input.id='ans';
+      input.placeholder='Your answer'; input.value=draft; input.disabled=status!=='idle';
+      input.addEventListener('input',function(){draft=input.value;});
+      input.addEventListener('keydown',function(e){if(e.key==='Enter'&&status==='idle') doCheck();});
+      card.appendChild(input);
+    }
     var row=document.createElement('div'); row.className='pr-row';
     if(status==='idle'){
       var go=document.createElement('button'); go.className='pr-go'; go.textContent='Check'; go.onclick=doCheck;
@@ -177,11 +214,14 @@
     }
     card.appendChild(row);
     var st=document.createElement('p'); st.className='pr-status'+(status==='correct'?' ok':status==='wrong'?' bad':''); st.id='st';
-    if(status==='correct') st.textContent='Correct.'+(item.answer?' Answer: '+item.answer.replace(/\$/g,''):'');
-    if(status==='wrong') st.textContent='Not quite.'+(item.answer?' '+item.answer.replace(/\$/g,''):'')+(item.solution?' — '+item.solution.replace(/\$/g,''):'');
+    if(status==='correct') st.textContent='Correct.'+(item.correct?' ('+item.correct+')':'')+(item.answer?' · '+item.answer.replace(/\$/g,''):'');
+    if(status==='wrong'){
+      var reveal=item.correct?('Correct option '+item.correct+'. '):'';
+      st.textContent='Not quite. '+reveal+(item.answer?item.answer.replace(/\$/g,''):'')+(item.solution?' — '+item.solution.replace(/\$/g,''):'');
+    }
     card.appendChild(st);
     stage.appendChild(card);
-    if(status==='idle') setTimeout(function(){input.focus();},50);
+    if(status==='idle' && input) setTimeout(function(){input.focus();},50);
   }
 
   function doCheck(){

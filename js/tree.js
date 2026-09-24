@@ -1131,6 +1131,13 @@
       hl.textContent = n.hlLink;
       panel.appendChild(hl);
     }
+    if (state.eraId === "diploma") {
+      var exams = document.createElement("a");
+      exams.className = "cta";
+      exams.href = url("/diploma/exams/");
+      exams.textContent = "Open Diploma Exams";
+      panel.appendChild(exams);
+    }
 
     if (requires.length) {
       var rl = document.createElement("div");

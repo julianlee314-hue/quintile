@@ -69,3 +69,14 @@ Shipped on this Pages fork only:
 - `/games/`, `/dojo/algebra/`, `/dojo/integrals/`, `/practice/`
 
 **Do not** push into grok.me from this pass.
+
+
+## Banks @ 28k + Diploma Exam tab (2026-09-24 ICT)
+
+- **~4000/era** parametric packs in `site/data/banks/era-*.json` (iso credits fold Secondary/Workshop/Bridge to 28000).
+- **Exam mode = MCQ A–E** (`choices` + `correct`); Practice stays typed `accept[]`. Dual-format on items.
+- **Diploma past papers:** `/diploma/exams/` + `data/diploma_past_papers.json` — IB AA HL/SL placeholders only; local PDF via IndexedDB; no IB text in git.
+- Diploma’s generated ~4000 items are **Practice** skill drills, not past papers.
+- Summary: `analysis/BANKS_SUMMARY.md` · index: `/banks/`.
+- Rebuild: `tools/isomorphic/era_packs/generate_all_eras.py` then `add_mcq5.py`.
+

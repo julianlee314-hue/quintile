@@ -1,0 +1,85 @@
+/* Diploma exam scaffold: paper, ink and oxide, with a light application layer. */
+.exam-page { min-height: 100dvh; background: var(--color-paper, #f3eee6); color: var(--color-ink, #1c1915); }
+.exam-header { border-bottom: 1px solid var(--color-line, #e3d9cc); background: var(--color-paper, #f3eee6); }
+.exam-header-inner { max-width: 90rem; margin: 0 auto; padding: 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.exam-brand { display: flex; align-items: baseline; gap: .75rem; color: inherit; text-decoration: none; }
+.exam-brand strong { font: 600 1.5rem/1 Fraunces, Georgia, serif; letter-spacing: -.025em; }
+.exam-brand span { color: var(--color-muted, #6f675e); font-size: .875rem; }
+.exam-nav { display: none; gap: .25rem; align-items: center; }
+.exam-nav a { padding: .5rem 1rem; border-radius: 999px; color: var(--color-muted); font-size: .875rem; font-weight: 500; text-decoration: none; }
+.exam-nav a:hover { color: var(--color-ink); }
+.exam-nav a.active { color: var(--color-sheet); background: var(--color-ink); }
+.exam-main { max-width: 90rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+.exam-kicker { color: var(--color-oxide); font-size: .875rem; font-weight: 600; letter-spacing: .05em; }
+.exam-main h1, .exam-sit h2 { margin: .5rem 0 0; font: 600 clamp(2.25rem, 5vw, 3.75rem)/1.05 Fraunces, Georgia, serif; letter-spacing: -.035em; }
+.exam-intro { max-width: 46rem; margin: 1rem 0 0; color: var(--color-muted); line-height: 1.65; }
+.exam-notice { margin-top: 1.5rem; padding: 1rem 1.15rem; border: 1px solid var(--color-oxide); background: var(--color-oxide-soft); line-height: 1.55; }
+.exam-notice strong { color: var(--color-oxide); }
+.exam-layout { margin-top: 2rem; display: grid; gap: 1rem; }
+.exam-filters, .exam-card, .exam-detail, .demo-banner, .exam-sit { border: 1px solid var(--color-ink); background: var(--color-sheet); }
+.exam-filters { padding: 1rem; display: grid; gap: .85rem; align-items: end; }
+.exam-filter label { display: block; margin-bottom: .35rem; color: var(--color-muted); font-size: .75rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.exam-filter select { width: 100%; min-height: 2.5rem; padding: .45rem .6rem; border: 1px solid var(--color-line); background: var(--color-paper); color: var(--color-ink); }
+.exam-filter select:focus { outline: 2px solid var(--color-oxide); outline-offset: 1px; }
+.exam-results-head { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; margin-bottom: .75rem; }
+.exam-results-head h2 { font: 600 1.65rem/1.1 Fraunces, Georgia, serif; }
+.exam-count { color: var(--color-muted); font-size: .8rem; }
+.exam-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: .75rem; }
+.exam-card { min-height: 11rem; padding: 1rem; text-align: left; cursor: pointer; transition: transform .15s ease, background .15s ease; }
+.exam-card:hover, .exam-card:focus-visible { background: var(--color-paper); transform: translateY(-2px); }
+.exam-card.selected { box-shadow: inset 0 0 0 2px var(--color-oxide); }
+.exam-card h3 { margin: .65rem 0 .75rem; font: 600 1.2rem/1.15 Fraunces, Georgia, serif; }
+.exam-card-meta { color: var(--color-muted); font-size: .82rem; line-height: 1.5; }
+.exam-badge { display: inline-flex; align-items: center; padding: .2rem .5rem; color: var(--color-oxide); border: 1px solid var(--color-oxide); background: var(--color-oxide-soft); border-radius: 999px; font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.exam-badge.demo { color: var(--color-ink); border-color: var(--color-ink); background: transparent; }
+.exam-detail { padding: 1.25rem; align-self: start; }
+.exam-detail h2 { margin: .75rem 0 0; font: 600 1.8rem/1.1 Fraunces, Georgia, serif; }
+.exam-detail p { color: var(--color-muted); line-height: 1.55; }
+.exam-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; margin: 1.25rem 0; }
+.exam-fact { padding-top: .55rem; border-top: 1px solid var(--color-line); }
+.exam-fact dt { color: var(--color-muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; }
+.exam-fact dd { margin: .2rem 0 0; font-weight: 600; }
+.exam-instructions { padding: .9rem 1rem; background: var(--color-paper); border-left: 3px solid var(--color-oxide); font-size: .9rem; }
+.exam-attach { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--color-line); }
+.exam-attach label { display: inline-block; margin-top: .55rem; padding: .6rem .8rem; border: 1px solid var(--color-ink); cursor: pointer; font-weight: 600; }
+.exam-attach input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.exam-attach small { display: block; margin-top: .5rem; color: var(--color-muted); }
+.exam-button { display: inline-flex; justify-content: center; align-items: center; min-height: 2.6rem; padding: .55rem .85rem; border: 1px solid var(--color-ink); background: var(--color-ink); color: var(--color-sheet); cursor: pointer; font-weight: 600; }
+.exam-button:hover { background: var(--color-oxide); border-color: var(--color-oxide); }
+.exam-button.ghost { background: transparent; color: var(--color-ink); }
+.exam-button.ghost:hover { background: var(--color-paper); }
+.demo-section { margin-top: 2rem; }
+.demo-banner { padding: 1.25rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.demo-banner h2 { margin: 0; font: 600 1.55rem/1.1 Fraunces, Georgia, serif; }
+.demo-banner p { max-width: 44rem; margin: .5rem 0 0; color: var(--color-muted); line-height: 1.5; }
+.demo-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.exam-sit { margin-top: 2rem; padding: clamp(1rem, 3vw, 2rem); }
+.exam-sit[hidden] { display: none; }
+.sit-head { display: flex; justify-content: space-between; align-items: start; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-line); }
+.sit-head h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+.sit-progress { color: var(--color-muted); font-size: .85rem; white-space: nowrap; }
+.sit-prompt { margin: 2rem 0 1rem; max-width: 54rem; font: 600 clamp(1.25rem, 2.5vw, 1.7rem)/1.35 Fraunces, Georgia, serif; }
+.sit-choices { display: grid; gap: .6rem; max-width: 48rem; }
+.sit-choice { display: flex; gap: .8rem; align-items: baseline; width: 100%; padding: .8rem .9rem; border: 1px solid var(--color-line); background: var(--color-paper); text-align: left; cursor: pointer; }
+.sit-choice:hover, .sit-choice:focus-visible { border-color: var(--color-ink); }
+.sit-choice.selected { border-color: var(--color-oxide); box-shadow: inset 3px 0 var(--color-oxide); }
+.sit-choice .letter { min-width: 1.3rem; color: var(--color-oxide); font-weight: 700; }
+.sit-footer { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: space-between; align-items: center; margin-top: 1.5rem; max-width: 48rem; }
+.sit-result { max-width: 42rem; padding: 1rem; background: var(--color-paper); border-left: 3px solid var(--color-oxide); }
+.sit-result h3 { margin: 0; font: 600 1.8rem/1.1 Fraunces, Georgia, serif; }
+.sit-result p { margin: .6rem 0 0; color: var(--color-muted); }
+.exam-empty { padding: 1.5rem; border: 1px dashed var(--color-line); color: var(--color-muted); }
+@media (min-width: 48rem) {
+  .exam-header-inner, .exam-main { padding-left: 2rem; padding-right: 2rem; }
+  .exam-nav { display: flex; }
+  .exam-filters { grid-template-columns: repeat(4, 1fr) auto; }
+  .exam-layout { grid-template-columns: minmax(0, 1fr) 22rem; align-items: start; }
+  .exam-detail { grid-column: 2; grid-row: 1 / span 2; position: sticky; top: 1rem; }
+  .exam-list { grid-column: 1; grid-row: 1; }
+  .demo-section { grid-column: 1; grid-row: 2; }
+}
+@media (max-width: 47.99rem) { .exam-detail { order: -1; } }
+.review-list { max-width: 48rem; margin: 1.25rem 0 0; padding-left: 1.35rem; }
+.review-list li { margin: .75rem 0; padding-left: .25rem; color: var(--color-muted); line-height: 1.5; }
+.review-list strong { color: var(--color-ink); }
+.review-list span { color: var(--color-muted); }

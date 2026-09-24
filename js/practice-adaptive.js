@@ -129,6 +129,27 @@
     return { from: cur, to: next };
   }
 
+  function ingestTopics(list) {
+    (Array.isArray(list) ? list : (list && list.topics) || []).forEach(function (t) {
+      BANK[t.id] = {
+        id: t.id,
+        title: t.title,
+        blurb: t.blurb,
+        hlLink: t.hlLink,
+        courseId: t.courseId,
+        era: t.era,
+        defaultMode: t.defaultMode,
+        difficultyBand: t.difficultyBand,
+        itemCount: t.itemCount || (t.items || []).length,
+        items: (t.items || []).map(function (it) {
+          return Object.assign({}, it, {
+            stage: it.stage || LEVELS[(it.difficulty || 1) - 1] || "easy",
+          });
+        }),
+      };
+    });
+  }
+
   function loadBank(cb) {
     if (BANK) {
       cb && cb(BANK);
@@ -141,21 +162,51 @@
       })
       .then(function (list) {
         BANK = {};
-        (Array.isArray(list) ? list : list.topics || []).forEach(function (t) {
-          BANK[t.id] = {
-            id: t.id,
-            title: t.title,
-            blurb: t.blurb,
-            hlLink: t.hlLink,
-            items: (t.items || []).map(function (it) {
-              return Object.assign({}, it, {
-                stage: it.stage || LEVELS[(it.difficulty || 1) - 1] || "easy",
+        ingestTopics(list);
+        return fetch(url("/data/isomorphic_banks.json"))
+          .then(function (r) {
+            if (!r.ok) return null;
+            return r.json();
+          })
+          .catch(function () {
+            return null;
+          })
+          .then(function (iso) {
+            if (iso) ingestTopics(iso);
+            return fetch(url("/data/banks/index.json"))
+              .then(function (r) {
+                if (!r.ok) return null;
+                return r.json();
+              })
+              .catch(function () {
+                return null;
+              })
+              .then(function (idx) {
+                if (!idx || !idx.eras) {
+                  cb && cb(BANK);
+                  return BANK;
+                }
+                var names = Object.keys(idx.eras);
+                return Promise.all(
+                  names.map(function (era) {
+                    return fetch(url("/data/banks/era-" + era + ".json"))
+                      .then(function (r) {
+                        return r.ok ? r.json() : null;
+                      })
+                      .catch(function () {
+                        return null;
+                      });
+                  })
+                ).then(function (packs) {
+                  packs.forEach(function (pack) {
+                    if (pack) ingestTopics(pack);
+                  });
+                  BANK.__eraIndex = idx;
+                  cb && cb(BANK);
+                  return BANK;
+                });
               });
-            }),
-          };
-        });
-        cb && cb(BANK);
-        return BANK;
+          });
       })
       .catch(function () {
         // Fallback: flat 40 + bands

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){var b=(function(){var p=location.pathname;var m=p.match(/^(\/quintile)(?=\/|$)/);return m?m[1]:"";})();window.__QUINTILE_BASE__=b;var el=document.createElement("base");el.href=(b||"")+"/";document.head.prepend(el);})();</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3eee6">
+  <title>Diploma Exams · Quintile</title>
+  <meta name="description" content="A local-first scaffold for IB Mathematics Analysis & Approaches HL and SL exam papers.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,500&amp;family=Fraunces:opsz,wght@9..144,520;9..144,640;9..144,700&amp;display=swap">
+  <link rel="stylesheet" href="../../assets/styles-DYnEbqMX.css">
+  <link rel="stylesheet" href="../../js/diploma-exams.css">
+</head>
+<body class="exam-page">
+  <header class="exam-header">
+    <div class="exam-header-inner">
+      <a class="exam-brand" href="/"><strong>Quintile</strong><span>the long road</span></a>
+      <nav class="exam-nav" aria-label="Primary navigation">
+        <a href="/">Atlas</a><a class="active" href="/syllabus">Diploma</a><a href="/foundations">Skills</a><a href="/tree/">Tree</a><a href="/progress">Progress</a>
+      </nav>
+    </div>
+  </header>
+  <main class="exam-main">
+    <header>
+      <div class="exam-kicker">Diploma · exam room</div>
+      <h1>Past papers, before the papers.</h1>
+      <p class="exam-intro">A quiet catalog for IB Mathematics: Analysis &amp; Approaches. The archive below is metadata-only for now; attach your own PDF and it will stay in this browser. Use the original demo sit to test the five-choice paper flow.</p>
+      <div class="exam-notice"><strong>Copyright boundary.</strong> This scaffold contains no real past-paper question text, answer keys, or PDFs. May/Nov entries cover 2021–2025 and leave room for TZ1/TZ2 files you supply locally.</div>
+    </header>
+
+    <div class="exam-layout">
+      <section class="exam-list" aria-labelledby="catalog-title">
+        <div class="exam-filters" aria-label="Filter past papers">
+          <div class="exam-filter"><label for="level-filter">Level</label><select id="level-filter"><option value="all">All levels</option><option>HL</option><option>SL</option></select></div>
+          <div class="exam-filter"><label for="paper-filter">Paper</label><select id="paper-filter"><option value="all">All papers</option><option>Paper 1</option><option>Paper 2</option><option>Paper 3</option></select></div>
+          <div class="exam-filter"><label for="session-filter">Session</label><select id="session-filter"><option value="all">All sessions</option><option>May</option><option>Nov</option></select></div>
+          <div class="exam-filter"><label for="year-filter">Year</label><select id="year-filter"><option value="all">All years</option></select></div>
+          <button class="exam-button ghost" id="clear-filters" type="button">Clear</button>
+        </div>
+        <div class="exam-results-head"><h2 id="catalog-title">Placeholder catalog</h2><span class="exam-count" id="result-count"></span></div>
+        <div class="exam-card-grid" id="paper-cards" aria-live="polite"></div>
+      </section>
+
+      <aside class="exam-detail" id="exam-detail" aria-live="polite">
+        <div class="exam-kicker">Select a paper</div><h2>Paper details</h2><p>Choose a catalog card to see sit instructions, timings, and the browser-only attachment slot.</p>
+      </aside>
+
+      <section class="demo-section" aria-labelledby="demo-title">
+        <div class="demo-banner">
+          <div><div class="exam-kicker">Original practice slot</div><h2 id="demo-title">AA-style MCQ practice paper</h2><p>Twenty-four isomorphic, original items — never copied from an IB paper — each with exactly five choices labelled A–E. Generate a fresh order or start the sit.</p></div>
+          <div class="demo-actions"><button class="exam-button ghost" id="shuffle-demo" type="button">Generate fresh demo</button><button class="exam-button" id="start-demo" type="button">Start demo sit</button></div>
+        </div>
+      </section>
+
+      <section class="exam-sit" id="sit-view" hidden aria-labelledby="sit-title"></section>
+    </div>
+  </main>
+  <script src="../../js/diploma-exams.js"></script>
+</body>
+</html>

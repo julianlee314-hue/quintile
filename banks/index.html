@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var b=(function(){var p=location.pathname;var m=p.match(/^(\/quintile)(?=\/|$)/);return m?m[1]:"";})();window.__QUINTILE_BASE__=b;var el=document.createElement("base");el.href=(b||"")+"/";document.head.prepend(el);})();</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Question banks · Quintile</title>
+<meta name="theme-color" content="#f3eee6"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,500&amp;family=Fraunces:opsz,wght@9..144,520;9..144,640;9..144,700&amp;display=swap"/>
+<link rel="stylesheet" href="assets/styles-DYnEbqMX.css"/>
+<style>
+.bk{max-width:60rem;margin:0 auto;padding:1.25rem 1rem 4rem}
+.bk h1{font-family:Fraunces,Georgia,serif;font-size:2rem;margin:.35rem 0}
+.bk .k{color:var(--color-oxide);font-size:.8rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.bk .lead{color:var(--color-muted);font-size:.875rem;line-height:1.5}
+.bk-sum{display:flex;flex-wrap:wrap;gap:.75rem;margin:1rem 0}
+.bk-pill{border:1px solid var(--color-line);border-radius:999px;padding:.4rem .9rem;font-size:.8125rem;background:var(--color-sheet)}
+.bk-era{margin:1.5rem 0;border:1px solid var(--color-ink);border-radius:.85rem;padding:1rem;background:var(--color-sheet)}
+.bk-era h2{font-family:Fraunces,Georgia,serif;margin:0 0 .35rem;font-size:1.25rem}
+.bk-bar{height:.5rem;background:var(--color-paper);border-radius:999px;overflow:hidden;margin:.5rem 0}
+.bk-bar>span{display:block;height:100%;background:var(--color-oxide)}
+.bk-table{width:100%;border-collapse:collapse;font-size:.8125rem;margin-top:.75rem}
+.bk-table th,.bk-table td{text-align:left;padding:.4rem;border-bottom:1px solid var(--color-line)}
+.bk-actions a{border-radius:999px;padding:.3rem .65rem;font-size:.7rem;font-weight:600;text-decoration:none;border:1px solid var(--color-ink);margin-right:.25rem;color:inherit}
+.bk-actions a.p{background:var(--color-oxide);color:var(--color-sheet);border-color:var(--color-oxide)}
+.bk-meta{font-size:.75rem;color:var(--color-muted)}
+</style>
+</head>
+<body style="margin:0;background:var(--color-paper);color:var(--color-ink);font-family:Figtree,system-ui,sans-serif">
+<header style="border-bottom:1px solid var(--color-line);padding:1rem">
+  <div style="max-width:90rem;margin:0 auto;display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+    <a href="./" style="text-decoration:none;color:inherit;font-family:Fraunces,Georgia,serif;font-size:1.5rem">Quintile</a>
+    <nav style="display:flex;gap:.75rem;font-size:.8rem;flex-wrap:wrap">
+      <a href="banks/" style="font-weight:600;color:inherit;text-decoration:none">Banks</a>
+      <a href="practice/" style="color:var(--color-muted);text-decoration:none">Practice</a>
+      <a href="diploma/exams/" style="color:var(--color-muted);text-decoration:none">Diploma exams</a>
+      <a href="tree/" style="color:var(--color-muted);text-decoration:none">Tree</a>
+    </nav>
+  </div>
+</header>
+<main class="bk">
+  <p class="k">Inventory</p>
+  <h1>Practice &amp; exam banks</h1>
+  <p class="lead">Target <strong>4000</strong> per era (~28000). Practice = typed answers. Exam = MCQ A–E. Diploma past papers live on a separate Exam tab (not these drills).</p>
+  <div class="bk-sum" id="sum"></div>
+  <div id="eras"></div>
+  <h2 style="font-family:Fraunces,Georgia,serif;margin-top:2rem">Core EMH + isomorphic map</h2>
+  <div id="core"></div>
+</main>
+<script>
+(function(){
+  function base(){return window.__QUINTILE_BASE__||"";}
+  function url(p){return base()+p;}
+  function stages(items){var s={easy:0,medium:0,hard:0};(items||[]).forEach(function(it){s[it.stage]=(s[it.stage]||0)+1;});return s;}
+  Promise.all([
+    fetch(url('/data/banks/index.json')).then(function(r){return r.json();}),
+    fetch(url('/data/skills_emh.json')).then(function(r){return r.json();}),
+    fetch(url('/data/isomorphic_banks.json')).then(function(r){return r.json();})
+  ]).then(function(pair){
+    var idx=pair[0], emh=Array.isArray(pair[1])?pair[1]:[], iso=pair[2].topics||[];
+    var sum=document.getElementById('sum');
+    [[idx.grandTotalWithIsoCredits||0,'toward 28k (packs+iso credits)'],[idx.grandTotalAllFiles||0,'all files incl. EMH'],[idx.emhCore||0,'EMH core'],[idx.isomorphicBanks||0,'isomorphic map']].forEach(function(p){
+      var d=document.createElement('div'); d.className='bk-pill'; d.innerHTML='<strong>'+p[0]+'</strong> · '+p[1]; sum.appendChild(d);
+    });
+    var eras=document.getElementById('eras');
+    var order=['counting','workshop','secondary','bridge','diploma','university','beyond'];
+    order.forEach(function(era){
+      var m=idx.eras[era]; if(!m) return;
+      var shown=m.withIso!=null?m.withIso:m.actual;
+      var pct=Math.min(100, Math.round(100*shown/4000));
+      var wrap=document.createElement('div'); wrap.className='bk-era';
+      wrap.innerHTML='<h2>'+era+'</h2><div class="bk-meta">Pack '+m.actual+(m.withIso!=null?' · with iso credits '+m.withIso:'')+' / 4000 · topics '+m.topics+' · Exam=MCQ5</div>'+
+        '<div class="bk-bar"><span style="width:'+pct+'%"></span></div>';
+      var tb=document.createElement('table'); tb.className='bk-table';
+      tb.innerHTML='<thead><tr><th>Course</th><th>Items</th></tr></thead>';
+      var body=document.createElement('tbody');
+      Object.keys(m.courses||{}).forEach(function(c){
+        var tr=document.createElement('tr');
+        tr.innerHTML='<td>'+c+'</td><td>'+m.courses[c]+'</td>';
+        body.appendChild(tr);
+      });
+      tb.appendChild(body); wrap.appendChild(tb);
+      // sample practice link: first course skill pattern
+      var sample='era-'+era+'-'+Object.keys(m.courses||{})[0];
+      var acts=document.createElement('div'); acts.className='bk-actions'; acts.style.marginTop='.75rem';
+      acts.innerHTML='<a class="p" href="'+url('/practice/?skill='+encodeURIComponent(sample.includes(era+'-arithmetic')?'era-counting-arithmetic-bonds': sample+'-'+(era==='counting'?'bonds': era==='workshop'?'integers': era==='secondary'?'linear-equations': era==='bridge'?'fn-eval': era==='diploma'?'binomial': era==='university'?'calculus':'series-limits-1'))+'&mode=practice')+'">Sample Practice</a>'+
+        '<a href="'+url('/practice/?skill=era-'+era+'-'+(Object.keys(m.courses)[0])+(era==='counting'?'-bonds':era==='workshop'?'-integers':era==='secondary'?'-linear-equations':era==='bridge'?'-fn-eval':era==='diploma'?'-binomial':era==='university'?'-calculus':'-series-limits-1')+'&mode=exam')+'">Sample Exam MCQ</a>';
+      // fix sample links more carefully below
+      wrap.appendChild(acts);
+      eras.appendChild(wrap);
+    });
+    // fix sample links with known topic ids from a lightweight fetch of one era? use hard-known ids:
+    eras.querySelectorAll('.bk-era').forEach(function(wrap,i){
+      var era=order[i];
+      var samples={
+        counting:'era-counting-arithmetic-bonds',
+        workshop:'era-workshop-prealgebra-integers',
+        secondary:'era-secondary-algebra-linear-equations',
+        bridge:'era-bridge-functions-fn-eval',
+        diploma:'era-diploma-aa-hl-binomial',
+        university:'era-university-calculus-calculus',
+        beyond:'era-beyond-infinite-series-limits-1'
+      };
+      var sid=samples[era];
+      var acts=wrap.querySelector('.bk-actions');
+      if(acts&&sid){
+        acts.innerHTML='<a class="p" href="'+url('/practice/?skill='+encodeURIComponent(sid)+'&mode=practice')+'">Sample Practice</a>'+
+          '<a href="'+url('/practice/?skill='+encodeURIComponent(sid)+'&mode=exam')+'">Sample Exam MCQ</a>';
+      }
+    });
+
+    var core=document.getElementById('core');
+    var table=document.createElement('table'); table.className='bk-table';
+    table.innerHTML='<thead><tr><th>Skill</th><th>Items</th><th>Stages</th><th></th></tr></thead>';
+    var tb=document.createElement('tbody');
+    emh.concat(iso).forEach(function(t){
+      var st=stages(t.items); var n=(t.items||[]).length;
+      var tr=document.createElement('tr');
+      tr.innerHTML='<td><strong>'+t.title+'</strong><div class="bk-meta">'+t.id+'</div></td><td>'+n+'</td><td class="bk-meta">E'+st.easy+' M'+st.medium+' H'+st.hard+'</td>'+
+        '<td class="bk-actions"><a class="p" href="'+url('/practice/?skill='+encodeURIComponent(t.id)+'&mode=practice')+'">Practice</a>'+
+        '<a href="'+url('/practice/?skill='+encodeURIComponent(t.id)+'&mode=exam')+'">Exam</a></td>';
+      tb.appendChild(tr);
+    });
+    table.appendChild(tb); core.appendChild(table);
+  }).catch(function(e){ document.getElementById('sum').textContent=String(e); });
+})();
+</script>
+</body>
+</html>
