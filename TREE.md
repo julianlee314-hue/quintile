@@ -65,3 +65,21 @@ See `POINTS.md`. Provisional constants in `js/points.js`. Balance on account chi
 
 - Generator: `tools/build_skills_tree.py` → `data/skills_tree.json`
 - Motifs: `assets/motifs/*.svg` (25 hand-authored cartoons)
+
+
+## Living grove (`/tree/`)
+
+Each era has its **own organic tree** (not one side-scrolling map). Era chips at top; `?era=counting` deep-links; last era remembered in `localStorage['quintile-tree-era']`.
+
+| Era | Silhouette |
+|-----|------------|
+| I Counting | Seedling / heart-root |
+| II Workshop | Willow |
+| III Secondary | Oak canopy |
+| IV Bridge | Vine bridge |
+| V Diploma | Heart-body (human from heart) |
+| VI University | Constellation / neural |
+| VII Beyond | Spiral galaxy |
+
+SVG skeleton + HTML leaf badges. Pan/zoom (drag, wheel, pinch); fit button. Mastery colours unchanged (`locked`…`secure`). Practice / Exam CTAs in the detail panel still work.
+

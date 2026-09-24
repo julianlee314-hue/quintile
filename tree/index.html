@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Tree · Quintile</title>
-<meta name="description" content="Detailed skills tech tree — from counting to the infinite."/>
+<meta name="description" content="Each era grows its own skills tree — from counting to the infinite."/>
 <meta name="theme-color" content="#f3eee6"/>
 <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,500&amp;family=Fraunces:opsz,wght@9..144,520;9..144,640;9..144,700&amp;display=swap"/>
@@ -33,25 +33,27 @@
   </header>
 
   <div class="tree-hero">
-    <p class="tree-hero-kicker">Detailed skills map</p>
-    <h1>The tree</h1>
-    <p>Every leaf on the long road — foundations, tracks, syllabus, and skill drills — laid out by era. Colour follows your active profile. Scroll sideways; tap a card to practice.</p>
+    <p class="tree-hero-kicker">Living skills grove</p>
+    <h1>The trees</h1>
+    <p>Each era grows its own tree — pick an age of the road. Colour follows your active profile; tap a leaf to practice.</p>
     <div class="tree-legend" aria-label="Legend">
       <span><i class="s-locked"></i> Locked</span>
       <span><i class="s-available"></i> Available</span>
-      <span><i class="s-learning"></i> Learning (streak)</span>
+      <span><i class="s-learning"></i> Learning</span>
       <span><i class="s-earned"></i> Earned</span>
-      <span><i class="s-due"></i> Due for review</span>
+      <span><i class="s-due"></i> Due</span>
       <span><i class="s-lapsed"></i> Lapsed</span>
-      <span><i class="s-secure"></i> Long-secure</span>
+      <span><i class="s-secure"></i> Secure</span>
     </div>
     <p id="tree-stats" class="tree-hint" style="text-align:left;padding:0.5rem 0 0"></p>
   </div>
 
+  <div class="tree-era-bar" id="tree-era-bar" role="tablist" aria-label="Era"></div>
+
   <div class="tree-stage-wrap" id="tree-root">
-    <p class="tree-hint">Loading tree…</p>
+    <p class="tree-hint">Loading grove…</p>
   </div>
-  <p class="tree-hint">Swipe or scroll sideways across eras. Nothing on the atlas is hard-locked; the tree only soft-gates sequential leaves.</p>
+  <p class="tree-hint" id="tree-motif-hint">Drag to pan · scroll to zoom · one era at a time.</p>
 
   <aside id="tree-panel" class="tree-panel" aria-live="polite"></aside>
 
