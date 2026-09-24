@@ -8,7 +8,7 @@
 |------|-----|
 | Live (grok.me, authoritative) | https://king-wind-charm-lilac.grok.me/ |
 | Grok project id | `01a0d1d8-9526-7a30-b928-0815fdfaeca5` |
-| GitHub Pages (this mirror) | https://julianlee314-hue.github.io/quintile/ |
+| GitHub Pages (this mirror) | https://julianlee314-hue.github.io/quintile/  ✅ live (built 2026-09-24 ~18:04 ICT) |
 | GitHub repo | https://github.com/julianlee314-hue/quintile |
 | EMH drill fork (separate) | https://julianlee314-hue.github.io/quintile-aa-hl/ |
 
