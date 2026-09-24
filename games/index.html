@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var b=(function(){var p=location.pathname;var m=p.match(/^(\/quintile)(?=\/|$)/);return m?m[1]:"";})();window.__QUINTILE_BASE__=b;var el=document.createElement("base");el.href=(b||"")+"/";document.head.prepend(el);})();</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Games · Quintile</title>
+<meta name="theme-color" content="#f3eee6"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,500&amp;family=Fraunces:opsz,wght@9..144,520;9..144,640;9..144,700&amp;display=swap"/>
+<link rel="stylesheet" href="assets/styles-DYnEbqMX.css"/>
+<link rel="stylesheet" href="js/account.css"/>
+<script src="js/account.js"></script>
+<script src="js/attempts.js"></script>
+<script src="js/points.js"></script>
+<script src="js/mastery.js"></script>
+<script src="js/practice-adaptive.js"></script>
+<style>
+.q-page{max-width:90rem;margin:0 auto;padding:1.25rem 1rem 4rem}
+@media(min-width:48rem){.q-page{padding:1.5rem 2rem 4rem}}
+.q-kicker{font-size:.875rem;font-weight:500;letter-spacing:.04em;color:var(--color-oxide,#b8432f)}
+.q-page h1{font-family:Fraunces,Georgia,serif;font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-.025em;margin:.5rem 0 0;font-weight:600}
+.q-lead{margin:.75rem 0 1.5rem;max-width:36rem;font-size:.875rem;line-height:1.6;color:var(--color-muted,#6f675e)}
+.q-nav{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.25rem}
+.q-nav a{border-radius:999px;padding:.4rem .9rem;font-size:.8125rem;font-weight:500;color:var(--color-muted);text-decoration:none;border:1px solid var(--color-line)}
+.q-nav a:hover,.q-nav a.active{border-color:var(--color-ink);color:var(--color-ink)}
+.q-nav a.active{background:var(--color-ink);color:var(--color-sheet)}
+.q-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:1rem}
+.q-card{border:1.5px solid var(--color-ink);border-radius:1rem;background:var(--color-sheet,#fbf8f3);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.5rem;min-height:11rem;text-decoration:none;color:inherit;transition:transform .15s ease,box-shadow .15s}
+.q-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(28,25,21,.08)}
+.q-card .tag{font-size:.65rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--color-oxide)}
+.q-card h2{font-family:Fraunces,Georgia,serif;font-size:1.25rem;margin:0;letter-spacing:-.02em}
+.q-card p{margin:0;font-size:.8125rem;color:var(--color-muted);line-height:1.45;flex:1}
+.q-card .cta{font-size:.8125rem;font-weight:600;color:var(--color-oxide)}
+.q-card.soon{opacity:.72;border-style:dashed}
+.q-card.soon .cta{color:var(--color-muted)}
+.dojo-stage{border:1px solid var(--color-ink);border-radius:1rem;background:var(--color-sheet);padding:1.25rem;max-width:28rem}
+.dojo-prompt{font-size:1.15rem;margin:1rem 0;font-family:Fraunces,Georgia,serif}
+.dojo-input{width:100%;padding:.65rem .85rem;border:1px solid var(--color-line);border-radius:.5rem;background:var(--color-paper);font-size:1rem;margin-bottom:.75rem}
+.dojo-row{display:flex;gap:.5rem;flex-wrap:wrap}
+.dojo-btn{border-radius:999px;padding:.55rem 1.1rem;border:1px solid var(--color-ink);background:var(--color-ink);color:var(--color-sheet);font-weight:600;font-size:.875rem;cursor:pointer}
+.dojo-btn.ghost{background:transparent;color:var(--color-ink)}
+.dojo-status{min-height:1.25rem;font-size:.8125rem;margin-top:.75rem;color:var(--color-muted)}
+.dojo-status.ok{color:#3d7a4a}.dojo-status.bad{color:var(--color-oxide)}
+.bond-board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.5rem;max-width:22rem}
+.bond-cell{aspect-ratio:1;border-radius:.75rem;border:1.5px solid var(--color-ink);background:var(--color-sheet);font-family:Fraunces,Georgia,serif;font-size:1.25rem;cursor:pointer}
+.bond-cell.on{background:var(--color-oxide);color:var(--color-sheet);border-color:var(--color-oxide)}
+.bond-target{font-size:1.5rem;font-family:Fraunces,Georgia,serif;margin:.5rem 0 1rem}
+
+</style>
+</head>
+<body style="background:var(--color-paper);color:var(--color-ink);font-family:Figtree,system-ui,sans-serif;margin:0;min-height:100dvh">
+<header style="border-bottom:1px solid var(--color-line);padding:1rem">
+  <div style="max-width:90rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="./" style="text-decoration:none;color:inherit;display:flex;align-items:baseline;gap:.75rem">
+      <span style="font-family:Fraunces,Georgia,serif;font-size:1.5rem;letter-spacing:-.025em">Quintile</span>
+      <span style="font-size:.875rem;color:var(--color-muted)" class="hide-sm">the long road</span>
+    </a>
+  </div>
+</header>
+<main class="q-page">
+
+<nav class="q-nav" aria-label="Primary">
+  <a href="./">Atlas</a><a href="syllabus">Diploma</a><a href="foundations">Skills</a>
+  <a href="tree/">Tree</a><a class="active" href="games/">Games</a><a href="progress">Progress</a>
+  <a href="dojo/algebra/">Algebra dojo</a><a href="dojo/integrals/">Integrals dojo</a>
+</nav>
+<p class="q-kicker">Practice · homework points</p>
+<h1>Mini-games</h1>
+<p class="q-lead">Short, playful drills that feed the same mastery log and provisional points ledger. Some rooms are open; others are sketched for later.</p>
+<div class="q-grid">
+  <a class="q-card" href="games/#bonds" id="card-bonds">
+    <span class="tag">Playable</span>
+    <h2>Number-bond clicker</h2>
+    <p>Tap two numbers that make the target. Builds arithmetic fluency; logs toward the bonds skill streak.</p>
+    <span class="cta">Play →</span>
+  </a>
+  <a class="q-card" href="games/#fractions" id="card-frac">
+    <span class="tag">Playable stub</span>
+    <h2>Fraction match</h2>
+    <p>Match each fraction to an equivalent. Tiny deck — a taste of the games room.</p>
+    <span class="cta">Play →</span>
+  </a>
+  <a class="q-card" href="dojo/algebra/">
+    <span class="tag">Dojo</span>
+    <h2>Algebra Dojo</h2>
+    <p>Dedicated algebra training loop. Triple-play earns the algebra-dojo skill.</p>
+    <span class="cta">Enter dojo →</span>
+  </a>
+  <a class="q-card" href="dojo/integrals/">
+    <span class="tag">Dojo</span>
+    <h2>Integrals Dojo</h2>
+    <p>Antiderivative reps for the long road into calculus.</p>
+    <span class="cta">Enter dojo →</span>
+  </a>
+  <div class="q-card soon"><span class="tag">Coming soon</span><h2>Graph sketcher</h2><p>Draw the shape before the formula appears.</p><span class="cta">Soon</span></div>
+  <div class="q-card soon"><span class="tag">Coming soon</span><h2>Trig wave rider</h2><p>Ride sine and cosine through a side-scroller.</p><span class="cta">Soon</span></div>
+  <div class="q-card soon"><span class="tag">Coming soon</span><h2>Matrix mash</h2><p>Compose 2×2 maps by feel.</p><span class="cta">Soon</span></div>
+  <div class="q-card soon"><span class="tag">Coming soon</span><h2>Prime sieves</h2><p>Strike composites in a racing grid.</p><span class="cta">Soon</span></div>
+</div>
+
+<section id="bonds" style="margin-top:2.5rem">
+  <p class="q-kicker">Playable</p>
+  <h2 style="font-family:Fraunces,Georgia,serif;font-size:1.75rem;margin:.35rem 0">Number-bond clicker</h2>
+  <p class="q-lead">Select two tiles that sum to the target. Three correct in a row earns <code>bonds-game</code> via mastery.</p>
+  <p class="bond-target">Make <strong id="bond-target">10</strong></p>
+  <div class="bond-board" id="bond-board"></div>
+  <p class="dojo-status" id="bond-status">Streak: 0</p>
+</section>
+
+<section id="fractions" style="margin-top:2.5rem">
+  <p class="q-kicker">Playable stub</p>
+  <h2 style="font-family:Fraunces,Georgia,serif;font-size:1.75rem;margin:.35rem 0">Fraction match</h2>
+  <p class="q-lead">Click the equivalent fraction. Logs <code>fraction-match</code> attempts.</p>
+  <div class="dojo-stage">
+    <div class="dojo-prompt" id="frac-prompt">½ = ?</div>
+    <div class="dojo-row" id="frac-choices"></div>
+    <p class="dojo-status" id="frac-status"></p>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  // Number bonds
+  var streak=0, selected=[], target=10;
+  var board=document.getElementById('bond-board');
+  var status=document.getElementById('bond-status');
+  var targetEl=document.getElementById('bond-target');
+  function deal(){
+    selected=[]; target= [10,12,15,20][Math.floor(Math.random()*4)];
+    targetEl.textContent=String(target);
+    var nums=[];
+    while(nums.length<10){
+      var n=1+Math.floor(Math.random()*Math.max(2,target-1));
+      if(nums.indexOf(n)<0) nums.push(n);
+    }
+    // ensure a solution exists
+    var a=1+Math.floor(Math.random()*(target-1));
+    if(nums.indexOf(a)<0) nums[0]=a;
+    if(nums.indexOf(target-a)<0) nums[1]=target-a;
+    board.innerHTML='';
+    nums.forEach(function(n){
+      var b=document.createElement('button');
+      b.type='button'; b.className='bond-cell'; b.textContent=n; b.dataset.n=n;
+      b.onclick=function(){toggle(b);};
+      board.appendChild(b);
+    });
+  }
+  function toggle(btn){
+    if(btn.classList.contains('on')){
+      btn.classList.remove('on');
+      selected=selected.filter(function(x){return x!==btn;});
+      return;
+    }
+    if(selected.length>=2) return;
+    btn.classList.add('on'); selected.push(btn);
+    if(selected.length===2){
+      var sum=+selected[0].dataset.n + +selected[1].dataset.n;
+      var ok=sum===target;
+      if(window.__quintileAttempt){
+        __quintileAttempt({kind:'dojo',skillId:'bonds-game',itemId:'bond-'+target,correct:ok,prompt:'Make '+target});
+      }
+      if(ok){
+        streak++; status.textContent='Nice — streak '+streak; status.className='dojo-status ok';
+        if(window.QuintilePoints) QuintilePoints.award('game_stub',{ref:'bonds-game'});
+        setTimeout(deal,450);
+      } else {
+        streak=0; status.textContent='Not quite — try again'; status.className='dojo-status bad';
+        selected.forEach(function(x){x.classList.remove('on');}); selected=[];
+      }
+    }
+  }
+  deal();
+
+  // Fraction match
+  var deck=[
+    {q:'1/2', ok:'2/4', opts:['2/4','2/3','3/5']},
+    {q:'1/3', ok:'2/6', opts:['2/6','1/2','3/4']},
+    {q:'3/4', ok:'6/8', opts:['2/3','6/8','3/5']},
+    {q:'2/5', ok:'4/10', opts:['4/10','1/2','3/6']},
+  ];
+  var fi=0;
+  function showFrac(){
+    var d=deck[fi%deck.length];
+    document.getElementById('frac-prompt').textContent=d.q+' = ?';
+    var row=document.getElementById('frac-choices'); row.innerHTML='';
+    d.opts.slice().sort(function(){return Math.random()-0.5}).forEach(function(o){
+      var b=document.createElement('button'); b.type='button'; b.className='dojo-btn ghost'; b.textContent=o;
+      b.onclick=function(){
+        var ok=o===d.ok;
+        if(window.__quintileAttempt) __quintileAttempt({kind:'dojo',skillId:'fraction-match',itemId:'frac-'+d.q,correct:ok,prompt:d.q});
+        var st=document.getElementById('frac-status');
+        st.textContent=ok?'Match!':'Try another'; st.className='dojo-status '+(ok?'ok':'bad');
+        if(ok){ if(window.QuintilePoints) QuintilePoints.award('game_stub',{ref:'fraction-match'}); fi++; setTimeout(showFrac,500); }
+      };
+      row.appendChild(b);
+    });
+  }
+  showFrac();
+})();
+</script>
+
+</body>
+</html>

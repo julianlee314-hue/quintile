@@ -1,0 +1,181 @@
+/* Quintile account chip + modal — paper/ink/oxide tokens */
+.q-acc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.65rem 0.25rem 0.25rem;
+  border: 1px solid var(--color-line, #e3d9cc);
+  border-radius: 999px;
+  background: var(--color-sheet, #fbf8f3);
+  color: var(--color-ink, #1c1915);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  flex-shrink: 0;
+}
+.q-acc-chip:hover {
+  background: var(--color-paper, #f3eee6);
+  border-color: var(--color-ink, #1c1915);
+}
+.q-acc-chip-float {
+  position: fixed;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 80;
+  margin: 0;
+}
+.q-acc-av {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: var(--color-oxide, #b8432f);
+  color: var(--color-sheet, #fbf8f3);
+  font-family: var(--font-serif, Fraunces, Georgia, serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.q-acc-chip-name {
+  max-width: 7rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 40rem) {
+  .q-acc-chip-name { display: none; }
+}
+
+.q-acc-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(28, 25, 21, 0.35);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10vh 1rem 2rem;
+  overflow-y: auto;
+}
+.q-acc-panel {
+  width: min(26rem, 100%);
+  background: var(--color-sheet, #fbf8f3);
+  color: var(--color-ink, #1c1915);
+  border: 1px solid var(--color-ink, #1c1915);
+  border-radius: 1rem;
+  padding: 1.25rem 1.25rem 1rem;
+  box-shadow: 0 18px 40px rgba(28, 25, 21, 0.18);
+}
+.q-acc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.q-acc-head h2 {
+  font-family: var(--font-serif, Fraunces, Georgia, serif);
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+.q-acc-x {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-muted, #6f675e);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+.q-acc-note {
+  margin: 0.75rem 0 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-muted, #6f675e);
+  line-height: 1.45;
+}
+.q-acc-list {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  border: 1px solid var(--color-line, #e3d9cc);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.q-acc-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--color-line, #e3d9cc);
+}
+.q-acc-list li:last-child { border-bottom: none; }
+.q-acc-list li.active { background: var(--color-oxide-soft, #f8e6e1); }
+.q-acc-name { flex: 1; font-size: 0.875rem; font-weight: 500; }
+.q-acc-form h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-oxide, #b8432f);
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+.q-acc-input {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--color-line, #e3d9cc);
+  border-radius: 0.5rem;
+  background: var(--color-paper, #f3eee6);
+  color: var(--color-ink, #1c1915);
+  font-size: 0.875rem;
+}
+.q-acc-input:focus {
+  outline: none;
+  border-color: var(--color-ink, #1c1915);
+}
+.q-acc-err {
+  min-height: 1.1rem;
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-oxide, #b8432f);
+}
+.q-acc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-line, #e3d9cc);
+  background: var(--color-sheet, #fbf8f3);
+  color: var(--color-ink, #1c1915);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.q-acc-btn:hover { border-color: var(--color-ink, #1c1915); }
+.q-acc-btn.primary {
+  background: var(--color-ink, #1c1915);
+  color: var(--color-sheet, #fbf8f3);
+  border-color: var(--color-ink, #1c1915);
+  width: 100%;
+  padding: 0.55rem 1rem;
+  margin-top: 0.25rem;
+}
+.q-acc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--color-line, #e3d9cc);
+}
+.q-acc-file { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .q-acc-chip { transition: none; }
+}

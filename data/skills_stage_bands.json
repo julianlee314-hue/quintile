@@ -1,0 +1,166 @@
+{
+  "source": "synthesized-index-bands",
+  "note": "Map-fork skills.json has 40 untagged items. Bands by trailing index. Prefer skills_emh.json (120) when available.",
+  "items": {
+    "indices-1": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "indices-2": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "indices-3": {
+      "stage": "medium",
+      "difficulty": 2
+    },
+    "indices-4": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "indices-5": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "manipulation-1": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "manipulation-2": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "manipulation-3": {
+      "stage": "medium",
+      "difficulty": 2
+    },
+    "manipulation-4": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "manipulation-5": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "linear-1": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "linear-2": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "linear-3": {
+      "stage": "medium",
+      "difficulty": 2
+    },
+    "linear-4": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "linear-5": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "quadratics-1": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "quadratics-2": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "quadratics-3": {
+      "stage": "medium",
+      "difficulty": 2
+    },
+    "quadratics-4": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "quadratics-5": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "logs-1": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "logs-2": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "logs-3": {
+      "stage": "medium",
+      "difficulty": 2
+    },
+    "logs-4": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "logs-5": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "functions-1": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "functions-2": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "functions-3": {
+      "stage": "medium",
+      "difficulty": 2
+    },
+    "functions-4": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "functions-5": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "trig-1": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "trig-2": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "trig-3": {
+      "stage": "medium",
+      "difficulty": 2
+    },
+    "trig-4": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "trig-5": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "chance-1": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "chance-2": {
+      "stage": "easy",
+      "difficulty": 1
+    },
+    "chance-3": {
+      "stage": "medium",
+      "difficulty": 2
+    },
+    "chance-4": {
+      "stage": "hard",
+      "difficulty": 3
+    },
+    "chance-5": {
+      "stage": "hard",
+      "difficulty": 3
+    }
+  }
+}

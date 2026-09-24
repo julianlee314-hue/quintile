@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var b=(function(){var p=location.pathname;var m=p.match(/^(\/quintile)(?=\/|$)/);return m?m[1]:"";})();window.__QUINTILE_BASE__=b;var el=document.createElement("base");el.href=(b||"")+"/";document.head.prepend(el);})();</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dojos · Quintile</title>
+<meta name="theme-color" content="#f3eee6"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,500&amp;family=Fraunces:opsz,wght@9..144,520;9..144,640;9..144,700&amp;display=swap"/>
+<link rel="stylesheet" href="assets/styles-DYnEbqMX.css"/>
+<link rel="stylesheet" href="js/account.css"/>
+<script src="js/account.js"></script>
+<script src="js/attempts.js"></script>
+<script src="js/points.js"></script>
+<script src="js/mastery.js"></script>
+<script src="js/practice-adaptive.js"></script>
+<style>
+.q-page{max-width:90rem;margin:0 auto;padding:1.25rem 1rem 4rem}
+@media(min-width:48rem){.q-page{padding:1.5rem 2rem 4rem}}
+.q-kicker{font-size:.875rem;font-weight:500;letter-spacing:.04em;color:var(--color-oxide,#b8432f)}
+.q-page h1{font-family:Fraunces,Georgia,serif;font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-.025em;margin:.5rem 0 0;font-weight:600}
+.q-lead{margin:.75rem 0 1.5rem;max-width:36rem;font-size:.875rem;line-height:1.6;color:var(--color-muted,#6f675e)}
+.q-nav{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.25rem}
+.q-nav a{border-radius:999px;padding:.4rem .9rem;font-size:.8125rem;font-weight:500;color:var(--color-muted);text-decoration:none;border:1px solid var(--color-line)}
+.q-nav a:hover,.q-nav a.active{border-color:var(--color-ink);color:var(--color-ink)}
+.q-nav a.active{background:var(--color-ink);color:var(--color-sheet)}
+.q-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:1rem}
+.q-card{border:1.5px solid var(--color-ink);border-radius:1rem;background:var(--color-sheet,#fbf8f3);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.5rem;min-height:11rem;text-decoration:none;color:inherit;transition:transform .15s ease,box-shadow .15s}
+.q-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(28,25,21,.08)}
+.q-card .tag{font-size:.65rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--color-oxide)}
+.q-card h2{font-family:Fraunces,Georgia,serif;font-size:1.25rem;margin:0;letter-spacing:-.02em}
+.q-card p{margin:0;font-size:.8125rem;color:var(--color-muted);line-height:1.45;flex:1}
+.q-card .cta{font-size:.8125rem;font-weight:600;color:var(--color-oxide)}
+.q-card.soon{opacity:.72;border-style:dashed}
+.q-card.soon .cta{color:var(--color-muted)}
+.dojo-stage{border:1px solid var(--color-ink);border-radius:1rem;background:var(--color-sheet);padding:1.25rem;max-width:28rem}
+.dojo-prompt{font-size:1.15rem;margin:1rem 0;font-family:Fraunces,Georgia,serif}
+.dojo-input{width:100%;padding:.65rem .85rem;border:1px solid var(--color-line);border-radius:.5rem;background:var(--color-paper);font-size:1rem;margin-bottom:.75rem}
+.dojo-row{display:flex;gap:.5rem;flex-wrap:wrap}
+.dojo-btn{border-radius:999px;padding:.55rem 1.1rem;border:1px solid var(--color-ink);background:var(--color-ink);color:var(--color-sheet);font-weight:600;font-size:.875rem;cursor:pointer}
+.dojo-btn.ghost{background:transparent;color:var(--color-ink)}
+.dojo-status{min-height:1.25rem;font-size:.8125rem;margin-top:.75rem;color:var(--color-muted)}
+.dojo-status.ok{color:#3d7a4a}.dojo-status.bad{color:var(--color-oxide)}
+.bond-board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.5rem;max-width:22rem}
+.bond-cell{aspect-ratio:1;border-radius:.75rem;border:1.5px solid var(--color-ink);background:var(--color-sheet);font-family:Fraunces,Georgia,serif;font-size:1.25rem;cursor:pointer}
+.bond-cell.on{background:var(--color-oxide);color:var(--color-sheet);border-color:var(--color-oxide)}
+.bond-target{font-size:1.5rem;font-family:Fraunces,Georgia,serif;margin:.5rem 0 1rem}
+
+</style>
+</head>
+<body style="background:var(--color-paper);color:var(--color-ink);font-family:Figtree,system-ui,sans-serif;margin:0;min-height:100dvh">
+<header style="border-bottom:1px solid var(--color-line);padding:1rem">
+  <div style="max-width:90rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="./" style="text-decoration:none;color:inherit;display:flex;align-items:baseline;gap:.75rem">
+      <span style="font-family:Fraunces,Georgia,serif;font-size:1.5rem;letter-spacing:-.025em">Quintile</span>
+      <span style="font-size:.875rem;color:var(--color-muted)" class="hide-sm">the long road</span>
+    </a>
+  </div>
+</header>
+<main class="q-page">
+
+<nav class="q-nav">
+  <a href="./">Atlas</a><a href="tree/">Tree</a><a href="games/">Games</a>
+  <a class="active" href="dojo/">Dojos</a>
+</nav>
+<p class="q-kicker">Specialty rooms</p>
+<h1>Training dojos</h1>
+<p class="q-lead">Focused loops that write into the mastery / SRS system under their own skill ids.</p>
+<div class="q-grid">
+  <a class="q-card" href="dojo/algebra/"><span class="tag">Open</span><h2>Algebra Dojo</h2><p>Expand, factor, rearrange.</p><span class="cta">Enter →</span></a>
+  <a class="q-card" href="dojo/integrals/"><span class="tag">Open</span><h2>Integrals Dojo</h2><p>Power rule, trig, exp, ln.</p><span class="cta">Enter →</span></a>
+</div>
+
+</main>
+
+</body>
+</html>

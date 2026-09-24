@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var b=(function(){var p=location.pathname;var m=p.match(/^(\/quintile)(?=\/|$)/);return m?m[1]:"";})();window.__QUINTILE_BASE__=b;var el=document.createElement("base");el.href=(b||"")+"/";document.head.prepend(el);})();</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Practice · Quintile</title>
+<meta name="theme-color" content="#f3eee6"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,500&amp;family=Fraunces:opsz,wght@9..144,520;9..144,640;9..144,700&amp;display=swap"/>
+<link rel="stylesheet" href="assets/styles-DYnEbqMX.css"/>
+<link rel="stylesheet" href="js/account.css"/>
+<style>
+.pr{max-width:40rem;margin:0 auto;padding:1.25rem 1rem 4rem}
+.pr h1{font-family:Fraunces,Georgia,serif;font-size:2rem;letter-spacing:-.025em;margin:.35rem 0}
+.pr .k{color:var(--color-oxide);font-size:.8rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.pr .lead{color:var(--color-muted);font-size:.875rem;line-height:1.5;margin:.5rem 0 1.25rem}
+.pr-bar{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:1rem}
+.pr-bar button,.pr-bar a.btn{border-radius:999px;padding:.45rem .95rem;font-size:.8125rem;font-weight:600;border:1px solid var(--color-line);background:var(--color-sheet);cursor:pointer;text-decoration:none;color:inherit}
+.pr-bar button.on,.pr-bar a.btn.on{background:var(--color-ink);color:var(--color-sheet);border-color:var(--color-ink)}
+.pr-card{border:1px solid var(--color-ink);border-radius:1rem;background:var(--color-sheet);padding:1.25rem}
+.pr-prompt{font-size:1.1rem;line-height:1.45;margin:0 0 1rem;font-family:Fraunces,Georgia,serif}
+.pr-input{width:100%;min-height:2.75rem;padding:.55rem .75rem;border:1px solid var(--color-line);border-radius:.5rem;background:var(--color-paper);font-size:1rem;margin-bottom:.75rem}
+.pr-row{display:flex;gap:.5rem;flex-wrap:wrap}
+.pr-go{border-radius:999px;padding:.55rem 1.2rem;background:var(--color-oxide);color:var(--color-sheet);border:none;font-weight:600;cursor:pointer}
+.pr-ghost{border-radius:999px;padding:.55rem 1.2rem;background:transparent;border:1px solid var(--color-ink);font-weight:600;cursor:pointer}
+.pr-status{min-height:1.25rem;font-size:.8125rem;margin-top:.75rem;color:var(--color-muted)}
+.pr-status.ok{color:#3d7a4a}.pr-status.bad{color:var(--color-oxide)}
+.pr-meta{font-size:.75rem;color:var(--color-muted);margin-bottom:.75rem}
+.pr-end{text-align:center;padding:1.5rem 0}
+.pr-end .score{font-family:Fraunces,Georgia,serif;font-size:3rem}
+</style>
+</head>
+<body style="margin:0;background:var(--color-paper);color:var(--color-ink);font-family:Figtree,system-ui,sans-serif;min-height:100dvh">
+<header style="border-bottom:1px solid var(--color-line);padding:1rem">
+  <div style="max-width:90rem;margin:0 auto;display:flex;align-items:center;gap:1rem">
+    <a href="./" style="text-decoration:none;color:inherit;font-family:Fraunces,Georgia,serif;font-size:1.5rem">Quintile</a>
+    <nav style="display:flex;gap:.35rem;flex-wrap:wrap;font-size:.8rem">
+      <a href="tree/" style="color:var(--color-muted);text-decoration:none">Tree</a>
+      <a href="games/" style="color:var(--color-muted);text-decoration:none">Games</a>
+      <a href="foundations" style="color:var(--color-muted);text-decoration:none">Skills</a>
+    </nav>
+  </div>
+</header>
+<main class="pr" id="app">
+  <p class="k">Question modes</p>
+  <h1 id="title">Loading…</h1>
+  <p class="lead" id="blurb">Practice raises and lowers difficulty. Exam locks a level and scores the run.</p>
+  <div class="pr-bar" id="mode-bar"></div>
+  <div class="pr-bar" id="level-bar"></div>
+  <div id="stage"></div>
+</main>
+<script src="js/account.js"></script>
+<script src="js/attempts.js"></script>
+<script src="js/points.js"></script>
+<script src="js/mastery.js"></script>
+<script src="js/practice-adaptive.js"></script>
+<script>
+(function(){
+  var params=new URLSearchParams(location.search);
+  var skillId=params.get('skill')||'indices';
+  var mode=(params.get('mode')|| (window.QuintileModes&&QuintileModes.getMode()) || 'practice');
+  if(mode!=='exam') mode='practice';
+  var examPick=params.get('level')||null;
+  var run=null, idx=0, earned=0, total=0, status='idle', draft='';
+  var M=window.QuintileModes;
+
+  function paintModeBar(){
+    var bar=document.getElementById('mode-bar');
+    bar.innerHTML='';
+    [['practice','Practice'],['exam','Exam']].forEach(function(pair){
+      var b=document.createElement('button');
+      b.textContent=pair[1];
+      if(pair[0]===mode) b.className='on';
+      b.onclick=function(){
+        mode=pair[0];
+        M.setMode(mode);
+        var u=new URL(location.href);
+        u.searchParams.set('mode',mode);
+        history.replaceState(null,'',u);
+        start();
+      };
+      bar.appendChild(b);
+    });
+    var a=document.createElement('a');
+    a.className='btn'; a.href='drill?skill='+encodeURIComponent(skillId);
+    a.textContent='Classic drill';
+    bar.appendChild(a);
+  }
+
+  function paintLevelBar(){
+    var bar=document.getElementById('level-bar');
+    bar.innerHTML='';
+    var cur=mode==='exam'?(examPick||M.getExamLevel(skillId)):M.getPracticeLevel(skillId);
+    M.LEVELS.forEach(function(lv){
+      var b=document.createElement('button');
+      b.textContent=lv.charAt(0).toUpperCase()+lv.slice(1);
+      if(lv===cur) b.className='on';
+      if(mode==='practice'){
+        b.title='Practice level is adaptive — click to set starting level';
+      }
+      b.onclick=function(){
+        if(mode==='exam'){ examPick=lv; M.setExamLevel(skillId,lv); start(); }
+        else { M.setPracticeLevel(skillId,lv); start(); }
+      };
+      bar.appendChild(b);
+    });
+    var hint=document.createElement('span');
+    hint.style.cssText='font-size:.75rem;color:var(--color-muted)';
+    hint.textContent=mode==='exam'?'Fixed for this exam':'Steps up on correct, down on mistake';
+    bar.appendChild(hint);
+  }
+
+  function norm(s){return String(s||'').replace(/\s+/g,'').toLowerCase().replace(/\$/g,'');}
+
+  function checkAccept(item, draft){
+    var acc=item.accept||[];
+    var d=norm(draft);
+    return acc.some(function(a){return norm(a)===d;});
+  }
+
+  function start(){
+    window.__quintileRunMode=mode;
+    var level=mode==='exam'?(examPick||M.getExamLevel(skillId)):M.getPracticeLevel(skillId);
+    window.__quintileRunLevel=level;
+    run=M.extractRun(skillId,{mode:mode,level:level,count:5});
+    idx=0; earned=0; total=run.items.length; status='idle'; draft='';
+    document.getElementById('title').textContent=run.title;
+    document.getElementById('blurb').textContent=mode==='exam'
+      ?('Exam at '+run.level+' — fixed difficulty. Measurement, not the earn streak.')
+      :('Practice at '+run.level+' — adaptive. Triple-play earn + SRS live here.');
+    paintModeBar(); paintLevelBar();
+    render();
+  }
+
+  function render(){
+    var stage=document.getElementById('stage');
+    if(!run||!run.items.length){
+      stage.innerHTML='<p class="lead">No items in this bank.</p>';
+      return;
+    }
+    if(idx>=run.items.length){
+      var all=earned===total;
+      if(mode==='exam') M.maybeExamSrsPass(skillId, all);
+      stage.innerHTML='<div class="pr-end"><p class="k">'+(mode==='exam'?'Exam complete':'Practice run complete')+'</p>'+
+        '<p class="score">'+earned+'/'+total+'</p>'+
+        '<p class="lead">'+(mode==='exam'?'Logged as exam. Earn streaks come from Practice.':'Level now: '+M.getPracticeLevel(skillId))+ '</p>'+
+        '<div class="pr-row" style="justify-content:center"><button class="pr-go" id="again">Run again</button>'+
+        '<a class="pr-ghost" style="display:inline-flex;align-items:center;text-decoration:none" href="tree/">Tree</a></div></div>';
+      document.getElementById('again').onclick=start;
+      return;
+    }
+    var item=run.items[idx];
+    stage.innerHTML='';
+    var meta=document.createElement('p'); meta.className='pr-meta';
+    meta.textContent=(mode==='exam'?'Exam':'Practice')+' · '+run.level+' · '+(idx+1)+' / '+run.items.length+
+      (mode==='practice'?' · live level '+M.getPracticeLevel(skillId):'');
+    stage.appendChild(meta);
+    var card=document.createElement('div'); card.className='pr-card';
+    var prompt=document.createElement('div'); prompt.className='pr-prompt'; prompt.textContent=item.prompt.replace(/\$/g,'');
+    // keep raw for katex-less display
+    prompt.textContent=item.prompt.replace(/\$/g,'');
+    card.appendChild(prompt);
+    var input=document.createElement('input'); input.className='pr-input'; input.id='ans';
+    input.placeholder='Your answer'; input.value=draft; input.disabled=status!=='idle';
+    input.addEventListener('input',function(){draft=input.value;});
+    input.addEventListener('keydown',function(e){if(e.key==='Enter'&&status==='idle') doCheck();});
+    card.appendChild(input);
+    var row=document.createElement('div'); row.className='pr-row';
+    if(status==='idle'){
+      var go=document.createElement('button'); go.className='pr-go'; go.textContent='Check'; go.onclick=doCheck;
+      row.appendChild(go);
+    } else {
+      var next=document.createElement('button'); next.className='pr-go'; next.textContent=idx===run.items.length-1?'Finish':'Next';
+      next.onclick=function(){idx++; status='idle'; draft=''; render();};
+      row.appendChild(next);
+    }
+    card.appendChild(row);
+    var st=document.createElement('p'); st.className='pr-status'+(status==='correct'?' ok':status==='wrong'?' bad':''); st.id='st';
+    if(status==='correct') st.textContent='Correct.'+(item.answer?' Answer: '+item.answer.replace(/\$/g,''):'');
+    if(status==='wrong') st.textContent='Not quite.'+(item.answer?' '+item.answer.replace(/\$/g,''):'')+(item.solution?' — '+item.solution.replace(/\$/g,''):'');
+    card.appendChild(st);
+    stage.appendChild(card);
+    if(status==='idle') setTimeout(function(){input.focus();},50);
+  }
+
+  function doCheck(){
+    if(status!=='idle'||!run) return;
+    var item=run.items[idx];
+    var ok=checkAccept(item, draft);
+    status=ok?'correct':'wrong';
+    if(ok) earned++;
+    // Log attempt — wrapAttempts in modes will tag exam vs practice and step level
+    if(window.__quintileAttempt){
+      __quintileAttempt({
+        kind: mode==='exam'?'exam':'skill-item',
+        skillId: skillId,
+        itemId: item.id,
+        prompt: item.prompt,
+        correct: ok,
+        answerDraft: draft,
+        meta: { mode: mode, level: run.level, title: run.title }
+      });
+    }
+    // Mastery streak only from Practice (mastery.js already gates on skill-item; ensure exam doesn't use skill-item for streak)
+    // For exam we used kind:'exam' so mastery wrap on skill-item won't fire — good.
+    // For practice, mastery.js hooks skill-item — good.
+    render();
+  }
+
+  M.setMode(mode);
+  M.loadBank().then(function(){
+    if(examPick) M.setExamLevel(skillId, examPick);
+    start();
+  });
+})();
+</script>
+</body>
+</html>

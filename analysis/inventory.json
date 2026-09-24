@@ -40,6 +40,23 @@
   ],
   "courses": [
     {
+      "id": "measures",
+      "era": "counting",
+      "row": 0,
+      "title": "Measures",
+      "blurb": "Time, money, length, mass and capacity — the measurement strand early primary expects before ratio work.",
+      "books": [
+        "1,001 Basic Math & Pre-Algebra",
+        "KS3 Maths, Books 1–3",
+        "Essential Prealgebra, McMullen"
+      ],
+      "requires": [],
+      "dest": {
+        "kind": "track",
+        "id": "measures"
+      }
+    },
+    {
       "id": "arithmetic",
       "era": "counting",
       "row": 1,
@@ -153,6 +170,26 @@
       ],
       "dest": {
         "kind": "foundations"
+      }
+    },
+    {
+      "id": "precalculus",
+      "era": "bridge",
+      "row": 0,
+      "title": "Precalculus",
+      "blurb": "Conics, parametric and polar form, and the last algebra a calculus course assumes. Companion to Functions.",
+      "books": [
+        "Algebra and Trigonometry, OpenStax",
+        "Nelson Advanced Functions 12",
+        "College Algebra, OpenStax"
+      ],
+      "requires": [
+        "functions",
+        "trigonometry"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "precalculus"
       }
     },
     {
@@ -291,6 +328,26 @@
       "dest": {
         "kind": "track",
         "id": "linear"
+      }
+    },
+    {
+      "id": "mechanics",
+      "era": "university",
+      "row": 3,
+      "title": "Mechanics",
+      "blurb": "Constant acceleration, forces, and projectiles — the applied half of A-level Maths / first-year physics maths.",
+      "books": [
+        "Adams, Calculus: A Complete Course",
+        "Basic Training in Mathematics, Shankar",
+        "Haese Analysis HL"
+      ],
+      "requires": [
+        "calculus",
+        "trigonometry"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "mechanics"
       }
     },
     {
@@ -3063,5 +3120,11 @@
       }
     ],
     "count": 49
-  }
+  },
+  "audit_additions": [
+    "measures",
+    "precalculus",
+    "mechanics"
+  ],
+  "course_count": 18
 }

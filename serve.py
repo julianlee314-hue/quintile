@@ -23,6 +23,10 @@ SPA_PREFIXES = (
     "/syllabus",
     "/track/",
     "/strand/",
+    "/tree",
+    "/games",
+    "/dojo",
+    "/practice",
 )
 
 SPA_EXACT = {
@@ -30,6 +34,10 @@ SPA_EXACT = {
     "/progress",
     "/syllabus",
     "/drill",
+    "/tree",
+    "/games",
+    "/dojo",
+    "/practice",
 }
 
 

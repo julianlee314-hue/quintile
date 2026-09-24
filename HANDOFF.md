@@ -56,3 +56,16 @@ Pages URL is the day-to-day shareable fork until that Build chat publish happens
 - Added courses: Measures, Precalculus, Mechanics (18 courses total)
 - Expanded: Geometry transforms, Calculus limits/techniques, Statistics inference, Linear eigen/RREF
 - Live grok.me still untouched; publish Pages from this repo after push
+
+
+## Feature pack (2026-09-24 ICT) — accounts · attempts · tree · mastery · modes · games
+
+Shipped on this Pages fork only:
+
+- Local accounts + attempt log + side-scrolling `/tree/`
+- Mastery SRS (triple-play earn; 7d / 30d / 180d; lapsed → re-triple; restart at 7d)
+- Practice (adaptive) + Exam (fixed) question modes — see `TREE.md`
+- Points scaffold (`POINTS.md`)
+- `/games/`, `/dojo/algebra/`, `/dojo/integrals/`, `/practice/`
+
+**Do not** push into grok.me from this pass.
