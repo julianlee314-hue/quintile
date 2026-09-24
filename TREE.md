@@ -74,17 +74,17 @@ See `POINTS.md`. Provisional constants in `js/points.js`. Balance on account chi
 
 ## Living grove (`/tree/`)
 
-Each era has its **own organic tree** (not one side-scrolling map). Era chips at top; `?era=counting` deep-links; last era remembered in `localStorage['quintile-tree-era']`.
+Painterly **Studio-Ghibli-like** countryside garden (inspiration only — no copyrighted characters). Each era has its **own cartoon plant** with layered sky/hills/clouds. Era chips at top; `?era=counting` deep-links; last era remembered in `localStorage['quintile-tree-era']`.
 
-| Era | Silhouette |
-|-----|------------|
-| I Counting | Seedling / heart-root |
-| II Workshop | Willow |
-| III Secondary | Oak canopy |
-| IV Bridge | Vine bridge |
-| V Diploma | Heart-body (human from heart) |
-| VI University | Constellation / neural |
-| VII Beyond | Spiral galaxy |
+| Era | Plant |
+|-----|-------|
+| I Counting | Heart sprout (young sprout + heart-root) |
+| II Workshop | Willow garden (trailing fronds) |
+| III Secondary | Sturdy oak |
+| IV Bridge | Flowering vine arch |
+| V Diploma | Climbing rose (heart-centered, botanical) |
+| VI University | Night garden / constellation blooms |
+| VII Beyond | Spiral moonflower |
 
-SVG skeleton + HTML leaf badges. Pan/zoom (drag, wheel, pinch); fit button. Mastery colours unchanged (`locked`…`secure`). Practice / Exam CTAs in the detail panel still work.
+Skills = **mosaic tiles** clustered on the plant (Q0 grey glass → Q5 gold-green bloom; wilt = rose edge). Growth % drives foliage opacity, blossoms, trunk. Soft vine unlock edges. Pan/zoom; Just Practice + Practice/Exam CTAs preserved. Assets: `assets/grove/`.
 

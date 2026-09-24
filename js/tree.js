@@ -12,13 +12,55 @@
   }
 
   var ERA_META = {
-    counting: { shape: "seedling", label: "Seedling", blurb: "Heart-root at center; sprout up, roots down" },
-    workshop: { shape: "willow", label: "Willow", blurb: "Trunk center with long drooping branches" },
-    secondary: { shape: "oak", label: "Oak canopy", blurb: "Thick trunk, broad crown of leaves" },
-    bridge: { shape: "arch", label: "Vine bridge", blurb: "Two banks joined by meeting vines" },
-    diploma: { shape: "human", label: "Heart-body", blurb: "Heart center; limbs as course strands" },
-    university: { shape: "constellation", label: "Constellation", blurb: "Glowing hub with radiating synapses" },
-    beyond: { shape: "spiral", label: "Spiral galaxy", blurb: "Infinite spiral arms" },
+    counting: {
+      shape: "seedling",
+      label: "Heart sprout",
+      blurb: "A young sprout rising from a heart-root",
+      sky: "dawn",
+      particles: false,
+    },
+    workshop: {
+      shape: "willow",
+      label: "Willow garden",
+      blurb: "Trailing fronds soft as afternoon rain",
+      sky: "mist",
+      particles: false,
+    },
+    secondary: {
+      shape: "oak",
+      label: "Sturdy oak",
+      blurb: "Broad crown under warm countryside light",
+      sky: "afternoon",
+      particles: false,
+    },
+    bridge: {
+      shape: "arch",
+      label: "Flowering vine",
+      blurb: "An arch of blossoms joining two banks",
+      sky: "golden",
+      particles: false,
+    },
+    diploma: {
+      shape: "human",
+      label: "Climbing rose",
+      blurb: "Heart-centered rose — botanical, tasteful",
+      sky: "dusk",
+      particles: true,
+    },
+    university: {
+      shape: "constellation",
+      label: "Night garden",
+      blurb: "Constellation blooms under a glowing dusk",
+      sky: "night",
+      particles: true,
+    },
+    beyond: {
+      shape: "spiral",
+      label: "Moonflower",
+      blurb: "A spiral moonflower toward the infinite",
+      sky: "twilight",
+      particles: true,
+    },
   };
 
   var STORAGE_ERA = "quintile-tree-era";
@@ -714,6 +756,236 @@
     return { w: W, h: H, positions: pos, paths: paths, fills: [] };
   }
 
+
+  /* ---------- Grove world + hero plant decor ---------- */
+
+  function buildWorldBackdrop(eraId, meta) {
+    var wrap = document.createElement("div");
+    wrap.className = "grove-world" + (meta.particles ? " has-fireflies" : "");
+    wrap.setAttribute("data-era", eraId);
+    wrap.setAttribute("data-sky", meta.sky || "dawn");
+    wrap.setAttribute("aria-hidden", "true");
+
+    var sky = document.createElement("div");
+    sky.className = "grove-sky";
+    wrap.appendChild(sky);
+
+    var hills = document.createElement("div");
+    hills.className = "grove-hills";
+    var far = meta.sky === "night" || meta.sky === "twilight" ? "#2a3850" : "#9bb89a";
+    var near = meta.sky === "night" || meta.sky === "twilight" ? "#1e2c40" : "#7a9e78";
+    if (meta.sky === "golden") { far = "#b0b888"; near = "#8a9860"; }
+    if (meta.sky === "dusk") { far = "#7a8a88"; near = "#5a7068"; }
+    if (meta.sky === "mist") { far = "#9aafa0"; near = "#7a9480"; }
+    hills.innerHTML =
+      '<svg viewBox="0 0 1200 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path fill="' + far + '" fill-opacity="0.55" d="M0,220 C120,160 220,140 340,170 C460,200 560,120 700,150 C840,180 960,110 1200,160 L1200,320 L0,320 Z"/>' +
+      '<path fill="' + near + '" fill-opacity="0.7" d="M0,260 C180,200 300,220 450,240 C600,260 740,190 900,230 C1040,260 1120,220 1200,250 L1200,320 L0,320 Z"/>' +
+      "</svg>";
+    wrap.appendChild(hills);
+
+    var clouds = document.createElement("div");
+    clouds.className = "grove-clouds";
+    if (!state.reducedMotion) {
+      for (var ci = 0; ci < 3; ci++) {
+        var img = document.createElement("img");
+        img.className = "grove-cloud";
+        img.src = url("/assets/grove/cloud.svg");
+        img.alt = "";
+        img.loading = "lazy";
+        clouds.appendChild(img);
+      }
+    }
+    wrap.appendChild(clouds);
+
+    var mist = document.createElement("div");
+    mist.className = "grove-mist";
+    wrap.appendChild(mist);
+
+    var ground = document.createElement("div");
+    ground.className = "grove-ground";
+    wrap.appendChild(ground);
+
+    if (meta.particles) {
+      var flies = document.createElement("div");
+      flies.className = "grove-fireflies";
+      var nFly = state.reducedMotion ? 0 : 10;
+      for (var fi = 0; fi < nFly; fi++) {
+        var f = document.createElement("span");
+        f.className = "grove-firefly";
+        f.style.left = 8 + hash01("fly" + fi + eraId) * 84 + "%";
+        f.style.top = 25 + hash01("flyy" + fi + eraId) * 55 + "%";
+        f.style.animationDelay = -hash01("flyd" + fi) * 6 + "s";
+        f.style.animationDuration = 4.5 + hash01("flyt" + fi) * 4 + "s";
+        flies.appendChild(f);
+      }
+      wrap.appendChild(flies);
+    }
+    return wrap;
+  }
+
+  function appendHeroDecor(svg, ns, eraId, layout, gFrac) {
+    var W = layout.w;
+    var H = layout.h;
+    var cx = W / 2;
+    var decor = document.createElementNS(ns, "g");
+    decor.setAttribute("class", "tree-hero-leaves");
+    decor.setAttribute("aria-hidden", "true");
+
+    var wash = document.createElementNS(ns, "g");
+    wash.setAttribute("class", "skel-wash");
+
+    function ellipse(parent, ex, ey, rx, ry, fill, op) {
+      var el = document.createElementNS(ns, "ellipse");
+      el.setAttribute("cx", String(ex));
+      el.setAttribute("cy", String(ey));
+      el.setAttribute("rx", String(rx));
+      el.setAttribute("ry", String(ry));
+      el.setAttribute("fill", fill);
+      if (op != null) el.setAttribute("opacity", String(op));
+      parent.appendChild(el);
+      return el;
+    }
+    function leafPath(parent, d, fill) {
+      var p = document.createElementNS(ns, "path");
+      p.setAttribute("d", d);
+      p.setAttribute("fill", fill);
+      parent.appendChild(p);
+      return p;
+    }
+
+    var shape = (ERA_META[eraId] || {}).shape || "seedling";
+    var leafN = Math.round(4 + gFrac * 18);
+
+    if (shape === "seedling") {
+      // Heart-root wash + tender leaves
+      leafPath(
+        wash,
+        "M" + cx + "," + (H * 0.48) + " C" + (cx - 90) + "," + (H * 0.38) + " " + (cx - 110) + "," + (H * 0.55) + " " + cx + "," + (H * 0.68) +
+          " C" + (cx + 110) + "," + (H * 0.55) + " " + (cx + 90) + "," + (H * 0.38) + " " + cx + "," + (H * 0.48) + " Z",
+        "#e8a090"
+      );
+      for (var i = 0; i < leafN; i++) {
+        var ang = -1.2 + (i / Math.max(1, leafN - 1)) * 2.4;
+        var len = 40 + gFrac * 70 + hash01("sl" + i) * 30;
+        var lx = cx + Math.sin(ang) * len;
+        var ly = H * 0.42 - Math.cos(ang) * len * 0.85;
+        leafPath(
+          decor,
+          "M" + cx + "," + (H * 0.45) + " Q" + ((cx + lx) / 2 + Math.cos(ang) * 20) + "," + ((H * 0.45 + ly) / 2) + " " + lx + "," + ly +
+            " Q" + ((cx + lx) / 2 - Math.cos(ang) * 12) + "," + ((H * 0.45 + ly) / 2 + 8) + " " + cx + "," + (H * 0.45) + " Z",
+          i % 2 ? "#6fa87a" : "#8fbf7a"
+        );
+      }
+    } else if (shape === "willow") {
+      ellipse(wash, cx, H * 0.28, 180 + gFrac * 80, 90 + gFrac * 40, "#a8d4b0", 0.35);
+      for (var wi = 0; wi < leafN + 4; wi++) {
+        var side = wi % 2 ? -1 : 1;
+        var wx = cx + side * (40 + (wi % 7) * 28 + hash01("w" + wi) * 20);
+        var wy0 = H * 0.22 + hash01("wy" + wi) * 40;
+        var wy1 = wy0 + 120 + gFrac * 160 + hash01("wl" + wi) * 80;
+        leafPath(
+          decor,
+          "M" + wx + "," + wy0 + " Q" + (wx + side * 18) + "," + ((wy0 + wy1) / 2) + " " + (wx + side * 6) + "," + wy1 +
+            " Q" + (wx - side * 8) + "," + ((wy0 + wy1) / 2) + " " + wx + "," + wy0 + " Z",
+          wi % 3 ? "#5a9a4a" : "#7eb888"
+        );
+      }
+    } else if (shape === "oak") {
+      ellipse(wash, cx, H * 0.32, 260 + gFrac * 100, 160 + gFrac * 50, "#6fa87a", 0.4);
+      ellipse(decor, cx - 80, H * 0.28, 120, 90, "#4d8a58", 0.35 + gFrac * 0.4);
+      ellipse(decor, cx + 90, H * 0.3, 130, 95, "#3d7a4a", 0.3 + gFrac * 0.45);
+      ellipse(decor, cx, H * 0.22, 140, 100, "#5a9a4a", 0.35 + gFrac * 0.4);
+      for (var oi = 0; oi < Math.round(gFrac * 8); oi++) {
+        ellipse(
+          decor,
+          cx - 140 + hash01("oak" + oi) * 280,
+          H * 0.18 + hash01("oaky" + oi) * 160,
+          18 + hash01("oakr" + oi) * 22,
+          12 + hash01("oakr2" + oi) * 14,
+          "#e8a0b0",
+          0.5 + gFrac * 0.4
+        );
+      }
+    } else if (shape === "arch") {
+      // Flowering vine clusters along the arch
+      for (var ai = 0; ai < leafN + 6; ai++) {
+        var t = ai / (leafN + 5);
+        var ax = W * 0.12 + t * W * 0.76;
+        var ay = H * 0.62 - Math.sin(t * Math.PI) * (180 + gFrac * 100);
+        ellipse(decor, ax, ay, 14 + gFrac * 10, 10 + gFrac * 8, ai % 2 ? "#e8a0b0" : "#7eb888", 0.45 + gFrac * 0.4);
+        if (ai % 3 === 0) ellipse(decor, ax + 10, ay + 8, 8, 6, "#f0c878", 0.5);
+      }
+      ellipse(wash, cx, H * 0.55, 300, 80, "#c8e6c0", 0.25);
+    } else if (shape === "human") {
+      // Climbing rose — heart + botanical vines (tasteful, not humanoid body)
+      leafPath(
+        wash,
+        "M" + cx + "," + (H * 0.42) + " C" + (cx - 70) + "," + (H * 0.32) + " " + (cx - 90) + "," + (H * 0.5) + " " + cx + "," + (H * 0.62) +
+          " C" + (cx + 90) + "," + (H * 0.5) + " " + (cx + 70) + "," + (H * 0.32) + " " + cx + "," + (H * 0.42) + " Z",
+        "#e07080"
+      );
+      for (var ri = 0; ri < leafN + 2; ri++) {
+        var ra = (ri / (leafN + 1)) * Math.PI * 2;
+        var rr = 50 + gFrac * 90 + hash01("rose" + ri) * 40;
+        var rx = cx + Math.cos(ra) * rr;
+        var ry = H * 0.48 + Math.sin(ra) * rr * 0.85;
+        ellipse(decor, rx, ry, 12 + gFrac * 8, 9 + gFrac * 6, ri % 2 ? "#d06070" : "#6fa87a", 0.5 + gFrac * 0.35);
+      }
+    } else if (shape === "constellation") {
+      ellipse(wash, cx, H * 0.45, 200, 200, "#4a6088", 0.25);
+      for (var ui = 0; ui < leafN + 8; ui++) {
+        var ua = (ui / (leafN + 7)) * Math.PI * 2;
+        var ur = 80 + (ui % 4) * 40 + gFrac * 60;
+        ellipse(
+          decor,
+          cx + Math.cos(ua) * ur,
+          H * 0.45 + Math.sin(ua) * ur,
+          6 + gFrac * 8,
+          6 + gFrac * 8,
+          ui % 3 === 0 ? "#f0e8c0" : "#9ec8f0",
+          0.4 + gFrac * 0.5
+        );
+      }
+    } else if (shape === "spiral") {
+      ellipse(wash, cx, H * 0.48, 220, 220, "#6a5088", 0.22);
+      for (var si = 0; si < leafN + 10; si++) {
+        var st = si / (leafN + 9);
+        var sa = st * Math.PI * 4.5;
+        var sr = 30 + st * (160 + gFrac * 100);
+        ellipse(
+          decor,
+          cx + Math.cos(sa) * sr,
+          H * 0.48 + Math.sin(sa) * sr * 0.9,
+          10 + gFrac * 8,
+          8 + gFrac * 6,
+          si % 2 ? "#c8a0e0" : "#e8c0f0",
+          0.45 + gFrac * 0.4
+        );
+      }
+    }
+
+    // Ambient pollen motes when growth is decent
+    if (gFrac > 0.15 && !state.reducedMotion) {
+      var ambient = document.createElementNS(ns, "g");
+      ambient.setAttribute("class", "tree-ambient");
+      var pn = Math.min(14, Math.round(gFrac * 16));
+      for (var pi = 0; pi < pn; pi++) {
+        var pc = document.createElementNS(ns, "circle");
+        pc.setAttribute("class", "pollen");
+        pc.setAttribute("cx", String(W * (0.2 + hash01("p" + pi + eraId) * 0.6)));
+        pc.setAttribute("cy", String(H * (0.15 + hash01("py" + pi) * 0.55)));
+        pc.setAttribute("r", String(1.5 + hash01("pr" + pi) * 2.5));
+        ambient.appendChild(pc);
+      }
+      svg.appendChild(ambient);
+    }
+
+    svg.appendChild(wash);
+    svg.appendChild(decor);
+  }
+
+
   var LAYOUTS = {
     seedling: layoutSeedling,
     willow: layoutWillow,
@@ -926,6 +1198,7 @@
       edges.push({
         d: "M" + a.x + "," + a.y + " Q" + mx + "," + my + " " + b.x + "," + b.y,
         lit: lit,
+        vine: true,
       });
     });
     // Cap for perf on dense eras
@@ -935,7 +1208,7 @@
 
   function badgeClass(n, role, leafCount) {
     var st = state.nodeState[n.id] || "available";
-    var cls = "tree-badge state-" + st;
+    var cls = "tree-badge tree-tile state-" + st;
     if (role === "heart") cls += " heart hub";
     else if (n.kind === "course" || role === "hub") cls += " hub";
     else if (leafCount > 60) cls += " leaf-sm";
@@ -976,6 +1249,12 @@
     var edges = buildEdgePaths(layout);
 
     root.innerHTML = "";
+    root.style.setProperty("--growth", String(gFrac));
+
+    // Painterly countryside backdrop (one era at a time)
+    root.appendChild(buildWorldBackdrop(state.eraId, meta));
+    root.setAttribute("data-sky", meta.sky || "dawn");
+    root.setAttribute("data-era", state.eraId);
 
     var label = document.createElement("div");
     label.className = "tree-era-label";
@@ -1045,22 +1324,32 @@
 
     var defs = document.createElementNS(ns, "defs");
     defs.innerHTML =
-      '<linearGradient id="barkGrad" x1="0" y1="0" x2="0" y2="1">' +
-      '<stop offset="0%" stop-color="#8b6b5a"/><stop offset="100%" stop-color="#5a4336"/></linearGradient>';
+      '<linearGradient id="barkGrad" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0%" stop-color="#a08068"/><stop offset="55%" stop-color="#6b5344"/><stop offset="100%" stop-color="#4a352c"/></linearGradient>' +
+      '<radialGradient id="canopyWash" cx="50%" cy="40%" r="60%">' +
+      '<stop offset="0%" stop-color="#c8e6c0" stop-opacity="0.55"/><stop offset="100%" stop-color="#6fa87a" stop-opacity="0.05"/></radialGradient>' +
+      '<filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">' +
+      '<feGaussianBlur stdDeviation="1.2"/></filter>';
     svg.appendChild(defs);
 
     svg.style.setProperty("--growth", String(gFrac));
-    // Blossoms scale with growth
+
+    // Hand-authored cartoon plant decor (leaves / blossoms / washes)
+    appendHeroDecor(svg, ns, state.eraId, layout, gFrac);
+
+    // Blossoms scale with growth — gold-green bloom accents
     var blossomGroup = document.createElementNS(ns, "g");
     blossomGroup.setAttribute("class", "tree-blossoms");
-    var blossomCount = Math.round(gFrac * 12);
+    var blossomCount = Math.round(gFrac * 18);
     for (var bi = 0; bi < blossomCount; bi++) {
-      var cx = layout.w * (0.35 + (bi % 6) * 0.08 + (hash01("b" + bi + state.eraId) - 0.5) * 0.06);
-      var cy = layout.h * (0.18 + Math.floor(bi / 6) * 0.12 + hash01("by" + bi) * 0.08);
+      var bcx = layout.w * (0.28 + (bi % 7) * 0.07 + (hash01("b" + bi + state.eraId) - 0.5) * 0.05);
+      var bcy = layout.h * (0.14 + Math.floor(bi / 7) * 0.1 + hash01("by" + bi) * 0.08);
       var c = document.createElementNS(ns, "circle");
-      c.setAttribute("cx", String(cx));
-      c.setAttribute("cy", String(cy));
-      c.setAttribute("r", String(4 + gFrac * 6));
+      var bcls = bi % 3 === 0 ? "blossom blossom-gold" : bi % 3 === 1 ? "blossom blossom-lilac" : "blossom";
+      c.setAttribute("class", bcls);
+      c.setAttribute("cx", String(bcx));
+      c.setAttribute("cy", String(bcy));
+      c.setAttribute("r", String(3.5 + gFrac * 7 + hash01("br" + bi) * 3));
       blossomGroup.appendChild(c);
     }
     svg.appendChild(blossomGroup);
@@ -1081,7 +1370,10 @@
     edges.forEach(function (ed) {
       var p = document.createElementNS(ns, "path");
       p.setAttribute("d", ed.d);
-      p.setAttribute("class", "skel-edge" + (ed.lit ? " lit" : ""));
+      p.setAttribute(
+        "class",
+        "skel-edge" + (ed.vine ? " vine-soft" : "") + (ed.lit ? " lit" : "")
+      );
       svg.appendChild(p);
     });
     world.appendChild(svg);
@@ -1133,11 +1425,15 @@
       } else if (st === "wilt") {
         qPip = '<span class="q-pip" aria-hidden="true">wilt</span>';
       }
+      var useMotif = leafCount <= 80 || role === "hub" || role === "heart";
+      var motifHtml = useMotif
+        ? '<span class="motif"><img alt="" src="' +
+          motifUrl(n.motif) +
+          '" width="36" height="36" loading="lazy"/></span>'
+        : "";
       btn.innerHTML =
         '<span class="bloom-ring" aria-hidden="true"></span>' +
-        '<span class="motif"><img alt="" src="' +
-        motifUrl(n.motif) +
-        '" width="36" height="36" loading="lazy"/></span>' +
+        motifHtml +
         '<span class="title">' +
         escapeHtml(n.title) +
         "</span>" +
@@ -1160,7 +1456,7 @@
     var hint = document.getElementById("tree-motif-hint");
     if (hint) {
       hint.textContent =
-        meta.label + " of " + (era ? era.title : state.eraId) + " — drag to pan · scroll to zoom · pick another era above.";
+        meta.label + " · " + (era ? era.title : state.eraId) + " — tap a tile · drag to pan · scroll to zoom.";
     }
   }
 
