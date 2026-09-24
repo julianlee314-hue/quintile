@@ -93,5 +93,165 @@
     "id": "inf-4",
     "code": "I.4",
     "title": "A partial sum of powers of one half"
+  },
+  {
+    "id": "mea-1",
+    "code": "M.1",
+    "title": "Time on a clock"
+  },
+  {
+    "id": "mea-2",
+    "code": "M.2",
+    "title": "Money totals"
+  },
+  {
+    "id": "mea-3",
+    "code": "M.3",
+    "title": "Length and units"
+  },
+  {
+    "id": "mea-4",
+    "code": "M.4",
+    "title": "Mass and capacity"
+  },
+  {
+    "id": "mea-5",
+    "code": "M.5",
+    "title": "Converting metric units"
+  },
+  {
+    "id": "mea-6",
+    "code": "M.6",
+    "title": "Perimeter of rectangles"
+  },
+  {
+    "id": "geo-tf-1",
+    "code": "G.T1",
+    "title": "Reflection"
+  },
+  {
+    "id": "geo-tf-2",
+    "code": "G.T2",
+    "title": "Rotation"
+  },
+  {
+    "id": "geo-tf-3",
+    "code": "G.T3",
+    "title": "Translation"
+  },
+  {
+    "id": "geo-con-1",
+    "code": "G.C1",
+    "title": "Constructing a perpendicular"
+  },
+  {
+    "id": "pc-1",
+    "code": "P.1",
+    "title": "Circle as a conic"
+  },
+  {
+    "id": "pc-2",
+    "code": "P.2",
+    "title": "Parabola focus-directrix"
+  },
+  {
+    "id": "pc-3",
+    "code": "P.3",
+    "title": "Ellipse and hyperbola sketch"
+  },
+  {
+    "id": "pc-4",
+    "code": "P.4",
+    "title": "Parametric equations"
+  },
+  {
+    "id": "pc-5",
+    "code": "P.5",
+    "title": "Polar coordinates"
+  },
+  {
+    "id": "pc-6",
+    "code": "P.6",
+    "title": "Trig form of complex numbers"
+  },
+  {
+    "id": "cal-lim-1",
+    "code": "C.L1",
+    "title": "A limit from a table"
+  },
+  {
+    "id": "cal-lim-2",
+    "code": "C.L2",
+    "title": "Continuity at a point"
+  },
+  {
+    "id": "cal-sub-1",
+    "code": "C.S1",
+    "title": "Integration by substitution"
+  },
+  {
+    "id": "cal-parts-1",
+    "code": "C.P1",
+    "title": "Integration by parts"
+  },
+  {
+    "id": "stat-samp-1",
+    "code": "S.S1",
+    "title": "Sampling methods"
+  },
+  {
+    "id": "stat-ci-1",
+    "code": "S.C1",
+    "title": "A confidence interval for a mean"
+  },
+  {
+    "id": "stat-ht-1",
+    "code": "S.H1",
+    "title": "A hypothesis test for a proportion"
+  },
+  {
+    "id": "stat-reg-1",
+    "code": "S.R1",
+    "title": "Least-squares line"
+  },
+  {
+    "id": "lin-row-1",
+    "code": "L.R1",
+    "title": "Row reduction to echelon form"
+  },
+  {
+    "id": "lin-eig-1",
+    "code": "L.E1",
+    "title": "Eigenvalues of a 2×2"
+  },
+  {
+    "id": "lin-eivec-1",
+    "code": "L.E2",
+    "title": "An eigenvector"
+  },
+  {
+    "id": "lin-ind-1",
+    "code": "L.I1",
+    "title": "Linear independence of two vectors"
+  },
+  {
+    "id": "mec-1",
+    "code": "K.1",
+    "title": "SUVAT with constant a"
+  },
+  {
+    "id": "mec-2",
+    "code": "K.2",
+    "title": "Newton’s second law"
+  },
+  {
+    "id": "mec-3",
+    "code": "K.3",
+    "title": "A projectile’s range"
+  },
+  {
+    "id": "mec-4",
+    "code": "K.4",
+    "title": "Momentum in one dimension"
   }
 ]

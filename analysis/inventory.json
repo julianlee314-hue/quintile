@@ -1,0 +1,3067 @@
+{
+  "generated": "2026-09-24T18:10:00+07:00",
+  "live_url": "https://king-wind-charm-lilac.grok.me/",
+  "eras": [
+    {
+      "id": "counting",
+      "numeral": "I",
+      "title": "Counting"
+    },
+    {
+      "id": "workshop",
+      "numeral": "II",
+      "title": "Workshop"
+    },
+    {
+      "id": "secondary",
+      "numeral": "III",
+      "title": "Secondary"
+    },
+    {
+      "id": "bridge",
+      "numeral": "IV",
+      "title": "Bridge"
+    },
+    {
+      "id": "diploma",
+      "numeral": "V",
+      "title": "Diploma"
+    },
+    {
+      "id": "university",
+      "numeral": "VI",
+      "title": "University"
+    },
+    {
+      "id": "beyond",
+      "numeral": "VII",
+      "title": "Beyond"
+    }
+  ],
+  "courses": [
+    {
+      "id": "arithmetic",
+      "era": "counting",
+      "row": 1,
+      "title": "First numbers",
+      "blurb": "Bonds, tables, and the four operations, drilled until a later course can assume them. Then place value and a first fraction.",
+      "books": [
+        "1,001 Basic Math & Pre-Algebra",
+        "Essential Prealgebra, McMullen",
+        "College Algebra corequisite support"
+      ],
+      "requires": [],
+      "dest": {
+        "kind": "track",
+        "id": "arithmetic"
+      }
+    },
+    {
+      "id": "prealgebra",
+      "era": "workshop",
+      "row": 0,
+      "title": "Pre-algebra",
+      "blurb": "The whole number strand, ratio, and the first letters. This is the KS3 opening, before quadratics.",
+      "books": [
+        "1,001 Basic Math & Pre-Algebra",
+        "KS3 Maths, Books 1–3",
+        "KS3 Higher study guide and workbook"
+      ],
+      "requires": [
+        "arithmetic"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "prealgebra"
+      }
+    },
+    {
+      "id": "geometry",
+      "era": "workshop",
+      "row": 2,
+      "title": "Geometry",
+      "blurb": "Angles, polygons, circles, area and volume, Pythagoras, similarity, then a coordinate grid.",
+      "books": [
+        "Geometry For Dummies",
+        "KS3 Maths, Books 1–3",
+        "GCSE & IGCSE Higher"
+      ],
+      "requires": [
+        "arithmetic"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "geometry"
+      }
+    },
+    {
+      "id": "algebra",
+      "era": "secondary",
+      "row": 0,
+      "title": "Algebra",
+      "blurb": "Indices through quadratics, simultaneous equations, sequences, and the first logarithms.",
+      "books": [
+        "1,001 Algebra II Practice Problems",
+        "GCSE & IGCSE Higher",
+        "College Algebra, OpenStax",
+        "IGCSE Mathematics workbook"
+      ],
+      "requires": [
+        "prealgebra"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "algebra"
+      }
+    },
+    {
+      "id": "trigonometry",
+      "era": "secondary",
+      "row": 1,
+      "title": "Trigonometry",
+      "blurb": "Right-angled triangles first, then the unit circle, identities, and equations.",
+      "books": [
+        "Algebra and Trigonometry, OpenStax",
+        "Geometry For Dummies",
+        "GCSE & IGCSE Higher"
+      ],
+      "requires": [
+        "geometry",
+        "algebra"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "trigonometry"
+      }
+    },
+    {
+      "id": "higher",
+      "era": "secondary",
+      "row": 2,
+      "title": "Higher certificate",
+      "blurb": "One school road, KS3 through the Higher course, in a single tree. Use it whole, or after the split courses.",
+      "books": [
+        "KS3 Maths, Books 1–3",
+        "KS3 Higher study guide and workbook",
+        "GCSE & IGCSE Higher",
+        "IGCSE Mathematics workbook",
+        "GCSE revision guide, Higher"
+      ],
+      "requires": [
+        "algebra",
+        "geometry"
+      ],
+      "dest": {
+        "kind": "foundations"
+      }
+    },
+    {
+      "id": "functions",
+      "era": "bridge",
+      "row": 1,
+      "title": "Functions",
+      "blurb": "The bridge. Notation, transformations, then the families a diploma or a calculus course expects.",
+      "books": [
+        "Nelson Functions 11",
+        "Nelson Advanced Functions 12",
+        "Algebra and Trigonometry, OpenStax"
+      ],
+      "requires": [
+        "algebra"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "functions"
+      }
+    },
+    {
+      "id": "aa-sl",
+      "era": "diploma",
+      "row": 0,
+      "title": "Analysis SL",
+      "blurb": "The standard-level half of Analysis and approaches. Same order as the HL tree, with the HL-only topics left out.",
+      "books": [
+        "Math AA SL study guide",
+        "Haese Mathematics, Analysis and approaches HL",
+        "Hodder AA HL exam practice"
+      ],
+      "requires": [
+        "functions",
+        "higher"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "aa-sl"
+      }
+    },
+    {
+      "id": "aa-hl",
+      "era": "diploma",
+      "row": 1,
+      "title": "Analysis HL",
+      "blurb": "The diploma this room was built around. Five units, HL topics marked, a worked example and five questions on each.",
+      "books": [
+        "Haese Mathematics, Analysis and approaches HL",
+        "Haese worked solutions",
+        "Hodder AA HL exam practice",
+        "Basic Training in Mathematics, Shankar"
+      ],
+      "requires": [
+        "aa-sl",
+        "trigonometry"
+      ],
+      "dest": {
+        "kind": "syllabus"
+      }
+    },
+    {
+      "id": "applications",
+      "era": "diploma",
+      "row": 2,
+      "title": "Applications",
+      "blurb": "Models, measure, data, and a lighter calculus. The Applications and interpretation path, not the proof path.",
+      "books": [
+        "Haese Mathematics, Applications and interpretation SL",
+        "Contemporary Mathematics, OpenStax",
+        "AP Statistics"
+      ],
+      "requires": [
+        "higher"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "applications"
+      }
+    },
+    {
+      "id": "calculus",
+      "era": "university",
+      "row": 0,
+      "title": "Calculus",
+      "blurb": "Rate of change, then area. The order of Thompson and the skills workbook, using the diploma calculus as the spine.",
+      "books": [
+        "Calculus Made Easy, Thompson",
+        "Essential Calculus Skills, McMullen",
+        "Adams, Calculus: A Complete Course",
+        "Basic Training in Mathematics, Shankar"
+      ],
+      "requires": [
+        "functions",
+        "trigonometry"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "calculus"
+      }
+    },
+    {
+      "id": "statistics",
+      "era": "university",
+      "row": 1,
+      "title": "Statistics",
+      "blurb": "From a mean and a tree diagram to the binomial, the normal, and Bayes.",
+      "books": [
+        "AP Statistics",
+        "Contemporary Mathematics, OpenStax",
+        "Haese Applications SL",
+        "Haese Analysis HL"
+      ],
+      "requires": [
+        "higher"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "statistics"
+      }
+    },
+    {
+      "id": "linear",
+      "era": "university",
+      "row": 2,
+      "title": "Linear algebra",
+      "blurb": "Vectors, then matrices: a determinant, a matrix times a vector, and a linear system.",
+      "books": [
+        "Basic Training in Mathematics, Shankar",
+        "1,001 Algebra II Practice Problems",
+        "Haese Analysis HL"
+      ],
+      "requires": [
+        "algebra"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "linear"
+      }
+    },
+    {
+      "id": "infinite",
+      "era": "beyond",
+      "row": 0,
+      "title": "The infinite",
+      "blurb": "Finite sums, then sums that do not stop. Euler’s order: geometric series, then the exponential series.",
+      "books": [
+        "Euler, Analysis of the Infinite, Books I and II",
+        "Calculus Made Easy, Thompson",
+        "Adams, Calculus: A Complete Course"
+      ],
+      "requires": [
+        "calculus"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "infinite"
+      }
+    },
+    {
+      "id": "topology",
+      "era": "beyond",
+      "row": 1,
+      "title": "Topology",
+      "blurb": "A first foothold, not the whole graduate course: finite sets, subsets, unions, and which numbers sit in an interval.",
+      "books": [
+        "Topology Without Tears, Morris",
+        "Munkres, Topology"
+      ],
+      "requires": [
+        "calculus"
+      ],
+      "dest": {
+        "kind": "track",
+        "id": "topology"
+      }
+    }
+  ],
+  "tracks": {
+    "arithmetic": {
+      "title": "First numbers",
+      "units": [
+        {
+          "id": "ari-facts",
+          "code": "A",
+          "title": "Facts, until they are boring",
+          "topics": [
+            {
+              "id": "ari-bonds",
+              "title": "Bonds",
+              "leaves": [
+                {
+                  "id": "ari-1",
+                  "code": "A.1",
+                  "title": "Bonds to 10"
+                },
+                {
+                  "id": "ari-2",
+                  "code": "A.2",
+                  "title": "Bonds to 20"
+                },
+                {
+                  "id": "ari-3",
+                  "code": "A.3",
+                  "title": "Bonds to 100"
+                }
+              ]
+            },
+            {
+              "id": "ari-ops",
+              "title": "The four operations",
+              "leaves": [
+                {
+                  "id": "ari-4",
+                  "code": "A.4",
+                  "title": "Addition facts"
+                },
+                {
+                  "id": "ari-5",
+                  "code": "A.5",
+                  "title": "Subtraction facts"
+                },
+                {
+                  "id": "ari-6",
+                  "code": "A.6",
+                  "title": "Times tables"
+                },
+                {
+                  "id": "ari-7",
+                  "code": "A.7",
+                  "title": "Division facts"
+                },
+                {
+                  "id": "ari-8",
+                  "code": "A.8",
+                  "title": "Missing numbers"
+                },
+                {
+                  "id": "ari-9",
+                  "code": "A.9",
+                  "title": "Doubles and halves"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ari-whole",
+          "code": "B",
+          "title": "Whole numbers",
+          "topics": [
+            {
+              "id": "pre-arith",
+              "title": "Arithmetic (foundations)",
+              "leaves": [
+                {
+                  "id": "pre-1.1",
+                  "code": "1.1",
+                  "title": "Place value"
+                },
+                {
+                  "id": "pre-1.2",
+                  "code": "1.2",
+                  "title": "Addition and subtraction"
+                },
+                {
+                  "id": "pre-1.3",
+                  "code": "1.3",
+                  "title": "Multiplication and division"
+                },
+                {
+                  "id": "pre-1.4",
+                  "code": "1.4",
+                  "title": "Negative numbers"
+                },
+                {
+                  "id": "pre-1.5",
+                  "code": "1.5",
+                  "title": "Order of operations"
+                },
+                {
+                  "id": "pre-1.6",
+                  "code": "1.6",
+                  "title": "Decimals"
+                },
+                {
+                  "id": "pre-1.23",
+                  "code": "1.7",
+                  "title": "Ordering numbers"
+                },
+                {
+                  "id": "pre-1.7",
+                  "code": "1.8",
+                  "title": "Rounding"
+                },
+                {
+                  "id": "pre-1.8",
+                  "code": "1.9",
+                  "title": "Estimating"
+                },
+                {
+                  "id": "pre-1.9",
+                  "code": "1.10",
+                  "title": "Bounds and error intervals"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ari-frac",
+          "code": "C",
+          "title": "A first fraction",
+          "topics": [
+            {
+              "id": "ari-frac-topic",
+              "title": "Fractions",
+              "leaves": [
+                {
+                  "id": "pre-1.16",
+                  "code": "1.19",
+                  "title": "Equivalent fractions"
+                },
+                {
+                  "id": "pre-1.19",
+                  "code": "1.20",
+                  "title": "Mixed numbers"
+                },
+                {
+                  "id": "pre-1.17",
+                  "code": "1.22",
+                  "title": "Adding and subtracting fractions"
+                },
+                {
+                  "id": "pre-1.18",
+                  "code": "1.23",
+                  "title": "Multiplying and dividing fractions"
+                },
+                {
+                  "id": "pre-1.20",
+                  "code": "1.25",
+                  "title": "Percentages of an amount"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "prealgebra": {
+      "title": "Pre-algebra",
+      "units": [
+        {
+          "id": "pre-number",
+          "code": "1",
+          "title": "Number",
+          "ref": "foundations-unit"
+        },
+        {
+          "id": "pa-ratio",
+          "code": "2",
+          "title": "Ratio",
+          "topics": [
+            {
+              "id": "pre-ratio-topic",
+              "title": "Ratio and proportion",
+              "leaves": [
+                {
+                  "id": "pre-2.1",
+                  "code": "2.1",
+                  "title": "Ratio"
+                },
+                {
+                  "id": "pre-2.2",
+                  "code": "2.2",
+                  "title": "Sharing in a ratio"
+                },
+                {
+                  "id": "pre-2.3",
+                  "code": "2.3",
+                  "title": "Direct proportion"
+                },
+                {
+                  "id": "pre-2.4",
+                  "code": "2.5",
+                  "title": "Inverse proportion"
+                },
+                {
+                  "id": "pre-2.5",
+                  "code": "2.12",
+                  "title": "Speed"
+                },
+                {
+                  "id": "pre-2.6",
+                  "code": "2.14",
+                  "title": "Density"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pa-alg",
+          "code": "3",
+          "title": "Letters",
+          "topics": [
+            {
+              "id": "pa-expr",
+              "title": "Expressions",
+              "leaves": [
+                {
+                  "id": "pre-3.1",
+                  "code": "3.1",
+                  "title": "Simplifying"
+                },
+                {
+                  "id": "pre-3.2",
+                  "code": "3.2",
+                  "title": "Expanding"
+                },
+                {
+                  "id": "pre-3.32",
+                  "code": "3.14",
+                  "title": "Writing formulas"
+                },
+                {
+                  "id": "pre-3.10",
+                  "code": "3.15",
+                  "title": "Substitution"
+                }
+              ]
+            },
+            {
+              "id": "pa-eq",
+              "title": "Equations",
+              "leaves": [
+                {
+                  "id": "pre-3.5",
+                  "code": "3.6",
+                  "title": "Linear equations"
+                },
+                {
+                  "id": "pre-3.6",
+                  "code": "3.7",
+                  "title": "Inequalities"
+                },
+                {
+                  "id": "pre-3.11",
+                  "code": "3.16",
+                  "title": "Rearranging"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "geometry": {
+      "title": "Geometry",
+      "units": [
+        {
+          "id": "pre-geometry",
+          "code": "4",
+          "title": "Geometry and measures",
+          "ref": "foundations-unit"
+        },
+        {
+          "id": "geo-coord",
+          "code": "C",
+          "title": "On a grid",
+          "topics": [
+            {
+              "id": "geo-lines",
+              "title": "Coordinates",
+              "leaves": [
+                {
+                  "id": "pre-3.13",
+                  "code": "3.20",
+                  "title": "Coordinates"
+                },
+                {
+                  "id": "pre-3.14",
+                  "code": "3.21",
+                  "title": "Gradient"
+                },
+                {
+                  "id": "pre-3.15",
+                  "code": "3.22",
+                  "title": "Straight-line equations"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "algebra": {
+      "title": "Algebra",
+      "units": [
+        {
+          "id": "alg-pow",
+          "code": "1",
+          "title": "Powers",
+          "topics": [
+            {
+              "id": "pre-powers",
+              "title": "Powers and roots",
+              "leaves": [
+                {
+                  "id": "pre-1.10",
+                  "code": "1.11",
+                  "title": "Powers and roots"
+                },
+                {
+                  "id": "pre-1.11",
+                  "code": "1.12",
+                  "title": "Index laws"
+                },
+                {
+                  "id": "pre-1.27",
+                  "code": "1.13",
+                  "title": "Negative and fractional indices"
+                },
+                {
+                  "id": "pre-1.12",
+                  "code": "1.14",
+                  "title": "Standard form"
+                },
+                {
+                  "id": "pre-1.13",
+                  "code": "1.15",
+                  "title": "Surds"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "alg-expr",
+          "code": "2",
+          "title": "Expressions and equations",
+          "topics": [
+            {
+              "id": "pre-expr",
+              "title": "Expressions",
+              "leaves": [
+                {
+                  "id": "pre-3.1",
+                  "code": "3.1",
+                  "title": "Simplifying"
+                },
+                {
+                  "id": "pre-3.2",
+                  "code": "3.2",
+                  "title": "Expanding"
+                },
+                {
+                  "id": "pre-3.3",
+                  "code": "3.3",
+                  "title": "Factorising"
+                },
+                {
+                  "id": "pre-3.4",
+                  "code": "3.4",
+                  "title": "Algebraic fractions"
+                },
+                {
+                  "id": "pre-3.27",
+                  "code": "3.5",
+                  "title": "Identities"
+                }
+              ]
+            },
+            {
+              "id": "pre-eq",
+              "title": "Equations and inequalities",
+              "leaves": [
+                {
+                  "id": "pre-3.5",
+                  "code": "3.6",
+                  "title": "Linear equations"
+                },
+                {
+                  "id": "pre-3.6",
+                  "code": "3.7",
+                  "title": "Inequalities"
+                },
+                {
+                  "id": "pre-3.18",
+                  "code": "3.8",
+                  "title": "Quadratic inequalities"
+                },
+                {
+                  "id": "pre-3.7",
+                  "code": "3.9",
+                  "title": "Simultaneous equations"
+                },
+                {
+                  "id": "pre-3.19",
+                  "code": "3.10",
+                  "title": "One linear, one quadratic"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "alg-quad",
+          "code": "3",
+          "title": "Quadratics and series",
+          "topics": [
+            {
+              "id": "pre-quads",
+              "title": "Quadratics",
+              "leaves": [
+                {
+                  "id": "pre-3.8",
+                  "code": "3.11",
+                  "title": "Solving by factorising"
+                },
+                {
+                  "id": "pre-3.17",
+                  "code": "3.12",
+                  "title": "Completing the square"
+                },
+                {
+                  "id": "pre-3.9",
+                  "code": "3.13",
+                  "title": "The quadratic formula"
+                }
+              ]
+            },
+            {
+              "id": "alg-seq",
+              "title": "Sequences and logs",
+              "leaves": [
+                {
+                  "id": "pre-3.12",
+                  "code": "3.17",
+                  "title": "Sequences"
+                },
+                {
+                  "id": "pre-3.20",
+                  "code": "3.18",
+                  "title": "Geometric sequences"
+                },
+                {
+                  "id": "pre-3.21",
+                  "code": "3.19",
+                  "title": "Arithmetic series"
+                },
+                {
+                  "id": "1.7",
+                  "code": "1.7",
+                  "title": "Exponents and logarithms",
+                  "hl": false
+                },
+                {
+                  "id": "1.9",
+                  "code": "1.9",
+                  "title": "Binomial theorem",
+                  "hl": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "trigonometry": {
+      "title": "Trigonometry",
+      "units": [
+        {
+          "id": "trig-right",
+          "code": "1",
+          "title": "Right-angled triangles",
+          "topics": [
+            {
+              "id": "trig-school",
+              "title": "School trigonometry",
+              "leaves": [
+                {
+                  "id": "pre-4.6",
+                  "code": "4.11",
+                  "title": "Pythagoras"
+                },
+                {
+                  "id": "pre-4.7",
+                  "code": "4.13",
+                  "title": "Right-angled trigonometry"
+                },
+                {
+                  "id": "pre-4.15",
+                  "code": "4.14",
+                  "title": "Exact trigonometric values"
+                },
+                {
+                  "id": "pre-4.10",
+                  "code": "4.15",
+                  "title": "Bearings"
+                },
+                {
+                  "id": "pre-4.14",
+                  "code": "4.12",
+                  "title": "Pythagoras in 3D"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "trig-circle",
+          "code": "2",
+          "title": "The circle",
+          "topics": [
+            {
+              "id": "trig-rules",
+              "title": "Rules and radians",
+              "leaves": [
+                {
+                  "id": "3.2",
+                  "code": "3.2",
+                  "title": "Sine and cosine rules",
+                  "hl": false
+                },
+                {
+                  "id": "3.4",
+                  "code": "3.4",
+                  "title": "Radians and arcs",
+                  "hl": false
+                },
+                {
+                  "id": "3.5",
+                  "code": "3.5",
+                  "title": "Unit circle",
+                  "hl": false
+                }
+              ]
+            },
+            {
+              "id": "trig-eq",
+              "title": "Graphs and equations",
+              "leaves": [
+                {
+                  "id": "3.6",
+                  "code": "3.6",
+                  "title": "Identities",
+                  "hl": false
+                },
+                {
+                  "id": "3.7",
+                  "code": "3.7",
+                  "title": "Trigonometric graphs",
+                  "hl": false
+                },
+                {
+                  "id": "3.8",
+                  "code": "3.8",
+                  "title": "Trigonometric equations",
+                  "hl": false
+                },
+                {
+                  "id": "3.10",
+                  "code": "3.10",
+                  "title": "Compound angles",
+                  "hl": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "functions": {
+      "title": "Functions",
+      "units": [
+        {
+          "id": "fn-school",
+          "code": "1",
+          "title": "What a function does",
+          "topics": [
+            {
+              "id": "fn-basic",
+              "title": "Notation and graphs",
+              "leaves": [
+                {
+                  "id": "pre-3.22",
+                  "code": "3.26",
+                  "title": "Function notation"
+                },
+                {
+                  "id": "pre-3.23",
+                  "code": "3.27",
+                  "title": "Inverse functions"
+                },
+                {
+                  "id": "pre-3.29",
+                  "code": "3.24",
+                  "title": "Other graphs"
+                },
+                {
+                  "id": "pre-3.30",
+                  "code": "3.25",
+                  "title": "Transforming graphs"
+                },
+                {
+                  "id": "pre-3.31",
+                  "code": "3.28",
+                  "title": "Iteration"
+                }
+              ]
+            },
+            {
+              "id": "fn-lines",
+              "title": "Lines",
+              "leaves": [
+                {
+                  "id": "pre-3.14",
+                  "code": "3.21",
+                  "title": "Gradient"
+                },
+                {
+                  "id": "pre-3.15",
+                  "code": "3.22",
+                  "title": "Straight-line equations"
+                },
+                {
+                  "id": "pre-3.16",
+                  "code": "3.23",
+                  "title": "Parallel and perpendicular lines"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fn-diploma",
+          "code": "2",
+          "title": "The families",
+          "topics": [
+            {
+              "id": "fn-families",
+              "title": "Lines, quadratics, exponentials",
+              "leaves": [
+                {
+                  "id": "2.1",
+                  "code": "2.1",
+                  "title": "Straight lines",
+                  "hl": false
+                },
+                {
+                  "id": "2.2",
+                  "code": "2.2",
+                  "title": "Inverse functions",
+                  "hl": false
+                },
+                {
+                  "id": "2.6",
+                  "code": "2.6",
+                  "title": "Quadratics",
+                  "hl": false
+                },
+                {
+                  "id": "2.7",
+                  "code": "2.7",
+                  "title": "Rational functions",
+                  "hl": false
+                },
+                {
+                  "id": "2.9",
+                  "code": "2.9",
+                  "title": "Exponentials and logs",
+                  "hl": false
+                },
+                {
+                  "id": "2.11",
+                  "code": "2.11",
+                  "title": "Transformations",
+                  "hl": false
+                }
+              ]
+            },
+            {
+              "id": "fn-higher",
+              "title": "Polynomials",
+              "leaves": [
+                {
+                  "id": "2.12",
+                  "code": "2.12",
+                  "title": "Polynomials",
+                  "hl": true
+                },
+                {
+                  "id": "2.16",
+                  "code": "2.16",
+                  "title": "Modulus equations",
+                  "hl": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "aa-sl": {
+      "title": "Analysis, standard level",
+      "units": "AA SL = AA HL tree with HL leaves filtered out"
+    },
+    "applications": {
+      "title": "Applications",
+      "units": [
+        {
+          "id": "ai-num",
+          "code": "1",
+          "title": "Number and models",
+          "topics": [
+            {
+              "id": "ai-number",
+              "title": "Growth and form",
+              "leaves": [
+                {
+                  "id": "1.1",
+                  "code": "1.1",
+                  "title": "Standard form",
+                  "hl": false
+                },
+                {
+                  "id": "1.2",
+                  "code": "1.2",
+                  "title": "Arithmetic sequences",
+                  "hl": false
+                },
+                {
+                  "id": "1.3",
+                  "code": "1.3",
+                  "title": "Geometric sequences",
+                  "hl": false
+                },
+                {
+                  "id": "1.4",
+                  "code": "1.4",
+                  "title": "Compound interest",
+                  "hl": false
+                },
+                {
+                  "id": "pre-2.3",
+                  "code": "2.3",
+                  "title": "Direct proportion"
+                },
+                {
+                  "id": "pre-2.5",
+                  "code": "2.12",
+                  "title": "Speed"
+                }
+              ]
+            },
+            {
+              "id": "ai-fn",
+              "title": "Functions as models",
+              "leaves": [
+                {
+                  "id": "2.1",
+                  "code": "2.1",
+                  "title": "Straight lines",
+                  "hl": false
+                },
+                {
+                  "id": "2.6",
+                  "code": "2.6",
+                  "title": "Quadratics",
+                  "hl": false
+                },
+                {
+                  "id": "2.9",
+                  "code": "2.9",
+                  "title": "Exponentials and logs",
+                  "hl": false
+                },
+                {
+                  "id": "2.11",
+                  "code": "2.11",
+                  "title": "Transformations",
+                  "hl": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ai-shape",
+          "code": "2",
+          "title": "Measure",
+          "topics": [
+            {
+              "id": "ai-measure",
+              "title": "Area, volume, triangles",
+              "leaves": [
+                {
+                  "id": "pre-4.3",
+                  "code": "4.5",
+                  "title": "Perimeter and area"
+                },
+                {
+                  "id": "pre-4.5",
+                  "code": "4.8",
+                  "title": "Volume"
+                },
+                {
+                  "id": "3.2",
+                  "code": "3.2",
+                  "title": "Sine and cosine rules",
+                  "hl": false
+                },
+                {
+                  "id": "3.4",
+                  "code": "3.4",
+                  "title": "Radians and arcs",
+                  "hl": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ai-stats",
+          "code": "3",
+          "title": "Data and chance",
+          "topics": [
+            {
+              "id": "pre-data",
+              "title": "Statistics",
+              "leaves": [
+                {
+                  "id": "pre-5.4",
+                  "code": "5.8",
+                  "title": "Mean, median and range"
+                },
+                {
+                  "id": "pre-5.5",
+                  "code": "5.9",
+                  "title": "Averages from a table"
+                },
+                {
+                  "id": "pre-5.11",
+                  "code": "5.10",
+                  "title": "Grouped data"
+                },
+                {
+                  "id": "pre-5.7",
+                  "code": "5.5",
+                  "title": "Venn diagrams"
+                },
+                {
+                  "id": "pre-5.12",
+                  "code": "5.11",
+                  "title": "Cumulative frequency"
+                }
+              ]
+            },
+            {
+              "id": "ai-prob",
+              "title": "Distributions",
+              "leaves": [
+                {
+                  "id": "4.3",
+                  "code": "4.3",
+                  "title": "Mean and spread",
+                  "hl": false
+                },
+                {
+                  "id": "4.6",
+                  "code": "4.6",
+                  "title": "Combined events",
+                  "hl": false
+                },
+                {
+                  "id": "4.7",
+                  "code": "4.7",
+                  "title": "Discrete random variables",
+                  "hl": false
+                },
+                {
+                  "id": "4.8",
+                  "code": "4.8",
+                  "title": "Binomial distribution",
+                  "hl": false
+                },
+                {
+                  "id": "4.9",
+                  "code": "4.9",
+                  "title": "Normal distribution",
+                  "hl": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ai-calc",
+          "code": "4",
+          "title": "Change",
+          "topics": [
+            {
+              "id": "ai-diff",
+              "title": "Rates and area",
+              "leaves": [
+                {
+                  "id": "5.2",
+                  "code": "5.2",
+                  "title": "Derivatives",
+                  "hl": false
+                },
+                {
+                  "id": "5.3",
+                  "code": "5.3",
+                  "title": "Tangents",
+                  "hl": false
+                },
+                {
+                  "id": "5.7",
+                  "code": "5.7",
+                  "title": "Optimisation",
+                  "hl": false
+                },
+                {
+                  "id": "5.8",
+                  "code": "5.8",
+                  "title": "Integration",
+                  "hl": false
+                },
+                {
+                  "id": "5.9",
+                  "code": "5.9",
+                  "title": "Area",
+                  "hl": false
+                },
+                {
+                  "id": "5.11",
+                  "code": "5.11",
+                  "title": "Kinematics",
+                  "hl": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "calculus": {
+      "title": "Calculus",
+      "units": [
+        {
+          "id": "cal-diff",
+          "code": "1",
+          "title": "Rates",
+          "topics": [
+            {
+              "id": "cal-slope",
+              "title": "From a chord to a derivative",
+              "leaves": [
+                {
+                  "id": "pre-3.24",
+                  "code": "3.29",
+                  "title": "Gradient of a curve"
+                },
+                {
+                  "id": "pre-3.25",
+                  "code": "3.30",
+                  "title": "Stationary points"
+                },
+                {
+                  "id": "5.2",
+                  "code": "5.2",
+                  "title": "Derivatives",
+                  "hl": false
+                },
+                {
+                  "id": "5.3",
+                  "code": "5.3",
+                  "title": "Tangents",
+                  "hl": false
+                },
+                {
+                  "id": "5.4",
+                  "code": "5.4",
+                  "title": "Chain rule",
+                  "hl": false
+                }
+              ]
+            },
+            {
+              "id": "cal-use",
+              "title": "Using the derivative",
+              "leaves": [
+                {
+                  "id": "5.7",
+                  "code": "5.7",
+                  "title": "Optimisation",
+                  "hl": false
+                },
+                {
+                  "id": "5.11",
+                  "code": "5.11",
+                  "title": "Kinematics",
+                  "hl": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cal-int",
+          "code": "2",
+          "title": "Accumulation",
+          "topics": [
+            {
+              "id": "cal-area",
+              "title": "Integrals",
+              "leaves": [
+                {
+                  "id": "5.8",
+                  "code": "5.8",
+                  "title": "Integration",
+                  "hl": false
+                },
+                {
+                  "id": "5.9",
+                  "code": "5.9",
+                  "title": "Area",
+                  "hl": false
+                },
+                {
+                  "id": "5.19",
+                  "code": "5.19",
+                  "title": "Differential equations",
+                  "hl": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "statistics": {
+      "title": "Statistics",
+      "units": [
+        {
+          "id": "pre-stats",
+          "code": "5",
+          "title": "Probability and statistics",
+          "ref": "foundations-unit"
+        },
+        {
+          "id": "stat-dip",
+          "code": "2",
+          "title": "Chance, properly",
+          "topics": [
+            {
+              "id": "stat-models",
+              "title": "Distributions",
+              "leaves": [
+                {
+                  "id": "4.3",
+                  "code": "4.3",
+                  "title": "Mean and spread",
+                  "hl": false
+                },
+                {
+                  "id": "4.6",
+                  "code": "4.6",
+                  "title": "Combined events",
+                  "hl": false
+                },
+                {
+                  "id": "4.7",
+                  "code": "4.7",
+                  "title": "Discrete random variables",
+                  "hl": false
+                },
+                {
+                  "id": "4.8",
+                  "code": "4.8",
+                  "title": "Binomial distribution",
+                  "hl": false
+                },
+                {
+                  "id": "4.9",
+                  "code": "4.9",
+                  "title": "Normal distribution",
+                  "hl": false
+                },
+                {
+                  "id": "4.13",
+                  "code": "4.13",
+                  "title": "Bayes' theorem",
+                  "hl": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "linear": {
+      "title": "Linear algebra",
+      "units": [
+        {
+          "id": "lin-vec",
+          "code": "1",
+          "title": "Vectors",
+          "topics": [
+            {
+              "id": "lin-arrows",
+              "title": "Arrows and lines",
+              "leaves": [
+                {
+                  "id": "pre-3.26",
+                  "code": "3.31",
+                  "title": "Vectors"
+                },
+                {
+                  "id": "3.13",
+                  "code": "3.13",
+                  "title": "Scalar product",
+                  "hl": true
+                },
+                {
+                  "id": "3.14",
+                  "code": "3.14",
+                  "title": "Vector equation of a line",
+                  "hl": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lin-mat",
+          "code": "2",
+          "title": "Matrices",
+          "topics": [
+            {
+              "id": "lin-tables",
+              "title": "Tables of numbers",
+              "leaves": [
+                {
+                  "id": "pre-3.28",
+                  "code": "3.32",
+                  "title": "Matrices"
+                },
+                {
+                  "id": "lin-1",
+                  "code": "L.1",
+                  "title": "A 2×2 determinant"
+                },
+                {
+                  "id": "lin-2",
+                  "code": "L.2",
+                  "title": "A matrix times a vector"
+                },
+                {
+                  "id": "1.16",
+                  "code": "1.16",
+                  "title": "Linear systems",
+                  "hl": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "infinite": {
+      "title": "The infinite",
+      "units": [
+        {
+          "id": "inf-series",
+          "code": "1",
+          "title": "Series",
+          "topics": [
+            {
+              "id": "inf-geo",
+              "title": "Geometric sums",
+              "leaves": [
+                {
+                  "id": "inf-1",
+                  "code": "I.1",
+                  "title": "A finite geometric sum"
+                },
+                {
+                  "id": "1.8",
+                  "code": "1.8",
+                  "title": "Infinite geometric series",
+                  "hl": false
+                },
+                {
+                  "id": "inf-2",
+                  "code": "I.2",
+                  "title": "An infinite geometric sum"
+                },
+                {
+                  "id": "inf-4",
+                  "code": "I.4",
+                  "title": "A partial sum of powers of one half"
+                }
+              ]
+            },
+            {
+              "id": "inf-exp",
+              "title": "The exponential series",
+              "leaves": [
+                {
+                  "id": "inf-3",
+                  "code": "I.3",
+                  "title": "The exponential series"
+                },
+                {
+                  "id": "1.7",
+                  "code": "1.7",
+                  "title": "Exponents and logarithms",
+                  "hl": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "topology": {
+      "title": "Topology",
+      "units": [
+        {
+          "id": "top-sets",
+          "code": "1",
+          "title": "Sets, then nearness",
+          "topics": [
+            {
+              "id": "top-finite",
+              "title": "Finite sets",
+              "leaves": [
+                {
+                  "id": "top-1",
+                  "code": "T.1",
+                  "title": "How many elements"
+                },
+                {
+                  "id": "top-2",
+                  "code": "T.2",
+                  "title": "Power sets"
+                },
+                {
+                  "id": "top-4",
+                  "code": "T.4",
+                  "title": "Unions of finite sets"
+                }
+              ]
+            },
+            {
+              "id": "top-open",
+              "title": "Intervals",
+              "leaves": [
+                {
+                  "id": "top-3",
+                  "code": "T.3",
+                  "title": "Open and closed intervals"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "foundations": {
+    "sections": [
+      {
+        "id": "pre-number",
+        "code": "1",
+        "title": "Number"
+      },
+      {
+        "id": "pre-ratio",
+        "code": "2",
+        "title": "Ratio, proportion and measures"
+      },
+      {
+        "id": "pre-algebra",
+        "code": "3",
+        "title": "Algebra"
+      },
+      {
+        "id": "pre-geometry",
+        "code": "4",
+        "title": "Geometry and measures"
+      },
+      {
+        "id": "pre-stats",
+        "code": "5",
+        "title": "Probability and statistics"
+      }
+    ],
+    "leaves": [
+      {
+        "id": "pre-1.1",
+        "code": "1.1",
+        "title": "Place value"
+      },
+      {
+        "id": "pre-1.2",
+        "code": "1.2",
+        "title": "Addition and subtraction"
+      },
+      {
+        "id": "pre-1.3",
+        "code": "1.3",
+        "title": "Multiplication and division"
+      },
+      {
+        "id": "pre-1.4",
+        "code": "1.4",
+        "title": "Negative numbers"
+      },
+      {
+        "id": "pre-1.5",
+        "code": "1.5",
+        "title": "Order of operations"
+      },
+      {
+        "id": "pre-1.6",
+        "code": "1.6",
+        "title": "Decimals"
+      },
+      {
+        "id": "pre-1.23",
+        "code": "1.7",
+        "title": "Ordering numbers"
+      },
+      {
+        "id": "pre-1.7",
+        "code": "1.8",
+        "title": "Rounding"
+      },
+      {
+        "id": "pre-1.8",
+        "code": "1.9",
+        "title": "Estimating"
+      },
+      {
+        "id": "pre-1.9",
+        "code": "1.10",
+        "title": "Bounds and error intervals"
+      },
+      {
+        "id": "pre-1.10",
+        "code": "1.11",
+        "title": "Powers and roots"
+      },
+      {
+        "id": "pre-1.11",
+        "code": "1.12",
+        "title": "Index laws"
+      },
+      {
+        "id": "pre-1.27",
+        "code": "1.13",
+        "title": "Negative and fractional indices"
+      },
+      {
+        "id": "pre-1.12",
+        "code": "1.14",
+        "title": "Standard form"
+      },
+      {
+        "id": "pre-1.13",
+        "code": "1.15",
+        "title": "Surds"
+      },
+      {
+        "id": "pre-1.14",
+        "code": "1.16",
+        "title": "Multiples and factors"
+      },
+      {
+        "id": "pre-1.15",
+        "code": "1.17",
+        "title": "Primes, HCF and LCM"
+      },
+      {
+        "id": "pre-1.26",
+        "code": "1.18",
+        "title": "Prime factor form"
+      },
+      {
+        "id": "pre-1.16",
+        "code": "1.19",
+        "title": "Equivalent fractions"
+      },
+      {
+        "id": "pre-1.19",
+        "code": "1.20",
+        "title": "Mixed numbers"
+      },
+      {
+        "id": "pre-1.25",
+        "code": "1.21",
+        "title": "Ordering fractions"
+      },
+      {
+        "id": "pre-1.17",
+        "code": "1.22",
+        "title": "Adding and subtracting fractions"
+      },
+      {
+        "id": "pre-1.18",
+        "code": "1.23",
+        "title": "Multiplying and dividing fractions"
+      },
+      {
+        "id": "pre-1.24",
+        "code": "1.24",
+        "title": "Fractions, decimals and percentages"
+      },
+      {
+        "id": "pre-1.20",
+        "code": "1.25",
+        "title": "Percentages of an amount"
+      },
+      {
+        "id": "pre-1.21",
+        "code": "1.26",
+        "title": "Percentage change"
+      },
+      {
+        "id": "pre-1.28",
+        "code": "1.27",
+        "title": "Reverse percentages"
+      },
+      {
+        "id": "pre-1.22",
+        "code": "1.28",
+        "title": "Compound percentages"
+      },
+      {
+        "id": "pre-2.1",
+        "code": "2.1",
+        "title": "Ratio"
+      },
+      {
+        "id": "pre-2.2",
+        "code": "2.2",
+        "title": "Sharing in a ratio"
+      },
+      {
+        "id": "pre-2.3",
+        "code": "2.3",
+        "title": "Direct proportion"
+      },
+      {
+        "id": "pre-2.11",
+        "code": "2.4",
+        "title": "The constant of proportionality"
+      },
+      {
+        "id": "pre-2.4",
+        "code": "2.5",
+        "title": "Inverse proportion"
+      },
+      {
+        "id": "pre-2.15",
+        "code": "2.6",
+        "title": "Reciprocal relationships"
+      },
+      {
+        "id": "pre-2.9",
+        "code": "2.7",
+        "title": "Time"
+      },
+      {
+        "id": "pre-2.10",
+        "code": "2.8",
+        "title": "Money"
+      },
+      {
+        "id": "pre-2.7",
+        "code": "2.9",
+        "title": "Converting units"
+      },
+      {
+        "id": "pre-2.14",
+        "code": "2.10",
+        "title": "Metric and imperial"
+      },
+      {
+        "id": "pre-2.8",
+        "code": "2.11",
+        "title": "Scale"
+      },
+      {
+        "id": "pre-2.5",
+        "code": "2.12",
+        "title": "Speed"
+      },
+      {
+        "id": "pre-2.13",
+        "code": "2.13",
+        "title": "Distance–time graphs"
+      },
+      {
+        "id": "pre-2.6",
+        "code": "2.14",
+        "title": "Density"
+      },
+      {
+        "id": "pre-2.12",
+        "code": "2.15",
+        "title": "Pressure and rates"
+      },
+      {
+        "id": "pre-3.1",
+        "code": "3.1",
+        "title": "Simplifying"
+      },
+      {
+        "id": "pre-3.2",
+        "code": "3.2",
+        "title": "Expanding"
+      },
+      {
+        "id": "pre-3.3",
+        "code": "3.3",
+        "title": "Factorising"
+      },
+      {
+        "id": "pre-3.4",
+        "code": "3.4",
+        "title": "Algebraic fractions"
+      },
+      {
+        "id": "pre-3.27",
+        "code": "3.5",
+        "title": "Identities"
+      },
+      {
+        "id": "pre-3.5",
+        "code": "3.6",
+        "title": "Linear equations"
+      },
+      {
+        "id": "pre-3.6",
+        "code": "3.7",
+        "title": "Inequalities"
+      },
+      {
+        "id": "pre-3.18",
+        "code": "3.8",
+        "title": "Quadratic inequalities"
+      },
+      {
+        "id": "pre-3.7",
+        "code": "3.9",
+        "title": "Simultaneous equations"
+      },
+      {
+        "id": "pre-3.19",
+        "code": "3.10",
+        "title": "One linear, one quadratic"
+      },
+      {
+        "id": "pre-3.8",
+        "code": "3.11",
+        "title": "Solving by factorising"
+      },
+      {
+        "id": "pre-3.17",
+        "code": "3.12",
+        "title": "Completing the square"
+      },
+      {
+        "id": "pre-3.9",
+        "code": "3.13",
+        "title": "The quadratic formula"
+      },
+      {
+        "id": "pre-3.32",
+        "code": "3.14",
+        "title": "Writing formulas"
+      },
+      {
+        "id": "pre-3.10",
+        "code": "3.15",
+        "title": "Substitution"
+      },
+      {
+        "id": "pre-3.11",
+        "code": "3.16",
+        "title": "Rearranging"
+      },
+      {
+        "id": "pre-3.12",
+        "code": "3.17",
+        "title": "Sequences"
+      },
+      {
+        "id": "pre-3.20",
+        "code": "3.18",
+        "title": "Geometric sequences"
+      },
+      {
+        "id": "pre-3.21",
+        "code": "3.19",
+        "title": "Arithmetic series"
+      },
+      {
+        "id": "pre-3.13",
+        "code": "3.20",
+        "title": "Coordinates"
+      },
+      {
+        "id": "pre-3.14",
+        "code": "3.21",
+        "title": "Gradient"
+      },
+      {
+        "id": "pre-3.15",
+        "code": "3.22",
+        "title": "Straight-line equations"
+      },
+      {
+        "id": "pre-3.16",
+        "code": "3.23",
+        "title": "Parallel and perpendicular lines"
+      },
+      {
+        "id": "pre-3.29",
+        "code": "3.24",
+        "title": "Other graphs"
+      },
+      {
+        "id": "pre-3.30",
+        "code": "3.25",
+        "title": "Transforming graphs"
+      },
+      {
+        "id": "pre-3.22",
+        "code": "3.26",
+        "title": "Function notation"
+      },
+      {
+        "id": "pre-3.23",
+        "code": "3.27",
+        "title": "Inverse functions"
+      },
+      {
+        "id": "pre-3.31",
+        "code": "3.28",
+        "title": "Iteration"
+      },
+      {
+        "id": "pre-3.24",
+        "code": "3.29",
+        "title": "Gradient of a curve"
+      },
+      {
+        "id": "pre-3.25",
+        "code": "3.30",
+        "title": "Stationary points"
+      },
+      {
+        "id": "pre-3.26",
+        "code": "3.31",
+        "title": "Vectors"
+      },
+      {
+        "id": "pre-3.28",
+        "code": "3.32",
+        "title": "Matrices"
+      },
+      {
+        "id": "pre-4.1",
+        "code": "4.1",
+        "title": "Angle rules"
+      },
+      {
+        "id": "pre-4.9",
+        "code": "4.2",
+        "title": "Parallel lines"
+      },
+      {
+        "id": "pre-4.2",
+        "code": "4.3",
+        "title": "Polygons"
+      },
+      {
+        "id": "pre-4.17",
+        "code": "4.4",
+        "title": "Circle theorems"
+      },
+      {
+        "id": "pre-4.3",
+        "code": "4.5",
+        "title": "Perimeter and area"
+      },
+      {
+        "id": "pre-4.4",
+        "code": "4.6",
+        "title": "Circles"
+      },
+      {
+        "id": "pre-4.11",
+        "code": "4.7",
+        "title": "Arcs and sectors"
+      },
+      {
+        "id": "pre-4.5",
+        "code": "4.8",
+        "title": "Volume"
+      },
+      {
+        "id": "pre-4.12",
+        "code": "4.9",
+        "title": "Surface area"
+      },
+      {
+        "id": "pre-4.13",
+        "code": "4.10",
+        "title": "Spheres, cones and pyramids"
+      },
+      {
+        "id": "pre-4.6",
+        "code": "4.11",
+        "title": "Pythagoras"
+      },
+      {
+        "id": "pre-4.14",
+        "code": "4.12",
+        "title": "Pythagoras in 3D"
+      },
+      {
+        "id": "pre-4.7",
+        "code": "4.13",
+        "title": "Right-angled trigonometry"
+      },
+      {
+        "id": "pre-4.15",
+        "code": "4.14",
+        "title": "Exact trigonometric values"
+      },
+      {
+        "id": "pre-4.10",
+        "code": "4.15",
+        "title": "Bearings"
+      },
+      {
+        "id": "pre-4.8",
+        "code": "4.16",
+        "title": "Similarity"
+      },
+      {
+        "id": "pre-4.18",
+        "code": "4.17",
+        "title": "Similar areas and volumes"
+      },
+      {
+        "id": "pre-4.16",
+        "code": "4.18",
+        "title": "Enlargement"
+      },
+      {
+        "id": "pre-5.1",
+        "code": "5.1",
+        "title": "Single events"
+      },
+      {
+        "id": "pre-5.6",
+        "code": "5.2",
+        "title": "Relative frequency"
+      },
+      {
+        "id": "pre-5.2",
+        "code": "5.3",
+        "title": "Listing outcomes"
+      },
+      {
+        "id": "pre-5.3",
+        "code": "5.4",
+        "title": "Combined events"
+      },
+      {
+        "id": "pre-5.7",
+        "code": "5.5",
+        "title": "Venn diagrams"
+      },
+      {
+        "id": "pre-5.9",
+        "code": "5.6",
+        "title": "Tree diagrams"
+      },
+      {
+        "id": "pre-5.10",
+        "code": "5.7",
+        "title": "Conditional probability"
+      },
+      {
+        "id": "pre-5.4",
+        "code": "5.8",
+        "title": "Mean, median and range"
+      },
+      {
+        "id": "pre-5.5",
+        "code": "5.9",
+        "title": "Averages from a table"
+      },
+      {
+        "id": "pre-5.11",
+        "code": "5.10",
+        "title": "Grouped data"
+      },
+      {
+        "id": "pre-5.12",
+        "code": "5.11",
+        "title": "Cumulative frequency"
+      },
+      {
+        "id": "pre-5.13",
+        "code": "5.12",
+        "title": "Lines of best fit"
+      }
+    ],
+    "leaf_count": 105
+  },
+  "aa_hl_syllabus": {
+    "units": [
+      {
+        "id": "algebra",
+        "code": "1",
+        "title": "Number and algebra"
+      },
+      {
+        "id": "functions",
+        "code": "2",
+        "title": "Functions"
+      },
+      {
+        "id": "trigonometry",
+        "code": "3",
+        "title": "Geometry and trigonometry"
+      },
+      {
+        "id": "statistics",
+        "code": "4",
+        "title": "Statistics and probability"
+      },
+      {
+        "id": "calculus",
+        "code": "5",
+        "title": "Calculus"
+      }
+    ],
+    "leaves": [
+      {
+        "id": "1.1",
+        "code": "1.1",
+        "title": "Standard form",
+        "hl": false,
+        "unitCode": "1"
+      },
+      {
+        "id": "1.2",
+        "code": "1.2",
+        "title": "Arithmetic sequences",
+        "hl": false,
+        "unitCode": "1"
+      },
+      {
+        "id": "1.3",
+        "code": "1.3",
+        "title": "Geometric sequences",
+        "hl": false,
+        "unitCode": "1"
+      },
+      {
+        "id": "1.4",
+        "code": "1.4",
+        "title": "Compound interest",
+        "hl": false,
+        "unitCode": "1"
+      },
+      {
+        "id": "1.8",
+        "code": "1.8",
+        "title": "Infinite geometric series",
+        "hl": false,
+        "unitCode": "1"
+      },
+      {
+        "id": "1.7",
+        "code": "1.7",
+        "title": "Exponents and logarithms",
+        "hl": false,
+        "unitCode": "1"
+      },
+      {
+        "id": "1.9",
+        "code": "1.9",
+        "title": "Binomial theorem",
+        "hl": false,
+        "unitCode": "1"
+      },
+      {
+        "id": "1.10",
+        "code": "1.10",
+        "title": "Counting",
+        "hl": true,
+        "unitCode": "1"
+      },
+      {
+        "id": "1.11",
+        "code": "1.11",
+        "title": "Partial fractions",
+        "hl": true,
+        "unitCode": "1"
+      },
+      {
+        "id": "1.12",
+        "code": "1.12",
+        "title": "Complex numbers",
+        "hl": true,
+        "unitCode": "1"
+      },
+      {
+        "id": "1.15",
+        "code": "1.15",
+        "title": "Proof",
+        "hl": true,
+        "unitCode": "1"
+      },
+      {
+        "id": "1.16",
+        "code": "1.16",
+        "title": "Linear systems",
+        "hl": true,
+        "unitCode": "1"
+      },
+      {
+        "id": "2.1",
+        "code": "2.1",
+        "title": "Straight lines",
+        "hl": false,
+        "unitCode": "2"
+      },
+      {
+        "id": "2.2",
+        "code": "2.2",
+        "title": "Inverse functions",
+        "hl": false,
+        "unitCode": "2"
+      },
+      {
+        "id": "2.6",
+        "code": "2.6",
+        "title": "Quadratics",
+        "hl": false,
+        "unitCode": "2"
+      },
+      {
+        "id": "2.7",
+        "code": "2.7",
+        "title": "Rational functions",
+        "hl": false,
+        "unitCode": "2"
+      },
+      {
+        "id": "2.9",
+        "code": "2.9",
+        "title": "Exponentials and logs",
+        "hl": false,
+        "unitCode": "2"
+      },
+      {
+        "id": "2.11",
+        "code": "2.11",
+        "title": "Transformations",
+        "hl": false,
+        "unitCode": "2"
+      },
+      {
+        "id": "2.12",
+        "code": "2.12",
+        "title": "Polynomials",
+        "hl": true,
+        "unitCode": "2"
+      },
+      {
+        "id": "2.16",
+        "code": "2.16",
+        "title": "Modulus equations",
+        "hl": true,
+        "unitCode": "2"
+      },
+      {
+        "id": "3.2",
+        "code": "3.2",
+        "title": "Sine and cosine rules",
+        "hl": false,
+        "unitCode": "3"
+      },
+      {
+        "id": "3.4",
+        "code": "3.4",
+        "title": "Radians and arcs",
+        "hl": false,
+        "unitCode": "3"
+      },
+      {
+        "id": "3.5",
+        "code": "3.5",
+        "title": "Unit circle",
+        "hl": false,
+        "unitCode": "3"
+      },
+      {
+        "id": "3.6",
+        "code": "3.6",
+        "title": "Identities",
+        "hl": false,
+        "unitCode": "3"
+      },
+      {
+        "id": "3.7",
+        "code": "3.7",
+        "title": "Trigonometric graphs",
+        "hl": false,
+        "unitCode": "3"
+      },
+      {
+        "id": "3.8",
+        "code": "3.8",
+        "title": "Trigonometric equations",
+        "hl": false,
+        "unitCode": "3"
+      },
+      {
+        "id": "3.10",
+        "code": "3.10",
+        "title": "Compound angles",
+        "hl": true,
+        "unitCode": "3"
+      },
+      {
+        "id": "3.13",
+        "code": "3.13",
+        "title": "Scalar product",
+        "hl": true,
+        "unitCode": "3"
+      },
+      {
+        "id": "3.14",
+        "code": "3.14",
+        "title": "Vector equation of a line",
+        "hl": true,
+        "unitCode": "3"
+      },
+      {
+        "id": "4.3",
+        "code": "4.3",
+        "title": "Mean and spread",
+        "hl": false,
+        "unitCode": "4"
+      },
+      {
+        "id": "4.6",
+        "code": "4.6",
+        "title": "Combined events",
+        "hl": false,
+        "unitCode": "4"
+      },
+      {
+        "id": "4.8",
+        "code": "4.8",
+        "title": "Binomial distribution",
+        "hl": false,
+        "unitCode": "4"
+      },
+      {
+        "id": "4.13",
+        "code": "4.13",
+        "title": "Bayes' theorem",
+        "hl": true,
+        "unitCode": "4"
+      },
+      {
+        "id": "4.7",
+        "code": "4.7",
+        "title": "Discrete random variables",
+        "hl": false,
+        "unitCode": "4"
+      },
+      {
+        "id": "4.9",
+        "code": "4.9",
+        "title": "Normal distribution",
+        "hl": false,
+        "unitCode": "4"
+      },
+      {
+        "id": "5.2",
+        "code": "5.2",
+        "title": "Derivatives",
+        "hl": false,
+        "unitCode": "5"
+      },
+      {
+        "id": "5.3",
+        "code": "5.3",
+        "title": "Tangents",
+        "hl": false,
+        "unitCode": "5"
+      },
+      {
+        "id": "5.4",
+        "code": "5.4",
+        "title": "Chain rule",
+        "hl": false,
+        "unitCode": "5"
+      },
+      {
+        "id": "5.7",
+        "code": "5.7",
+        "title": "Optimisation",
+        "hl": false,
+        "unitCode": "5"
+      },
+      {
+        "id": "5.8",
+        "code": "5.8",
+        "title": "Integration",
+        "hl": false,
+        "unitCode": "5"
+      },
+      {
+        "id": "5.9",
+        "code": "5.9",
+        "title": "Area",
+        "hl": false,
+        "unitCode": "5"
+      },
+      {
+        "id": "5.19",
+        "code": "5.19",
+        "title": "Differential equations",
+        "hl": true,
+        "unitCode": "5"
+      },
+      {
+        "id": "5.11",
+        "code": "5.11",
+        "title": "Kinematics",
+        "hl": false,
+        "unitCode": "5"
+      }
+    ],
+    "leaf_count": 43,
+    "hl_leaf_count": 12
+  },
+  "skills": {
+    "topics": [
+      {
+        "id": "indices",
+        "order": 1,
+        "title": "Indices & surds",
+        "blurb": "Powers, roots, and rationalising a denominator.",
+        "hlLink": "You need this before logs, binomial expansions, and exact trig values.",
+        "itemCount": 5
+      },
+      {
+        "id": "manipulation",
+        "order": 2,
+        "title": "Expand, factor, rearrange",
+        "blurb": "The algebra you are expected to do without thinking.",
+        "hlLink": "Every HL paper hides marks inside clean factorising.",
+        "itemCount": 5
+      },
+      {
+        "id": "linear",
+        "order": 3,
+        "title": "Lines & equations",
+        "blurb": "Linear equations, inequalities, and gradient.",
+        "hlLink": "Tangents, normals, and simultaneous conditions all start here.",
+        "itemCount": 5
+      },
+      {
+        "id": "quadratics",
+        "order": 4,
+        "title": "Quadratics",
+        "blurb": "Factor, discriminant, and completed square.",
+        "hlLink": "HL functions live on vertex form, equal roots, and intersections.",
+        "itemCount": 5
+      },
+      {
+        "id": "logs",
+        "order": 5,
+        "title": "Exponents & logs",
+        "blurb": "The log laws before the HL questions get clever.",
+        "hlLink": "Inverse of an exponential, and half of the algebra paper, sits on this.",
+        "itemCount": 5
+      },
+      {
+        "id": "functions",
+        "order": 6,
+        "title": "Function notation",
+        "blurb": "Evaluate, compose, invert a linear, and name a domain.",
+        "hlLink": "Paper 1 opens on $fcirc g$ and $f^{-1}$ more often than people expect.",
+        "itemCount": 5
+      },
+      {
+        "id": "trig",
+        "order": 7,
+        "title": "Right-triangle trig",
+        "blurb": "Pythagoras, exact values, and radians.",
+        "hlLink": "HL identities are unpleasant if $sin 60^{circ}$ is not instant.",
+        "itemCount": 5
+      },
+      {
+        "id": "chance",
+        "order": 8,
+        "title": "Data & chance",
+        "blurb": "Mean, median, and the first probability rules.",
+        "hlLink": "Combined events and binomial probability assume these without a reminder.",
+        "itemCount": 5
+      }
+    ],
+    "item_count": 40
+  },
+  "paper_strands": {
+    "strands": [
+      {
+        "id": "algebra",
+        "name": "Number & algebra",
+        "short": "Algebra",
+        "blurb": "Sequences, logs, the binomial theorem, and complex numbers."
+      },
+      {
+        "id": "functions",
+        "name": "Functions",
+        "short": "Functions",
+        "blurb": "Composition, inverses, quadratics, and rational graphs."
+      },
+      {
+        "id": "trigonometry",
+        "name": "Trigonometry",
+        "short": "Trigonometry",
+        "blurb": "Exact values, identities, radians, and triangle geometry."
+      },
+      {
+        "id": "calculus",
+        "name": "Calculus",
+        "short": "Calculus",
+        "blurb": "Derivatives, integrals, area, kinematics, and simple DEs."
+      },
+      {
+        "id": "statistics",
+        "name": "Statistics & probability",
+        "short": "Statistics",
+        "blurb": "Combined events, binomial models, data, and the normal curve."
+      }
+    ],
+    "questions": [
+      {
+        "id": "al-01",
+        "strand": "algebra",
+        "subtopic": "Sequences",
+        "title": "Arithmetic sequence",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "al-02",
+        "strand": "algebra",
+        "subtopic": "Sequences",
+        "title": "Geometric series",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "al-03",
+        "strand": "algebra",
+        "subtopic": "Binomial",
+        "title": "Binomial coefficient",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "al-04",
+        "strand": "algebra",
+        "subtopic": "Logarithms",
+        "title": "A log equation",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "al-05",
+        "strand": "algebra",
+        "subtopic": "Sequences",
+        "title": "Bouncing ball",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "al-06",
+        "strand": "algebra",
+        "subtopic": "Exponents",
+        "title": "Hidden quadratic",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "al-07",
+        "strand": "algebra",
+        "subtopic": "Binomial",
+        "title": "Independent term",
+        "calculator": false,
+        "difficulty": 3,
+        "difficultyLabel": "Stretch"
+      },
+      {
+        "id": "al-08",
+        "strand": "algebra",
+        "subtopic": "Sequences",
+        "title": "Three geometric terms",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "al-09",
+        "strand": "algebra",
+        "subtopic": "Complex numbers",
+        "title": "Modulus and argument",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "al-10",
+        "strand": "algebra",
+        "subtopic": "Proof & sigma",
+        "title": "Sum of odd numbers",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "al-11",
+        "strand": "algebra",
+        "subtopic": "Exponents",
+        "title": "Compound growth",
+        "calculator": true,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "fn-01",
+        "strand": "functions",
+        "subtopic": "Composition",
+        "title": "Compose and invert",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "fn-02",
+        "strand": "functions",
+        "subtopic": "Quadratics",
+        "title": "Intercepts and vertex",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "fn-03",
+        "strand": "functions",
+        "subtopic": "Quadratics",
+        "title": "Equal roots",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "fn-04",
+        "strand": "functions",
+        "subtopic": "Linear",
+        "title": "Parallel and perpendicular",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "fn-05",
+        "strand": "functions",
+        "subtopic": "Composition",
+        "title": "Evaluate a composition",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "fn-06",
+        "strand": "functions",
+        "subtopic": "Exponential",
+        "title": "Exponential inverse",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "fn-07",
+        "strand": "functions",
+        "subtopic": "Logarithmic",
+        "title": "Log graph and a translation",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "fn-08",
+        "strand": "functions",
+        "subtopic": "Quadratics",
+        "title": "A tangent line",
+        "calculator": false,
+        "difficulty": 3,
+        "difficultyLabel": "Stretch"
+      },
+      {
+        "id": "fn-09",
+        "strand": "functions",
+        "subtopic": "Transformations",
+        "title": "Completed square",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "fn-10",
+        "strand": "functions",
+        "subtopic": "Rational",
+        "title": "A rational function",
+        "calculator": false,
+        "difficulty": 3,
+        "difficultyLabel": "Stretch"
+      },
+      {
+        "id": "tr-01",
+        "strand": "trigonometry",
+        "subtopic": "Exact values",
+        "title": "A second-quadrant angle",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "tr-02",
+        "strand": "trigonometry",
+        "subtopic": "Equations",
+        "title": "Sine equation",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "tr-03",
+        "strand": "trigonometry",
+        "subtopic": "Equations",
+        "title": "Quadratic in cosine",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "tr-04",
+        "strand": "trigonometry",
+        "subtopic": "Equations",
+        "title": "Double angle equation",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "tr-05",
+        "strand": "trigonometry",
+        "subtopic": "Radians",
+        "title": "Sector",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "tr-06",
+        "strand": "trigonometry",
+        "subtopic": "Graphs",
+        "title": "Sine graph features",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "tr-07",
+        "strand": "trigonometry",
+        "subtopic": "Identities",
+        "title": "Hence solve",
+        "calculator": false,
+        "difficulty": 3,
+        "difficultyLabel": "Stretch"
+      },
+      {
+        "id": "tr-08",
+        "strand": "trigonometry",
+        "subtopic": "Unit circle",
+        "title": "A point on the unit circle",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "tr-09",
+        "strand": "trigonometry",
+        "subtopic": "Identities",
+        "title": "Sine of 75 degrees",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "ca-01",
+        "strand": "calculus",
+        "subtopic": "Differentiation",
+        "title": "Stationary points",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "ca-02",
+        "strand": "calculus",
+        "subtopic": "Exponential",
+        "title": "Tangent and a definite integral",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "ca-03",
+        "strand": "calculus",
+        "subtopic": "Kinematics",
+        "title": "Cannonball",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "ca-04",
+        "strand": "calculus",
+        "subtopic": "Integration",
+        "title": "A polynomial integral",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "ca-05",
+        "strand": "calculus",
+        "subtopic": "Differentiation",
+        "title": "Chain and product",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "ca-06",
+        "strand": "calculus",
+        "subtopic": "Integration",
+        "title": "Reverse chain rule",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "ca-07",
+        "strand": "calculus",
+        "subtopic": "Area",
+        "title": "Area between curves",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "ca-08",
+        "strand": "calculus",
+        "subtopic": "Integration",
+        "title": "A curve through a point",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "ca-09",
+        "strand": "calculus",
+        "subtopic": "Optimisation",
+        "title": "Maximum area",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "ca-10",
+        "strand": "calculus",
+        "subtopic": "Differential equations",
+        "title": "Separable equation",
+        "calculator": false,
+        "difficulty": 3,
+        "difficultyLabel": "Stretch"
+      },
+      {
+        "id": "st-01",
+        "strand": "statistics",
+        "subtopic": "Combined events",
+        "title": "From an intersection",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "st-02",
+        "strand": "statistics",
+        "subtopic": "Binomial",
+        "title": "Ten trials",
+        "calculator": true,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "st-03",
+        "strand": "statistics",
+        "subtopic": "Data",
+        "title": "A missing frequency",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "st-04",
+        "strand": "statistics",
+        "subtopic": "Combined events",
+        "title": "Without replacement",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "st-05",
+        "strand": "statistics",
+        "subtopic": "Binomial",
+        "title": "Expectation and variance",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "st-06",
+        "strand": "statistics",
+        "subtopic": "Discrete random variables",
+        "title": "A probability distribution",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "st-07",
+        "strand": "statistics",
+        "subtopic": "Combined events",
+        "title": "Independent events",
+        "calculator": false,
+        "difficulty": 1,
+        "difficultyLabel": "Core"
+      },
+      {
+        "id": "st-08",
+        "strand": "statistics",
+        "subtopic": "Normal distribution",
+        "title": "Finishing a paper",
+        "calculator": true,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      },
+      {
+        "id": "st-09",
+        "strand": "statistics",
+        "subtopic": "Counting",
+        "title": "Choosing a team",
+        "calculator": false,
+        "difficulty": 2,
+        "difficultyLabel": "Standard"
+      }
+    ],
+    "count": 49
+  }
+}

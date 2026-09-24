@@ -49,3 +49,10 @@ Pages URL is the day-to-day shareable fork until that Build chat publish happens
 - Syllabus leaves: **43** (5 units)
 - Skills: **8 topics × 5 = 40**
 - Paper questions: **49** (Core 15 / Standard 29 / Stretch 5)
+
+## Curriculum audit (2026-09-24 ICT)
+
+- Report: `analysis/ERA_CURRICULUM_AUDIT.md`
+- Added courses: Measures, Precalculus, Mechanics (18 courses total)
+- Expanded: Geometry transforms, Calculus limits/techniques, Statistics inference, Linear eigen/RREF
+- Live grok.me still untouched; publish Pages from this repo after push

@@ -1,0 +1,196 @@
+{
+  "measures": {
+    "title": "Measures",
+    "units": [
+      {
+        "id": "mea-time-money",
+        "code": "1",
+        "title": "Time and money",
+        "topics": [
+          {
+            "id": "mea-tm",
+            "title": "Clock and coins",
+            "leaves": [
+              "mea-1",
+              "mea-2"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mea-metric",
+        "code": "2",
+        "title": "Metric measure",
+        "topics": [
+          {
+            "id": "mea-len",
+            "title": "Length, mass, capacity",
+            "leaves": [
+              "mea-3",
+              "mea-4",
+              "mea-5",
+              "mea-6",
+              "pre-2.7",
+              "pre-2.8",
+              "pre-2.9"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "precalculus": {
+    "title": "Precalculus",
+    "units": [
+      {
+        "id": "pc-conics",
+        "code": "1",
+        "title": "Conic sections",
+        "topics": [
+          {
+            "id": "pc-con",
+            "title": "Circle, parabola, ellipse, hyperbola",
+            "leaves": [
+              "pc-1",
+              "pc-2",
+              "pc-3"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pc-coords",
+        "code": "2",
+        "title": "Other coordinates",
+        "topics": [
+          {
+            "id": "pc-other",
+            "title": "Parametric and polar",
+            "leaves": [
+              "pc-4",
+              "pc-5",
+              "pc-6"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mechanics": {
+    "title": "Mechanics",
+    "units": [
+      {
+        "id": "mec-kin",
+        "code": "1",
+        "title": "Motion",
+        "topics": [
+          {
+            "id": "mec-motion",
+            "title": "Kinematics and projectiles",
+            "leaves": [
+              "mec-1",
+              "mec-3",
+              "5.11"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mec-force",
+        "code": "2",
+        "title": "Force and momentum",
+        "topics": [
+          {
+            "id": "mec-dyn",
+            "title": "Dynamics",
+            "leaves": [
+              "mec-2",
+              "mec-4"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "_expansions": {
+    "geometry": {
+      "add_unit": {
+        "id": "geo-tf",
+        "code": "D",
+        "title": "Transformations and constructions",
+        "topics": [
+          {
+            "id": "geo-moves",
+            "title": "Moves and constructions",
+            "leaves": [
+              "geo-tf-1",
+              "geo-tf-2",
+              "geo-tf-3",
+              "geo-con-1",
+              "pre-4.16"
+            ]
+          }
+        ]
+      }
+    },
+    "calculus": {
+      "add_topics_to": {
+        "cal-diff": [
+          {
+            "id": "cal-limits",
+            "title": "Limits and continuity",
+            "leaves": [
+              "cal-lim-1",
+              "cal-lim-2"
+            ]
+          }
+        ],
+        "cal-int": [
+          {
+            "id": "cal-tech",
+            "title": "Techniques",
+            "leaves": [
+              "cal-sub-1",
+              "cal-parts-1"
+            ]
+          }
+        ]
+      }
+    },
+    "statistics": {
+      "add_unit": {
+        "id": "stat-inf",
+        "code": "3",
+        "title": "Inference",
+        "topics": [
+          {
+            "id": "stat-infer",
+            "title": "From sample to claim",
+            "leaves": [
+              "stat-samp-1",
+              "stat-ci-1",
+              "stat-ht-1",
+              "stat-reg-1"
+            ]
+          }
+        ]
+      }
+    },
+    "linear": {
+      "add_topics_to": {
+        "lin-mat": [
+          {
+            "id": "lin-adv",
+            "title": "Structure",
+            "leaves": [
+              "lin-row-1",
+              "lin-eig-1",
+              "lin-eivec-1",
+              "lin-ind-1"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
