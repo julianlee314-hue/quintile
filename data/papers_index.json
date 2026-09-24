@@ -1,0 +1,443 @@
+[
+  {
+    "id": "al-01",
+    "strand": "algebra",
+    "subtopic": "Sequences",
+    "title": "Arithmetic sequence",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "al-02",
+    "strand": "algebra",
+    "subtopic": "Sequences",
+    "title": "Geometric series",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "al-03",
+    "strand": "algebra",
+    "subtopic": "Binomial",
+    "title": "Binomial coefficient",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "al-04",
+    "strand": "algebra",
+    "subtopic": "Logarithms",
+    "title": "A log equation",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "al-05",
+    "strand": "algebra",
+    "subtopic": "Sequences",
+    "title": "Bouncing ball",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "al-06",
+    "strand": "algebra",
+    "subtopic": "Exponents",
+    "title": "Hidden quadratic",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "al-07",
+    "strand": "algebra",
+    "subtopic": "Binomial",
+    "title": "Independent term",
+    "calculator": false,
+    "difficulty": 3,
+    "difficultyLabel": "Stretch"
+  },
+  {
+    "id": "al-08",
+    "strand": "algebra",
+    "subtopic": "Sequences",
+    "title": "Three geometric terms",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "al-09",
+    "strand": "algebra",
+    "subtopic": "Complex numbers",
+    "title": "Modulus and argument",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "al-10",
+    "strand": "algebra",
+    "subtopic": "Proof & sigma",
+    "title": "Sum of odd numbers",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "al-11",
+    "strand": "algebra",
+    "subtopic": "Exponents",
+    "title": "Compound growth",
+    "calculator": true,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "fn-01",
+    "strand": "functions",
+    "subtopic": "Composition",
+    "title": "Compose and invert",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "fn-02",
+    "strand": "functions",
+    "subtopic": "Quadratics",
+    "title": "Intercepts and vertex",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "fn-03",
+    "strand": "functions",
+    "subtopic": "Quadratics",
+    "title": "Equal roots",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "fn-04",
+    "strand": "functions",
+    "subtopic": "Linear",
+    "title": "Parallel and perpendicular",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "fn-05",
+    "strand": "functions",
+    "subtopic": "Composition",
+    "title": "Evaluate a composition",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "fn-06",
+    "strand": "functions",
+    "subtopic": "Exponential",
+    "title": "Exponential inverse",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "fn-07",
+    "strand": "functions",
+    "subtopic": "Logarithmic",
+    "title": "Log graph and a translation",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "fn-08",
+    "strand": "functions",
+    "subtopic": "Quadratics",
+    "title": "A tangent line",
+    "calculator": false,
+    "difficulty": 3,
+    "difficultyLabel": "Stretch"
+  },
+  {
+    "id": "fn-09",
+    "strand": "functions",
+    "subtopic": "Transformations",
+    "title": "Completed square",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "fn-10",
+    "strand": "functions",
+    "subtopic": "Rational",
+    "title": "A rational function",
+    "calculator": false,
+    "difficulty": 3,
+    "difficultyLabel": "Stretch"
+  },
+  {
+    "id": "tr-01",
+    "strand": "trigonometry",
+    "subtopic": "Exact values",
+    "title": "A second-quadrant angle",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "tr-02",
+    "strand": "trigonometry",
+    "subtopic": "Equations",
+    "title": "Sine equation",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "tr-03",
+    "strand": "trigonometry",
+    "subtopic": "Equations",
+    "title": "Quadratic in cosine",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "tr-04",
+    "strand": "trigonometry",
+    "subtopic": "Equations",
+    "title": "Double angle equation",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "tr-05",
+    "strand": "trigonometry",
+    "subtopic": "Radians",
+    "title": "Sector",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "tr-06",
+    "strand": "trigonometry",
+    "subtopic": "Graphs",
+    "title": "Sine graph features",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "tr-07",
+    "strand": "trigonometry",
+    "subtopic": "Identities",
+    "title": "Hence solve",
+    "calculator": false,
+    "difficulty": 3,
+    "difficultyLabel": "Stretch"
+  },
+  {
+    "id": "tr-08",
+    "strand": "trigonometry",
+    "subtopic": "Unit circle",
+    "title": "A point on the unit circle",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "tr-09",
+    "strand": "trigonometry",
+    "subtopic": "Identities",
+    "title": "Sine of 75 degrees",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "ca-01",
+    "strand": "calculus",
+    "subtopic": "Differentiation",
+    "title": "Stationary points",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "ca-02",
+    "strand": "calculus",
+    "subtopic": "Exponential",
+    "title": "Tangent and a definite integral",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "ca-03",
+    "strand": "calculus",
+    "subtopic": "Kinematics",
+    "title": "Cannonball",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "ca-04",
+    "strand": "calculus",
+    "subtopic": "Integration",
+    "title": "A polynomial integral",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "ca-05",
+    "strand": "calculus",
+    "subtopic": "Differentiation",
+    "title": "Chain and product",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "ca-06",
+    "strand": "calculus",
+    "subtopic": "Integration",
+    "title": "Reverse chain rule",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "ca-07",
+    "strand": "calculus",
+    "subtopic": "Area",
+    "title": "Area between curves",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "ca-08",
+    "strand": "calculus",
+    "subtopic": "Integration",
+    "title": "A curve through a point",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "ca-09",
+    "strand": "calculus",
+    "subtopic": "Optimisation",
+    "title": "Maximum area",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "ca-10",
+    "strand": "calculus",
+    "subtopic": "Differential equations",
+    "title": "Separable equation",
+    "calculator": false,
+    "difficulty": 3,
+    "difficultyLabel": "Stretch"
+  },
+  {
+    "id": "st-01",
+    "strand": "statistics",
+    "subtopic": "Combined events",
+    "title": "From an intersection",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "st-02",
+    "strand": "statistics",
+    "subtopic": "Binomial",
+    "title": "Ten trials",
+    "calculator": true,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "st-03",
+    "strand": "statistics",
+    "subtopic": "Data",
+    "title": "A missing frequency",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "st-04",
+    "strand": "statistics",
+    "subtopic": "Combined events",
+    "title": "Without replacement",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "st-05",
+    "strand": "statistics",
+    "subtopic": "Binomial",
+    "title": "Expectation and variance",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "st-06",
+    "strand": "statistics",
+    "subtopic": "Discrete random variables",
+    "title": "A probability distribution",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "st-07",
+    "strand": "statistics",
+    "subtopic": "Combined events",
+    "title": "Independent events",
+    "calculator": false,
+    "difficulty": 1,
+    "difficultyLabel": "Core"
+  },
+  {
+    "id": "st-08",
+    "strand": "statistics",
+    "subtopic": "Normal distribution",
+    "title": "Finishing a paper",
+    "calculator": true,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  },
+  {
+    "id": "st-09",
+    "strand": "statistics",
+    "subtopic": "Counting",
+    "title": "Choosing a team",
+    "calculator": false,
+    "difficulty": 2,
+    "difficultyLabel": "Standard"
+  }
+]
