@@ -1,0 +1,219 @@
+{
+  "rows": [
+    {
+      "era": "counting",
+      "title": "I Counting",
+      "band": "K\u20132 / KS1\u2013lower KS2",
+      "years_lo": 2,
+      "years_hi": 3,
+      "school_hrs_lo": 288,
+      "school_hrs_hi": 540,
+      "school_note": "4\u20135 h/wk math x 36 weeks x 2\u20133 years",
+      "quintile_primary_hrs": 41,
+      "quintile_with_extras_hrs": 41,
+      "all_cards_hrs": 41,
+      "weeks_at_5h": 8.2,
+      "months_at_5h": 1.9,
+      "breakdown": [
+        [
+          "Measures",
+          9,
+          1.25,
+          11
+        ],
+        [
+          "First numbers",
+          24,
+          1.25,
+          30
+        ]
+      ]
+    },
+    {
+      "era": "workshop",
+      "title": "II Workshop",
+      "band": "Grades 3\u20138 / upper KS2\u2013KS3",
+      "years_lo": 3,
+      "years_hi": 4,
+      "school_hrs_lo": 378,
+      "school_hrs_hi": 720,
+      "school_note": "3.5\u20135 h/wk math x 36 weeks x 3\u20134 years",
+      "quintile_primary_hrs": 26,
+      "quintile_with_extras_hrs": 26,
+      "all_cards_hrs": 26,
+      "weeks_at_5h": 5.2,
+      "months_at_5h": 1.2,
+      "breakdown": [
+        [
+          "Pre-algebra",
+          13,
+          1.25,
+          16
+        ],
+        [
+          "Geometry",
+          8,
+          1.25,
+          10
+        ]
+      ]
+    },
+    {
+      "era": "secondary",
+      "title": "III Secondary",
+      "band": "Alg I\u2013II / GCSE Higher",
+      "years_lo": 2,
+      "years_hi": 3,
+      "school_hrs_lo": 120,
+      "school_hrs_hi": 486,
+      "school_note": "GCSE maths GLH ~120\u2013140; school contact often ~216\u2013486 h over 2\u20133 years",
+      "quintile_primary_hrs": 105,
+      "quintile_with_extras_hrs": 149,
+      "all_cards_hrs": 149,
+      "weeks_at_5h": 21.0,
+      "months_at_5h": 4.9,
+      "breakdown": [
+        [
+          "Higher certificate",
+          105,
+          1.0,
+          105
+        ]
+      ]
+    },
+    {
+      "era": "bridge",
+      "title": "IV Bridge",
+      "band": "Precalculus / MHF4U / AS Pure",
+      "years_lo": 1,
+      "years_hi": 1,
+      "school_hrs_lo": 144,
+      "school_hrs_hi": 180,
+      "school_note": "4\u20135 h/wk math x 36 weeks x 1\u20131 years",
+      "quintile_primary_hrs": 38,
+      "quintile_with_extras_hrs": 38,
+      "all_cards_hrs": 38,
+      "weeks_at_5h": 7.5,
+      "months_at_5h": 1.7,
+      "breakdown": [
+        [
+          "Functions",
+          16,
+          1.25,
+          20
+        ],
+        [
+          "Precalculus",
+          6,
+          1.25,
+          8
+        ],
+        [
+          "Skills fluency (8x5)",
+          40,
+          0.25,
+          10
+        ]
+      ]
+    },
+    {
+      "era": "diploma",
+      "title": "V Diploma",
+      "band": "IB DP maths",
+      "years_lo": 2,
+      "years_hi": 2,
+      "school_hrs_lo": 150,
+      "school_hrs_hi": 240,
+      "school_note": "IB SL 150 / HL 240 teaching hours over 2 years; A-level Maths ~360 GLH",
+      "quintile_primary_hrs": 108,
+      "quintile_with_extras_hrs": 132,
+      "all_cards_hrs": 145,
+      "weeks_at_5h": 21.5,
+      "months_at_5h": 5.0,
+      "breakdown": [
+        [
+          "Analysis HL syllabus leaves",
+          43,
+          2.5,
+          108
+        ]
+      ]
+    },
+    {
+      "era": "university",
+      "title": "VI University",
+      "band": "First-year uni footholds",
+      "years_lo": 0.5,
+      "years_hi": 1.0,
+      "school_hrs_lo": 120,
+      "school_hrs_hi": 400,
+      "school_note": "Calc I total load ~120\u2013160 h; calc+stats+LA+mechanics survey ~280\u2013400 h",
+      "quintile_primary_hrs": 54,
+      "quintile_with_extras_hrs": 54,
+      "all_cards_hrs": 54,
+      "weeks_at_5h": 10.7,
+      "months_at_5h": 2.5,
+      "breakdown": [
+        [
+          "Calculus",
+          14,
+          1.5,
+          21
+        ],
+        [
+          "Statistics",
+          10,
+          1.25,
+          12
+        ],
+        [
+          "Linear algebra",
+          11,
+          1.25,
+          14
+        ],
+        [
+          "Mechanics",
+          5,
+          1.25,
+          6
+        ]
+      ]
+    },
+    {
+      "era": "beyond",
+      "title": "VII Beyond",
+      "band": "Enrichment (optional)",
+      "years_lo": 0.1,
+      "years_hi": 0.5,
+      "school_hrs_lo": 10,
+      "school_hrs_hi": 40,
+      "school_note": "Optional enrichment; no standard GLH",
+      "quintile_primary_hrs": 14,
+      "quintile_with_extras_hrs": 14,
+      "all_cards_hrs": 14,
+      "weeks_at_5h": 2.7,
+      "months_at_5h": 0.6,
+      "breakdown": [
+        [
+          "The infinite",
+          6,
+          1.25,
+          8
+        ],
+        [
+          "Topology",
+          4,
+          1.5,
+          6
+        ]
+      ]
+    }
+  ],
+  "alt_diploma": {
+    "Analysis SL only": 78,
+    "Applications only": 38,
+    "AA HL + paper bank": 132
+  },
+  "total_quintile_primary_hrs": 386
+}
